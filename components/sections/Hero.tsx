@@ -66,25 +66,18 @@ export function Hero() {
       className="relative w-full min-h-[100svh] flex flex-col justify-start md:justify-center overflow-hidden bg-ink"
     >
       {/* BACKGROUND IMAGE LAYER */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none transform-gpu">
-        <motion.div
-          variants={shouldReduceMotion ? fadeOnly : imageScale}
-          initial="hidden"
-          animate="visible"
-          className="relative w-full h-full"
-        >
-          <picture className="absolute inset-0 w-full h-full">
-            <source
-              media="(min-width: 768px)"
-              srcSet={desktopImageProps.props.srcSet}
-            />
-            <img
-              {...mobileImageProps.props}
-              alt="Freshly fried river fish on wooden board with lemon and spices"
-              className="w-full h-full object-cover object-bottom md:object-center"
-            />
-          </picture>
-        </motion.div>
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+        <picture className="absolute inset-0 w-full h-full">
+          <source
+            media="(min-width: 768px)"
+            srcSet={desktopImageProps.props.srcSet}
+          />
+          <img
+            {...mobileImageProps.props}
+            alt="Freshly fried river fish on wooden board with lemon and spices"
+            className="w-full h-full object-cover object-bottom md:object-center"
+          />
+        </picture>
       </div>
 
       {/* OVERLAY LAYERS */}
