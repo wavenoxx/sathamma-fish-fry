@@ -1,210 +1,114 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { getImageProps } from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import React from "react";
+import Image from "next/image";
 import { restaurant } from "@/data/restaurant";
-import { Container } from "@/components/ui/Container";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { PhoneIcon, DirectionsIcon, StarIcon } from "@/components/ui/icons";
+import { StarIcon } from "@/components/ui/icons";
 import { OpenStatus } from "@/components/OpenStatus";
-import { fadeUp, fadeOnly, imageScale } from "@/lib/motion";
+import { SketchedButton } from "@/components/ui/SketchedButton";
 
 export function Hero() {
-  const heroRef = useRef<HTMLElement>(null);
-  const shouldReduceMotion = useReducedMotion();
-
-  // 1. Art-directed responsive image props via Next.js getImageProps
-  const desktopImageProps = getImageProps({
-    src: "/images/hero-desktop.jpg",
-    alt: "Freshly fried river fish on wooden board with lemon and spices",
-    fill: true,
-    priority: true,
-    quality: 88,
-    sizes: "100vw",
-    placeholder: "blur",
-    blurDataURL:
-      "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADwAQCdASoQAAkABUB8JZgC7AELhzic64AA/vQp/qlRrAD8w060anXh3OHE29NxZN/igLAAAAA=",
-  });
-
-  const mobileImageProps = getImageProps({
-    src: "/images/hero-mobile.jpg",
-    alt: "Freshly fried river fish on wooden board with lemon and spices",
-    fill: true,
-    priority: true,
-    quality: 88,
-    sizes: "100vw",
-    placeholder: "blur",
-    blurDataURL:
-      "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoJABAABUB8JYgAAudYMznsQAD+8pXpmUar4ahbyXAkj2f2iqIccyX57nbEAAAA",
-  });
-
-  // Content entrance variants
-  const contentContainerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.11,
-      },
-    },
-  };
-
-  const childVariants = shouldReduceMotion ? fadeOnly : fadeUp;
-
   const directionsUrl =
     restaurant.mapsUrl ||
     `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-      `${restaurant.address.line1}, ${restaurant.address.line2}, ${restaurant.address.plusCode}`
+      restaurant.plusCode
     )}`;
 
   return (
     <section
       id="hero"
-      ref={heroRef}
-      aria-label="Hero"
-      className="relative w-full min-h-[100svh] flex flex-col justify-start md:justify-center overflow-hidden bg-ink"
+      aria-label="Sathamma Fish Fry Hero"
+      className="relative w-full pt-[130px] sm:pt-[150px] md:pt-[170px] pb-16 md:pb-24 flex flex-col items-center justify-center text-center overflow-hidden"
     >
-      {/* BACKGROUND IMAGE LAYER */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-        <picture className="absolute inset-0 w-full h-full">
-          <source
-            media="(min-width: 768px)"
-            srcSet={desktopImageProps.props.srcSet}
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 flex flex-col items-center">
+        {/* 1. Hallmark Eyebrow & Geographic Coordinates */}
+        <div className="flex items-center gap-3 select-none mb-6">
+          <span className="font-ui font-medium text-[9px] md:text-[10px] uppercase tracking-[0.28em] text-[var(--text-secondary)]">
+            DEVARAKONDA · TELANGANA
+          </span>
+          <span className="text-[var(--text-secondary)] opacity-40">/</span>
+          <span className="font-ui font-normal text-[9px] md:text-[10px] uppercase tracking-[0.24em] text-[var(--text-secondary)] opacity-80">
+            16°42′ N, 78°55′ E
+          </span>
+        </div>
+
+        {/* 2. Regal Centered Display Heading (Patrizia Garganti Style - 100% Solid, Zero Jank) */}
+        <h1 className="font-display font-light text-[46px] sm:text-[68px] md:text-[88px] lg:text-[104px] uppercase tracking-[0.03em] leading-[0.96] text-[var(--text-primary)] max-w-5xl [text-wrap:balance]">
+          HERITAGE <br className="hidden sm:inline" />
+          <span>BY THE WATER</span>
+        </h1>
+
+        {/* 3. Editorial Storyline */}
+        <p className="mt-6 md:mt-8 font-display font-light text-[17px] sm:text-[20px] md:text-[23px] text-[var(--text-secondary)] max-w-[38ch] leading-[1.5] [text-wrap:balance]">
+          Fresh river catch from the Krishna backwaters, cooked over open woodfire the way it was born in 1998.
+        </p>
+
+        {/* 4. Patrizia Garganti Architectural Arched Window Portal */}
+        <div className="relative w-full max-w-[340px] sm:max-w-[480px] md:max-w-[620px] aspect-[4/3] sm:aspect-[16/10] mt-10 md:mt-14 mb-10 md:mb-12 arch-portal border border-[var(--border-hairline)] shadow-2xl bg-black/40">
+          <Image
+            src="/images/hero-desktop.png"
+            alt="Sathamma Fresh Fish Fry Woodfire Preparation"
+            fill
+            priority
+            sizes="(min-width: 1024px) 620px, (min-width: 640px) 480px, 340px"
+            className="object-cover object-center transform scale-[1.02] hover:scale-105 transition-transform duration-1000 ease-out"
           />
-          <img
-            {...mobileImageProps.props}
-            alt="Freshly fried river fish on wooden board with lemon and spices"
-            className="w-full h-full object-cover object-bottom md:object-center"
-          />
-        </picture>
-      </div>
+          {/* Subtle vignette gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
 
-      {/* OVERLAY LAYERS */}
-      {/* 1. Desktop gradient to the right: ink 82% -> ink 55% at 45% width -> transparent at 75% */}
-      <div
-        aria-hidden="true"
-        className="hidden md:block absolute inset-0 bg-[linear-gradient(to_right,rgba(20,16,13,0.82)_0%,rgba(20,16,13,0.55)_45%,transparent_75%)] pointer-events-none"
-      />
-
-      {/* 2. Mobile refined cinematic overlay: text contrast at top, warm food visibility in center, gentle fade at bottom */}
-      <div
-        aria-hidden="true"
-        className="block md:hidden absolute inset-0 bg-[linear-gradient(to_bottom,rgba(20,16,13,0.92)_0%,rgba(20,16,13,0.72)_36%,rgba(20,16,13,0.20)_65%,rgba(20,16,13,0.88)_100%)] pointer-events-none"
-      />
-
-      {/* 3. Subtle full-frame ink wash at 15% opacity to unify image with page */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-ink/15 pointer-events-none"
-      />
-
-      {/* CONTENT LAYER */}
-      <Container wide className="relative z-10 w-full h-full flex flex-col justify-start md:justify-center">
-        {/* Mobile container: poised top padding (pt-28), natural breathing room, balanced max-widths */}
-        <div className="w-full text-left pt-28 sm:pt-32 md:pt-0 md:max-w-[40ch] lg:max-w-[54ch]">
-          <div className="flex flex-col items-start">
-            {/* 1. Hallmark Eyebrow with Spatial Coordinates */}
-            <div className="curtain-mask mb-4 md:mb-6">
-              <div className="animate-curtain-eyebrow flex items-center gap-3">
-                <SectionLabel>
-                  Devarakonda · Telangana
-                </SectionLabel>
-                <span className="font-ui text-[10px] tracking-[0.2em] text-cream-dim/50 uppercase select-none hidden sm:inline-block">
-                  [ 16°42′ N · 78°55′ E ]
-                </span>
-              </div>
-            </div>
-
-            {/* 2. H1: Majestic, Staged Florentine Curtain Reveal (Line 1 then Line 2) */}
-            <div className="w-full">
-              <h1 className="font-display font-light text-[40px] sm:text-[46px] md:text-hero text-cream leading-[1.06] tracking-[-0.02em] [text-wrap:balance]">
-                <span className="curtain-mask">
-                  <span className="animate-curtain-title-1 block">Sathamma</span>
-                </span>
-                <span className="curtain-mask mt-1 md:mt-2">
-                  <span className="animate-curtain-title-2 block">Fish Fry</span>
-                </span>
-              </h1>
-            </div>
-
-            {/* 3. Tagline: Poetic measure, Curtain Reveal */}
-            <div className="curtain-mask mt-4 md:mt-6">
-              <p className="animate-curtain-tagline font-display font-light text-[15px] sm:text-[17px] md:text-body text-cream-dim max-w-[28ch] sm:max-w-[34ch] md:max-w-[44ch] leading-[1.65] [text-wrap:balance]">
-                Fresh river fish from the Krishna backwaters, cooked the way it always has been.
-              </p>
-            </div>
-
-            {/* 4. White Desert Inspired Exclusivity / Trust Metric Plaque */}
-            <div className="animate-curtain-meta mt-7 md:mt-8 flex flex-col items-start w-full">
-              {/* Subtle hairline anchor on mobile */}
-              <div className="w-10 h-px bg-line mb-5 block md:hidden" />
-
-              {/* Factual Metrics Row */}
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 select-none">
-                {/* Rating Badge */}
-                <div className="inline-flex items-center gap-2">
-                  <StarIcon className="w-[12px] h-[12px] md:w-[13px] md:h-[13px] text-turmeric shrink-0" />
-                  <span className="font-ui font-medium text-[12px] md:text-[13px] text-cream leading-none">
-                    {restaurant.rating}
-                  </span>
-                  <span className="font-ui font-medium text-micro uppercase tracking-[0.16em] text-cream-dim leading-none">
-                    Rated on Google
-                  </span>
-                </div>
-
-                <span className="hidden sm:inline-block text-cream-dim/30 select-none">/</span>
-
-                {/* Sourcing Badge */}
-                <span className="font-ui font-normal text-micro uppercase tracking-[0.18em] text-cream-dim/70">
-                  Daily Fresh Catch · Woodfire Hearth
-                </span>
-              </div>
-
-              {/* Open Status on mobile directly follows rating */}
-              <div className="mt-3 block md:hidden">
-                <OpenStatus />
-              </div>
-            </div>
-
-            {/* 5. Desktop CTA Row with ApeChain Rolling Text Interactions */}
-            <div className="animate-curtain-cta hidden md:flex mt-10 w-auto">
-              <div className="flex items-center gap-4 w-auto">
-                {/* Primary CTA (Ember Pill with Rolling Text) */}
-                <a
-                  href={`tel:${restaurant.phone}`}
-                  className="rollover-btn group rounded-full px-7 py-3.5 bg-ember text-cream hover:bg-[#b04b23] transition-all duration-300 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink shadow-[0_8px_24px_-6px_rgba(180,70,26,0.35)] hover:shadow-[0_12px_28px_-4px_rgba(180,70,26,0.5)]"
-                >
-                  <PhoneIcon className="w-[15px] h-[15px] text-cream shrink-0 mr-2.5" />
-                  <span className="rollover-text">
-                    <span className="rollover-main">Call Kitchen</span>
-                    <span className="rollover-clone">Call Kitchen</span>
-                  </span>
-                </a>
-
-                {/* Secondary CTA (Ghost Hairline with Rolling Text) */}
-                <a
-                  href={directionsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rollover-btn group rounded-full px-7 py-3.5 border border-line/80 bg-transparent text-cream hover:bg-ink-soft hover:border-cream/40 transition-all duration-300 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-                >
-                  <DirectionsIcon className="w-[15px] h-[15px] text-cream shrink-0 mr-2.5" />
-                  <span className="rollover-text">
-                    <span className="rollover-main">Get Directions</span>
-                    <span className="rollover-clone">Get Directions</span>
-                  </span>
-                </a>
-              </div>
-            </div>
-
-            {/* 6. Desktop Open Status (Follows CTA row with md:mt-8) */}
-            <div className="animate-curtain-cta hidden md:block md:mt-8">
-              <OpenStatus />
-            </div>
+          {/* Arch Base Caption */}
+          <div className="absolute bottom-4 left-0 right-0 text-center select-none">
+            <span className="font-ui text-[9px] uppercase tracking-[0.24em] text-white/90 drop-shadow">
+              HEARTH WOODFIRE & RIVER WATERS
+            </span>
           </div>
         </div>
-      </Container>
+
+        {/* 5. Patrizia Garganti Hand-Drawn Sketched Action Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
+          {/* Sketched Button 1: Call Kitchen */}
+          <SketchedButton
+            line1="ORDER FRESH CATCH"
+            line2="CALL KITCHEN DIRECT"
+            href={`tel:${restaurant.phone}`}
+          />
+
+          {/* Sketched Button 2: Directions */}
+          <SketchedButton
+            line1="GET DIRECTIONS"
+            line2="VIZAG COLONY BOATING POINT"
+            href={directionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+        </div>
+
+        {/* 6. Trust Plaque & Kitchen Status */}
+        <div className="mt-12 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 font-ui text-[11px] uppercase tracking-[0.2em] text-[var(--text-secondary)] select-none">
+          {/* Google Rating */}
+          <div className="flex items-center gap-2">
+            <StarIcon className="w-[13px] h-[13px] text-turmeric shrink-0" />
+            <span className="font-medium text-[var(--text-primary)]">
+              {restaurant.rating}
+            </span>
+            <span>RATED ON GOOGLE</span>
+          </div>
+
+          <span className="hidden sm:inline-block opacity-30">•</span>
+
+          {/* Operating Status */}
+          <div className="flex items-center gap-2">
+            <OpenStatus />
+          </div>
+
+          <span className="hidden sm:inline-block opacity-30">•</span>
+
+          {/* Catch Note */}
+          <span className="opacity-80">
+            COOKED TO ORDER · ZERO REHEATING
+          </span>
+        </div>
+      </div>
     </section>
   );
 }

@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { MobileActionBar } from "@/components/MobileActionBar";
 import { StructuredData } from "@/components/StructuredData";
 import { SITE_URL } from "@/data/restaurant";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -66,6 +67,7 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -75,30 +77,36 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${newsreader.variable} ${geist.variable}`}
+      data-theme="dark"
+      suppressHydrationWarning
     >
-      <body className="min-h-screen bg-ink text-cream antialiased selection:bg-ink-soft selection:text-cream flex flex-col font-serif">
-        {/* Skip to Content accessible navigation */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-ink-soft focus:text-cream focus:border focus:border-line focus:rounded-full focus:outline-none focus:ring-2 focus:ring-ember focus:ring-offset-2 focus:ring-offset-ink font-ui text-[13px] font-medium"
-        >
-          Skip to content
-        </a>
+      <body className="min-h-screen antialiased flex flex-col font-serif">
+        <ThemeProvider>
+          {/* Skip to Content accessible navigation */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-ink focus:text-cream focus:border focus:border-line focus:rounded-full focus:outline-none focus:ring-2 focus:ring-ember focus:ring-offset-2 font-ui text-[13px] font-medium"
+          >
+            Skip to content
+          </a>
 
-        {/* JSON-LD Structured Data */}
-        <StructuredData />
+          {/* JSON-LD Structured Data */}
+          <StructuredData />
 
-        {/* Subtle SVG Grain Overlay */}
-        <NoiseOverlay />
+          {/* Subtle SVG Grain Overlay */}
+          <NoiseOverlay />
 
-        {/* Global Fixed Header */}
-        <Header />
+          {/* Global Florentine Fixed Header */}
+          <Header />
 
-        {/* Main Content */}
-        <div className="flex-1 flex flex-col">{children}</div>
+          {/* Main Content */}
+          <div className="flex-1 flex flex-col" id="main-content">
+            {children}
+          </div>
 
-        {/* Mobile Action Bar (Placed last in DOM for logical tab order, fixed at bottom) */}
-        <MobileActionBar />
+          {/* Mobile Action Bar */}
+          <MobileActionBar />
+        </ThemeProvider>
       </body>
     </html>
   );

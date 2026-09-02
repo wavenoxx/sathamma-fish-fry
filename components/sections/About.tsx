@@ -1,106 +1,93 @@
 "use client";
 
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
-import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ImageSlot } from "@/components/ui/ImageSlot";
-import { fadeUp, fadeOnly, imageScale, stagger } from "@/lib/motion";
+import { HairlineDivider } from "@/components/ui/HairlineDivider";
+import { SketchedButton } from "@/components/ui/SketchedButton";
 
 export function About() {
-  const shouldReduceMotion = useReducedMotion();
-  const childVariants = shouldReduceMotion ? fadeOnly : fadeUp;
-  const scaleVariants = shouldReduceMotion ? fadeOnly : imageScale;
-  const containerVariants = shouldReduceMotion ? fadeOnly : stagger;
-
   return (
     <section
       id="about"
       aria-label="About Sathamma Fish Fry"
-      className="relative w-full border-b border-line section-spacing bg-ink text-cream"
+      className="relative w-full pb-20 md:pb-32 flex flex-col items-center"
     >
-      <Container>
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col w-full min-w-0"
-        >
-          {/* ROW 1: SECTION LABEL & H2 GROUPED IN COLS 1-8 */}
-          <motion.div
-            variants={childVariants}
-            className="grid grid-cols-1 lg:grid-cols-12 lg:gap-8 items-start w-full min-w-0"
-          >
-            <div className="lg:col-span-8 flex flex-col items-start w-full min-w-0">
-              <SectionLabel className="mb-4">Our Story</SectionLabel>
-              <h2 className="font-display font-light text-h1 text-cream leading-[1.12] tracking-[-0.015em]">
-                A kitchen, and a river behind it
-              </h2>
-            </div>
-          </motion.div>
+      {/* Hairline Divider */}
+      <HairlineDivider
+        category="HERITAGE HEARTH"
+        subtitle="SINCE 1998"
+      />
 
-          {/* ROW 2: PORTRAIT IMAGE (COLS 1-5, 78% ON MOBILE) & BODY COPY (COLS 7-11) */}
-          <div className="mt-12 lg:mt-20 grid grid-cols-1 lg:grid-cols-12 lg:gap-8 items-start w-full min-w-0">
-            {/* PORTRAIT IMAGE */}
-            <motion.div
-              variants={childVariants}
-              className="lg:col-span-5 w-full min-w-0"
-            >
-              <div className="relative w-[78%] md:w-full overflow-hidden bg-ink-soft">
+      <Container>
+        {/* Section Heading: Centered Regal Serif (Patrizia Garganti Style) */}
+        <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-16 md:mb-20">
+          <h2 className="font-display font-light text-[38px] sm:text-[54px] md:text-[68px] uppercase tracking-[0.03em] leading-none text-[var(--text-primary)]">
+            ART OVER WOODFIRE
+          </h2>
+          <p className="mt-4 md:mt-6 font-display font-light text-[17px] sm:text-[20px] text-[var(--text-secondary)] leading-[1.6] max-w-[44ch]">
+            A family kitchen near the boating point at Vizag Colony, where the morning catch dictates the day’s fire.
+          </p>
+        </div>
+
+        {/* 2-Column Editorial & Portrait Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center w-full mb-16 md:mb-24">
+          {/* Left: Framed Portrait / Hearth Image */}
+          <div className="lg:col-span-6 w-full">
+            <div className="relative w-full aspect-[4/5] border border-[var(--border-hairline)] bg-[var(--card-bg)] p-4 sm:p-6 backdrop-blur-sm">
+              <div className="relative w-full h-full overflow-hidden bg-black/20">
                 <ImageSlot
                   id="about-portrait"
-                  sizes="(min-width: 1024px) 40vw, 78vw"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
                 />
               </div>
-            </motion.div>
-
-            {/* BODY COPY (3 PARAGRAPHS, FIRST LINE LEVEL WITH UPPER THIRD OF PORTRAIT) */}
-            <motion.div
-              variants={childVariants}
-              className="mt-12 lg:mt-0 lg:col-start-7 lg:col-span-5 lg:pt-44 flex flex-col space-y-6 w-full min-w-0"
-            >
-              <p className="font-display font-light text-body text-cream-dim max-w-[54ch] leading-[1.6]">
-                Sathamma Fish Fry is not a restaurant in the way that word is
-                usually meant. It is a house near the boating point at
-                Devarakonda, with a kitchen at the back and a few tables set out
-                in front of it.
-              </p>
-              <p className="font-display font-light text-body text-cream-dim max-w-[54ch] leading-[1.6]">
-                The fish comes from the water nearby. What arrives in the morning
-                decides what is cooked that day, which is why the same dish is
-                never quite the same twice, and why we would rather you called
-                before making the drive.
-              </p>
-              <p className="font-display font-light text-body text-cream-dim max-w-[54ch] leading-[1.6]">
-                Nothing here is prepared in advance. You order, and then it is
-                cooked. That takes longer than you might be used to. Most people
-                seem to think it is worth the wait.
-              </p>
-            </motion.div>
+            </div>
           </div>
 
-          {/* ROW 3: WIDE IMAGE (COLS 3-11, INSET FROM BOTH EDGES) & CAPTION */}
-          <motion.div
-            variants={childVariants}
-            className="mt-12 lg:mt-28 grid grid-cols-1 lg:grid-cols-12 lg:gap-8 items-start w-full min-w-0"
-          >
-            <div className="lg:col-start-3 lg:col-span-9 w-full min-w-0">
-              <motion.div
-                variants={scaleVariants}
-                className="relative w-full overflow-hidden bg-ink-soft"
-              >
-                <ImageSlot
-                  id="about-wide"
-                  sizes="(min-width: 1024px) 70vw, 100vw"
-                />
-              </motion.div>
-              <p className="mt-3 font-ui font-normal text-[11px] text-cream-dim text-left select-none">
-                The river, a short walk from the kitchen.
-              </p>
+          {/* Right: Unhurried Editorial Storytelling */}
+          <div className="lg:col-span-6 flex flex-col space-y-6 text-left">
+            <div className="pb-3 border-b border-[var(--border-hairline)] select-none">
+              <span className="font-ui font-medium text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
+                ORIGINS & PHILOSOPHY
+              </span>
             </div>
-          </motion.div>
-        </motion.div>
+
+            <p className="font-display font-light text-[18px] sm:text-[20px] text-[var(--text-secondary)] leading-[1.65]">
+              Sathamma Fish Fry is not a restaurant in the conventional sense. It is an artisanal home kitchen beside the river backwaters in Devarakonda.
+            </p>
+
+            <p className="font-ui text-[13px] text-[var(--text-secondary)] leading-relaxed opacity-90">
+              The fish comes directly from the freshwater nearby. What arrives in the morning determines what is prepared over the hearth that afternoon. Spices are ground by hand on stone mortars, and nothing is ever cooked in advance or reheated.
+            </p>
+
+            <p className="font-ui text-[13px] text-[var(--text-secondary)] leading-relaxed opacity-90">
+              When you arrive, your fish is seasoned and fried strictly upon order. It takes patience, but as our guests from across Telangana have known for nearly three decades, true woodfire flavor cannot be rushed.
+            </p>
+
+            {/* Sketched Button */}
+            <div className="pt-6">
+              <SketchedButton
+                line1="DISCOVER OUR STORY"
+                line2="RESERVE YOUR TABLE"
+                href="#visit"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Wide Architectural River Landscape Monograph */}
+        <div className="w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-4 sm:p-6 backdrop-blur-sm">
+          <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-black/20">
+            <ImageSlot
+              id="about-wide"
+              sizes="(min-width: 1024px) 80vw, 100vw"
+            />
+          </div>
+          <div className="mt-3 flex items-center justify-between font-ui text-[9px] uppercase tracking-[0.22em] text-[var(--text-secondary)] select-none">
+            <span>THE KRISHNA RIVER EDGE · 500M FROM HEARTH</span>
+            <span>SOURCE OF FRESH ROHTEE & MURREL</span>
+          </div>
+        </div>
       </Container>
     </section>
   );

@@ -1,15 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { menuCategories, menuNote } from "@/data/menu";
 import { restaurant } from "@/data/restaurant";
 import { Container } from "@/components/ui/Container";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { fadeUp, fadeOnly } from "@/lib/motion";
+import { HairlineDivider } from "@/components/ui/HairlineDivider";
+import { SketchedButton } from "@/components/ui/SketchedButton";
 
 export function Menu() {
-  const shouldReduceMotion = useReducedMotion();
   const [activeId, setActiveId] = useState<string>(menuCategories[0].id);
 
   // Active Category Observer for Desktop Sticky Column
@@ -49,37 +47,34 @@ export function Menu() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const childVariants = shouldReduceMotion ? fadeOnly : fadeUp;
-
   return (
     <section
       id="menu"
       aria-label="Menu"
-      className="relative w-full section-spacing bg-ink text-cream"
+      className="relative w-full pb-20 md:pb-32 flex flex-col items-center"
     >
+      {/* Hairline Divider */}
+      <HairlineDivider
+        category="DAILY CARTE"
+        subtitle="WOODFIRE & CLAY POTS"
+      />
+
       <Container>
-        {/* SECTION HEADER */}
-        <motion.div
-          variants={childVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col items-start"
-        >
-          <SectionLabel className="mb-2 md:mb-6">The Menu</SectionLabel>
-          <h2 className="font-display font-light text-h2 text-cream leading-[1.15] tracking-[-0.015em]">
-            What we cook
+        {/* Section Heading: Centered Regal Serif */}
+        <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-16 md:mb-24">
+          <h2 className="font-display font-light text-[38px] sm:text-[54px] md:text-[68px] uppercase tracking-[0.03em] leading-none text-[var(--text-primary)]">
+            THE MENU
           </h2>
-          <p className="mt-3 font-display font-light text-body text-cream-dim max-w-[46ch] leading-[1.6]">
-            Everything is cooked fresh to order. Nothing sits waiting.
+          <p className="mt-4 md:mt-6 font-display font-light text-[17px] sm:text-[19px] md:text-[21px] text-[var(--text-secondary)] leading-[1.5] max-w-[42ch]">
+            Everything is prepared fresh to order over woodfire. Nothing sits waiting.
           </p>
-        </motion.div>
+        </div>
 
         {/* SECTION BODY: 1/4 STICKY NAV (LG+) + 3/4 MENU LIST */}
-        <div className="spacing-block flex flex-col lg:flex-row lg:gap-16 items-start relative w-full min-w-0">
-          {/* DESKTOP STICKY CATEGORY NAV (LG AND UP ONLY) */}
+        <div className="flex flex-col lg:flex-row lg:gap-16 items-start relative w-full min-w-0">
+          {/* DESKTOP STICKY CATEGORY NAV */}
           <aside className="hidden lg:block lg:w-1/4 shrink-0 min-w-0 sticky top-[calc(76px+3rem)] self-start z-10">
-            <nav className="flex flex-col gap-5" aria-label="Menu Category Navigation">
+            <nav className="flex flex-col gap-5 border-l border-[var(--border-hairline)] pl-5" aria-label="Menu Category Navigation">
               {menuCategories.map((category) => {
                 const isActive = activeId === category.id;
                 return (
@@ -95,14 +90,14 @@ export function Menu() {
                         const top =
                           target.getBoundingClientRect().top +
                           window.pageYOffset -
-                          115;
+                          120;
                         window.scrollTo({ top, behavior: "smooth" });
                       }
                     }}
-                    className={`font-ui font-medium text-[12px] uppercase tracking-[0.16em] text-left transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink py-0.5 ${
+                    className={`font-ui text-[11px] uppercase tracking-[0.2em] text-left transition-colors duration-300 py-1 ${
                       isActive
-                        ? "text-cream"
-                        : "text-cream-dim hover:text-cream"
+                        ? "text-[var(--text-primary)] font-semibold border-l-2 border-ember -ml-[21px] pl-4"
+                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                     }`}
                   >
                     {category.title}
@@ -112,86 +107,76 @@ export function Menu() {
             </nav>
           </aside>
 
-          {/* MENU LIST (3/4 ON DESKTOP, FULL WIDTH ON MOBILE/TABLET) */}
-          <div className="w-full lg:flex-1 min-w-0 flex flex-col space-y-[clamp(3.5rem,7vw,5rem)] relative z-0">
+          {/* MENU LIST (100% Solid Text Rendering, Zero Jank) */}
+          <div className="w-full lg:flex-1 min-w-0 flex flex-col space-y-12 md:space-y-16">
             {menuCategories.map((category) => (
-              <motion.div
+              <div
                 key={category.id}
                 id={`category-${category.id}`}
-                variants={childVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-80px" }}
-                className="w-full min-w-0"
+                className="w-full min-w-0 border-t border-[var(--border-hairline)] pt-8"
               >
-                {/* Full-width hairline + 2.5rem space + category title in Newsreader 400 at text-h3 */}
-                <div className="border-t border-line pt-10 mb-8 w-full min-w-0">
-                  <h3 className="font-display font-normal text-h3 text-cream leading-tight">
+                {/* Category Title */}
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[var(--border-hairline)] select-none">
+                  <h3 className="font-display font-light text-[24px] sm:text-[28px] uppercase tracking-[0.02em] text-[var(--text-primary)]">
                     {category.title}
                   </h3>
+                  <span className="font-ui text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
+                    ORDER TO COOK
+                  </span>
                 </div>
 
-                {/* Semantic Items List */}
-                <ul className="flex flex-col w-full min-w-0">
+                {/* Items List */}
+                <ul className="flex flex-col w-full min-w-0 space-y-4">
                   {category.items.map((item) => (
-                    <li key={item.name} className="group py-3.5 w-full min-w-0">
-                      <div className="w-full min-w-0 flex flex-wrap md:flex-nowrap items-baseline justify-between gap-x-3 gap-y-1">
-                        {/* Name + Unfilled 4px Turmeric Diamond */}
-                        <div className="flex items-baseline gap-2 min-w-0">
-                          <span className="font-display font-normal text-body text-cream">
+                    <li key={item.name} className="py-2 w-full min-w-0 border-b border-[var(--border-hairline)]/50 pb-4">
+                      <div className="w-full flex items-baseline justify-between gap-4">
+                        <div className="flex items-baseline gap-2">
+                          <span className="font-display font-normal text-[17px] sm:text-[19px] text-[var(--text-primary)]">
                             {item.name}
                           </span>
                           {item.signature && (
                             <span
-                              className="text-turmeric text-[11px] select-none shrink-0"
-                              aria-hidden="true"
+                              className="text-turmeric text-[12px] select-none"
+                              title="Signature Dish"
                             >
                               ◇
                             </span>
                           )}
                         </div>
 
-                        {/* Leader line on desktop and non-wrapping layouts */}
+                        {/* Leader line on desktop */}
                         <div
-                          className="hidden md:block flex-1 min-w-4 border-b border-line group-hover:border-cream/18 transition-colors duration-200 mb-[5px]"
+                          className="hidden md:block flex-1 border-b border-[var(--border-hairline)] mb-[4px]"
                           aria-hidden="true"
                         />
 
-                        {/* Price formatted with ₹ and no decimals */}
-                        <div className="font-ui font-medium text-body text-cream tabular-nums shrink-0 text-right ml-auto md:ml-0">
+                        {/* Price */}
+                        <div className="font-ui font-medium text-[15px] sm:text-[16px] text-[var(--text-primary)] tabular-nums shrink-0">
                           ₹{item.price}
                         </div>
                       </div>
 
-                      {/* Optional Note */}
                       {item.note && (
-                        <p className="font-ui font-normal text-[12px] text-cream-dim mt-1 max-w-[38ch] leading-snug">
+                        <p className="font-ui text-[12px] text-[var(--text-secondary)] mt-1.5 max-w-md leading-relaxed">
                           {item.note}
                         </p>
                       )}
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             ))}
 
-            {/* SIGNATURE LEGEND */}
-            <div className="pt-2 flex items-center gap-2 font-ui font-normal text-[11px] text-cream-dim select-none">
-              <span className="text-turmeric">◇</span>
-              <span>House specialities</span>
-            </div>
-
-            {/* PRICE NOTE & CONFIRMATION GHOST BUTTON */}
-            <div className="pt-10 border-t border-line flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-              <p className="font-display italic font-light text-small text-cream-dim max-w-[44ch] leading-relaxed">
+            {/* Note & Sketched Call Button */}
+            <div className="pt-8 border-t border-[var(--border-hairline)] flex flex-col sm:flex-row items-center justify-between gap-6">
+              <p className="font-display italic text-[14px] sm:text-[15px] text-[var(--text-secondary)] max-w-[42ch]">
                 {menuNote}
               </p>
-              <a
+              <SketchedButton
+                line1="CONFIRM DAILY RATES"
+                line2="CALL THE HEARTH"
                 href={`tel:${restaurant.phone}`}
-                className="inline-flex items-center justify-center rounded-full px-6 py-3 border border-line bg-transparent text-cream hover:bg-ink-soft hover:border-cream/30 transition-all duration-200 font-ui font-medium text-[13px] leading-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cream/40 self-start sm:self-auto shrink-0 cursor-pointer"
-              >
-                Call to confirm today&apos;s rates
-              </a>
+              />
             </div>
           </div>
         </div>

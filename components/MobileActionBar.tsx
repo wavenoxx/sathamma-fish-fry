@@ -1,28 +1,19 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import React from "react";
 import { restaurant } from "@/data/restaurant";
 import { PhoneIcon, WhatsAppIcon, DirectionsIcon } from "@/components/ui/icons";
-import { defaultEase } from "@/lib/motion";
 
 export function MobileActionBar() {
-  const shouldReduceMotion = useReducedMotion();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const whatsappMessage = encodeURIComponent(
-    "Hi, I'd like to know about today's fish"
+    "Hi, I'd like to know about today's fresh fish catch at Sathamma Fish Fry"
   );
   const whatsappUrl = `https://wa.me/${restaurant.whatsapp}?text=${whatsappMessage}`;
 
   const directionsUrl =
     restaurant.mapsUrl ||
     `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-      `${restaurant.address.line1}, ${restaurant.address.line2}, ${restaurant.address.plusCode}`
+      restaurant.plusCode
     )}`;
 
   const actions = [
@@ -49,26 +40,12 @@ export function MobileActionBar() {
     },
   ];
 
-  const variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.3,
-        ease: defaultEase,
-      },
-    },
-  };
-
   return (
-    <motion.aside
+    <aside
       aria-label="Quick Actions"
-      initial="hidden"
-      animate="visible"
-      variants={variants}
-      className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-ink/94 backdrop-blur-lg border-t border-line pb-[env(safe-area-inset-bottom)]"
+      className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-[var(--header-bg)] backdrop-blur-md border-t border-[var(--border-hairline)] pb-[env(safe-area-inset-bottom)] transition-colors duration-500"
     >
-      <div className="grid grid-cols-3 divide-x divide-line h-[58px]">
+      <div className="grid grid-cols-3 divide-x divide-[var(--border-hairline)] h-[58px]">
         {actions.map((action) => {
           const Icon = action.icon;
           return (
@@ -78,16 +55,16 @@ export function MobileActionBar() {
               target={action.target}
               rel={action.target ? "noopener noreferrer" : undefined}
               aria-label={action.ariaLabel}
-              className="group h-[58px] flex flex-col items-center justify-center gap-1 text-cream active:bg-ink-soft transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink cursor-pointer"
+              className="group h-[58px] flex flex-col items-center justify-center gap-1 text-[var(--text-primary)] active:opacity-70 transition-opacity duration-150 focus-visible:outline-none cursor-pointer"
             >
-              <Icon className="w-[19px] h-[19px] text-cream" />
-              <span className="font-ui text-[9px] font-medium uppercase tracking-[0.14em] text-cream-dim leading-none">
+              <Icon className="w-[18px] h-[18px] text-[var(--text-primary)]" />
+              <span className="font-ui text-[9px] font-medium uppercase tracking-[0.16em] text-[var(--text-secondary)] leading-none">
                 {action.label}
               </span>
             </a>
           );
         })}
       </div>
-    </motion.aside>
+    </aside>
   );
 }
