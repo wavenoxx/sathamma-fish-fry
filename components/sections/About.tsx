@@ -27,32 +27,30 @@ export function About() {
           viewport={{ once: true, margin: "-80px" }}
           className="flex flex-col w-full min-w-0"
         >
-          {/* ROW 1: SECTION LABEL (COLS 1-3) & H2 (COLS 4-10) */}
+          {/* ROW 1: SECTION LABEL & H2 GROUPED IN COLS 1-8 */}
           <motion.div
             variants={childVariants}
             className="grid grid-cols-1 lg:grid-cols-12 lg:gap-8 items-start w-full min-w-0"
           >
-            <div className="lg:col-span-3">
-              <SectionLabel className="mb-3 lg:mb-0">Our Story</SectionLabel>
-            </div>
-            <div className="lg:col-start-4 lg:col-span-7">
+            <div className="lg:col-span-8 flex flex-col items-start w-full min-w-0">
+              <SectionLabel className="mb-4">Our Story</SectionLabel>
               <h2 className="font-display font-light text-h1 text-cream leading-[1.12] tracking-[-0.015em]">
                 A kitchen, and a river behind it
               </h2>
             </div>
           </motion.div>
 
-          {/* ROW 2: PORTRAIT IMAGE (COLS 1-5) & BODY COPY (COLS 7-11) */}
+          {/* ROW 2: PORTRAIT IMAGE (COLS 1-5, 78% ON MOBILE) & BODY COPY (COLS 7-11) */}
           <div className="mt-12 lg:mt-20 grid grid-cols-1 lg:grid-cols-12 lg:gap-8 items-start w-full min-w-0">
             {/* PORTRAIT IMAGE */}
             <motion.div
               variants={childVariants}
               className="lg:col-span-5 w-full min-w-0"
             >
-              <div className="relative w-full overflow-hidden bg-ink-soft">
+              <div className="relative w-[78%] md:w-full overflow-hidden bg-ink-soft">
                 <ImageSlot
                   id="about-portrait"
-                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  sizes="(min-width: 1024px) 40vw, 78vw"
                 />
               </div>
             </motion.div>

@@ -37,13 +37,13 @@ export function Specials() {
           </p>
         </motion.div>
 
-        {/* SPECIALS GRID: OFFSET TWO-COLUMN ON DESKTOP, TWO-COLUMN ON TABLET, SINGLE-COLUMN ON MOBILE */}
+        {/* SPECIALS GRID: SINGLE-COLUMN BELOW LG (0-1023px), OFFSET TWO-COLUMN AT LG (1024px+) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="spacing-block grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-x-10 lg:gap-x-16 lg:gap-y-24 lg:pb-20 items-start w-full min-w-0"
+          className="spacing-block grid grid-cols-1 lg:grid-cols-2 gap-y-16 lg:gap-x-16 lg:gap-y-24 lg:pb-20 items-start w-full min-w-0"
         >
           {specials.map((special, index) => {
             const isRightColumn = index % 2 === 1; // Cards 2 and 4 (indices 1 and 3)
