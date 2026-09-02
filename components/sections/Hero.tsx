@@ -110,36 +110,31 @@ export function Hero() {
       <Container wide className="relative z-10 w-full h-full flex flex-col justify-start md:justify-center">
         {/* Mobile container: poised top padding (pt-28), natural breathing room, balanced max-widths */}
         <div className="w-full text-left pt-28 sm:pt-32 md:pt-0 md:max-w-[40ch] lg:max-w-[52ch]">
-          <motion.div
-            variants={contentContainerVariants}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-col items-start"
-          >
+          <div className="flex flex-col items-start">
             {/* 1. Hallmark Eyebrow */}
-            <motion.div variants={childVariants}>
+            <div className="animate-luxury-eyebrow">
               <SectionLabel className="mb-4 md:mb-6">
                 Devarakonda · Telangana
               </SectionLabel>
-            </motion.div>
+            </div>
 
             {/* 2. H1: Majestic, confident, unhurried */}
-            <motion.div variants={childVariants} className="w-full">
+            <div className="animate-luxury-title w-full">
               <h1 className="font-display font-light text-[38px] sm:text-[44px] md:text-hero text-cream leading-[1.08] tracking-[-0.02em] [text-wrap:balance] lg:whitespace-nowrap">
                 Sathamma <br className="block lg:hidden" />
                 <span>Fish Fry</span>
               </h1>
-            </motion.div>
+            </div>
 
             {/* 3. Tagline: Poetic measure, generous line height */}
-            <motion.div variants={childVariants}>
+            <div className="animate-luxury-tagline">
               <p className="mt-4 md:mt-6 font-display font-light text-[15px] sm:text-[16px] md:text-body text-cream-dim max-w-[28ch] sm:max-w-[32ch] md:max-w-[42ch] leading-[1.65] [text-wrap:balance]">
                 Fresh river fish, cooked the way it always has been.
               </p>
-            </motion.div>
+            </div>
 
             {/* 4. Trust & Status Block (Anchored with delicate luxury hairline on mobile) */}
-            <motion.div variants={childVariants} className="mt-7 md:mt-8 flex flex-col items-start">
+            <div className="animate-luxury-meta mt-7 md:mt-8 flex flex-col items-start">
               {/* Subtle hairline anchor on mobile */}
               <div className="w-10 h-px bg-line mb-5 block md:hidden" />
 
@@ -166,13 +161,10 @@ export function Hero() {
               <div className="mt-3 block md:hidden">
                 <OpenStatus />
               </div>
-            </motion.div>
+            </div>
 
             {/* 5. Desktop CTA Row (ABSENT on mobile below md) */}
-            <motion.div
-              variants={childVariants}
-              className="hidden md:flex mt-10 w-auto"
-            >
+            <div className="animate-luxury-cta hidden md:flex mt-10 w-auto">
               <div className="flex items-center gap-3 w-auto">
                 {/* Primary CTA (Single permitted ember element on desktop) */}
                 <a
@@ -194,13 +186,13 @@ export function Hero() {
                   <span>Get Directions</span>
                 </a>
               </div>
-            </motion.div>
+            </div>
 
             {/* 6. Desktop Open Status (Follows CTA row with md:mt-8) */}
-            <motion.div variants={childVariants} className="hidden md:block md:mt-8">
+            <div className="animate-luxury-meta hidden md:block md:mt-8">
               <OpenStatus />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </Container>
     </section>

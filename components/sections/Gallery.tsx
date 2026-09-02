@@ -61,17 +61,10 @@ export function Gallery() {
         </motion.div>
 
         {/* GALLERY GRID: Symmetrical, calm, ultra-luxurious 3-column layout */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          className="spacing-block grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-start w-full min-w-0"
-        >
+        <div className="spacing-block grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-start w-full min-w-0">
           {galleryItems.map((item) => (
-            <motion.div
+            <div
               key={item.id}
-              variants={childVariants}
               className="group flex flex-col w-full min-w-0"
             >
               {/* ImageSlot with gentle luxury hover scale */}
@@ -80,9 +73,9 @@ export function Gallery() {
                   <ImageSlot id={item.id} sizes={item.sizes} />
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </Container>
     </section>
   );

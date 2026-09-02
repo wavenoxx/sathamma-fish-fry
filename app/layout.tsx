@@ -12,7 +12,7 @@ const newsreader = Newsreader({
   weight: "variable",
   style: ["normal", "italic"],
   variable: "--font-newsreader",
-  display: "swap",
+  display: "block",
   preload: true,
   axes: ["opsz"],
 });
@@ -21,8 +21,8 @@ const geist = Geist({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-geist",
-  display: "swap",
-  preload: false,
+  display: "block",
+  preload: true,
 });
 
 const siteDescription =

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 type OpenStatusProps = {
   className?: string;
@@ -8,50 +8,46 @@ type OpenStatusProps = {
   textClassName?: string;
 };
 
+function getISTStatus() {
+  try {
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Kolkata",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: false,
+    });
+    const parts = formatter.formatToParts(new Date());
+    const hour = parseInt(
+      parts.find((p) => p.type === "hour")?.value || "0",
+      10
+    );
+    const minute = parseInt(
+      parts.find((p) => p.type === "minute")?.value || "0",
+      10
+    );
+    const currentMinutes = hour * 60 + minute;
+
+    // Hours: 06:00 (360m) - 22:00 (1320m)
+    const isOpen = currentMinutes >= 360 && currentMinutes < 1320;
+    return {
+      isOpen,
+      text: isOpen ? "Open now · Closes 10 PM" : "Closed at 10 PM · Opens 6 AM",
+    };
+  } catch {
+    return {
+      isOpen: true,
+      text: "Open now · Closes 10 PM",
+    };
+  }
+}
+
 export function OpenStatus({
   className = "",
   dotClassName = "",
   textClassName = "",
 }: OpenStatusProps) {
-  const [openStatus, setOpenStatus] = useState<{
-    isOpen: boolean;
-    text: string;
-  } | null>(null);
-
-  useEffect(() => {
-    try {
-      const formatter = new Intl.DateTimeFormat("en-US", {
-        timeZone: "Asia/Kolkata",
-        hour: "numeric",
-        minute: "numeric",
-        hour12: false,
-      });
-      const parts = formatter.formatToParts(new Date());
-      const hour = parseInt(
-        parts.find((p) => p.type === "hour")?.value || "0",
-        10
-      );
-      const minute = parseInt(
-        parts.find((p) => p.type === "minute")?.value || "0",
-        10
-      );
-      const currentMinutes = hour * 60 + minute;
-
-      // Hours: 06:00 (360m) - 22:00 (1320m)
-      const isOpen = currentMinutes >= 360 && currentMinutes < 1320;
-      setOpenStatus({
-        isOpen,
-        text: isOpen ? "Open now · Closes 10 PM" : "Closed at 10 PM · Opens 6 AM",
-      });
-    } catch {
-      setOpenStatus({
-        isOpen: true,
-        text: "Open now · Closes 10 PM",
-      });
-    }
-  }, []);
-
-  if (!openStatus) return null;
+  // Synchronous initial state: eliminates 100ms hydration pop-in flash
+  const [openStatus] = useState(getISTStatus);
 
   return (
     <div

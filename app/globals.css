@@ -168,3 +168,48 @@ h2, h3, h4, h5, h6 {
   outline-offset: 2px !important;
 }
 
+/* ==========================================================================
+   Zero-Latency Pure CSS Luxury Entrance Animations (0ms Hydration Flash)
+   ========================================================================== */
+@keyframes luxuryEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-luxury-eyebrow {
+  opacity: 0;
+  animation: luxuryEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
+  will-change: opacity, transform;
+}
+
+.animate-luxury-title {
+  opacity: 0;
+  animation: luxuryEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  will-change: opacity, transform;
+}
+
+.animate-luxury-tagline {
+  opacity: 0;
+  animation: luxuryEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+  will-change: opacity, transform;
+}
+
+.animate-luxury-meta {
+  opacity: 0;
+  animation: luxuryEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+  will-change: opacity, transform;
+}
+
+.animate-luxury-cta {
+  opacity: 0;
+  animation: luxuryEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.42s forwards;
+  will-change: opacity, transform;
+}
+
+
