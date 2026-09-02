@@ -74,7 +74,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${geist.variable} scroll-smooth`}
+      className={`${newsreader.variable} ${geist.variable}`}
     >
       <body className="min-h-screen bg-ink text-cream antialiased selection:bg-ink-soft selection:text-cream flex flex-col font-serif">
         {/* Skip to Content accessible navigation */}

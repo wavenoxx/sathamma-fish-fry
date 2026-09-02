@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { getImageProps } from "next/image";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { restaurant } from "@/data/restaurant";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -39,14 +39,6 @@ export function Hero() {
       "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoJABAABUB8JYgAAudYMznsQAD+8pXpmUar4ahbyXAkj2f2iqIccyX57nbEAAAA",
   });
 
-  // 2. Parallax: IMAGE ONLY translates y from 0 to 48px as hero scrolls out
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const rawYParallax = useTransform(scrollYProgress, [0, 1], [0, 48]);
-  const translateY = shouldReduceMotion ? 0 : rawYParallax;
-
   // Content entrance variants
   const contentContainerVariants = {
     hidden: { opacity: 0 },
@@ -73,11 +65,8 @@ export function Hero() {
       aria-label="Hero"
       className="relative w-full min-h-[100svh] flex flex-col justify-start md:justify-center overflow-hidden bg-ink"
     >
-      {/* BACKGROUND IMAGE LAYER WITH PARALLAX */}
-      <motion.div
-        style={{ y: translateY }}
-        className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
-      >
+      {/* BACKGROUND IMAGE LAYER */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none transform-gpu">
         <motion.div
           variants={shouldReduceMotion ? fadeOnly : imageScale}
           initial="hidden"
@@ -96,7 +85,7 @@ export function Hero() {
             />
           </picture>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* OVERLAY LAYERS */}
       {/* 1. Desktop gradient to the right: ink 82% -> ink 55% at 45% width -> transparent at 75% */}

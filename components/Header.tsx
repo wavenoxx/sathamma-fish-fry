@@ -16,8 +16,16 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     handleScroll();
@@ -27,10 +35,10 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 h-[64px] md:h-[76px] transition-colors duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 h-[64px] md:h-[76px] transform-gpu transition-[background-color,border-color,backdrop-filter] duration-300 ${
         isScrolled
           ? "bg-ink/90 backdrop-blur-md border-b border-line shadow-none"
-          : "bg-transparent border-b border-transparent"
+          : "bg-transparent border-b border-transparent backdrop-blur-none"
       }`}
     >
       <Container className="h-full flex items-center justify-between">

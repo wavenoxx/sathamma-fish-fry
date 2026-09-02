@@ -14,31 +14,38 @@ export function Menu() {
 
   // Active Category Observer for Desktop Sticky Column
   useEffect(() => {
-    const handleScroll = () => {
-      const headerOffset = 130; // 76px header + 3rem + safety margin
-      const categoryElements = menuCategories.map((cat) => ({
-        id: cat.id,
-        el: document.getElementById(`category-${cat.id}`),
-      }));
+    let ticking = false;
 
-      for (let i = categoryElements.length - 1; i >= 0; i--) {
-        const item = categoryElements[i];
-        if (item.el) {
-          const rect = item.el.getBoundingClientRect();
+    const updateActiveCategory = () => {
+      const headerOffset = 140;
+      for (let i = menuCategories.length - 1; i >= 0; i--) {
+        const cat = menuCategories[i];
+        const el = document.getElementById(`category-${cat.id}`);
+        if (el) {
+          const rect = el.getBoundingClientRect();
           if (rect.top <= headerOffset) {
-            setActiveId(item.id);
+            setActiveId(cat.id);
             return;
           }
         }
       }
+      if (menuCategories[0]?.id) {
+        setActiveId(menuCategories[0].id);
+      }
+    };
 
-      if (categoryElements[0]?.id) {
-        setActiveId(categoryElements[0].id);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveCategory();
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    updateActiveCategory();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
