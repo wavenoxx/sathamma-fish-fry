@@ -4,7 +4,6 @@ import { Specials } from "@/components/sections/Specials";
 import { Menu } from "@/components/sections/Menu";
 import { About } from "@/components/sections/About";
 import { Gallery } from "@/components/sections/Gallery";
-import { Reviews } from "@/components/sections/Reviews";
 import { Visit } from "@/components/sections/Visit";
 import { Footer } from "@/components/Footer";
 
@@ -26,13 +25,10 @@ export default function Home() {
       {/* 5. GALLERY SECTION */}
       <Gallery />
 
-      {/* 6. REVIEWS SECTION */}
-      <Reviews />
-
-      {/* 7. VISIT SECTION */}
+      {/* 6. VISIT SECTION */}
       <Visit />
 
-      {/* 8. FOOTER */}
+      {/* 7. FOOTER */}
       <Footer />
     </main>
   );
