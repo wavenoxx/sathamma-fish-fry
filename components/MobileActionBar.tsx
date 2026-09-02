@@ -1,0 +1,94 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { restaurant } from "@/data/restaurant";
+import { PhoneIcon, WhatsAppIcon, DirectionsIcon } from "@/components/ui/icons";
+import { defaultEase } from "@/lib/motion";
+
+export function MobileActionBar() {
+  const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const whatsappMessage = encodeURIComponent(
+    "Hi, I'd like to know about today's fish"
+  );
+  const whatsappUrl = `https://wa.me/${restaurant.whatsapp}?text=${whatsappMessage}`;
+
+  const directionsUrl =
+    restaurant.mapsUrl ||
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+      `${restaurant.address.line1}, ${restaurant.address.line2}, ${restaurant.address.plusCode}`
+    )}`;
+
+  const actions = [
+    {
+      label: "Call",
+      href: `tel:${restaurant.phone}`,
+      icon: PhoneIcon,
+      target: undefined,
+      color: "text-ember",
+    },
+    {
+      label: "WhatsApp",
+      href: whatsappUrl,
+      icon: WhatsAppIcon,
+      target: "_blank",
+      color: "text-[#25D366]",
+    },
+    {
+      label: "Directions",
+      href: directionsUrl,
+      icon: DirectionsIcon,
+      target: "_blank",
+      color: "text-turmeric",
+    },
+  ];
+
+  const variants = {
+    hidden: mounted && shouldReduceMotion ? { opacity: 0 } : { y: "100%" },
+    visible: {
+      y: "0%",
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        delay: 0.4,
+        ease: defaultEase,
+      },
+    },
+  };
+
+  return (
+    <motion.aside
+      aria-label="Quick Actions"
+      initial="hidden"
+      animate="visible"
+      variants={variants}
+      className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-ink-soft/95 backdrop-blur-md border-t border-line pb-[env(safe-area-inset-bottom)]"
+    >
+      <div className="grid grid-cols-3 divide-x divide-line">
+        {actions.map((action) => {
+          const Icon = action.icon;
+          return (
+            <a
+              key={action.label}
+              href={action.href}
+              target={action.target}
+              rel={action.target ? "noopener noreferrer" : undefined}
+              className="min-h-[52px] py-3 px-2 flex flex-col items-center justify-center gap-1 text-cream hover:bg-ink active:bg-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember"
+            >
+              <Icon className={`w-5 h-5 ${action.color}`} />
+              <span className="text-[length:var(--text-micro,0.75rem)] font-medium tracking-[0.06em] text-cream-dim">
+                {action.label}
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </motion.aside>
+  );
+}
