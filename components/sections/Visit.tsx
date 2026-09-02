@@ -27,21 +27,26 @@ export function Visit() {
       className="relative w-full border-b border-line section-spacing bg-ink text-cream"
     >
       <Container>
-        {/* SECTION HEADER: Restrained, quiet, left-aligned */}
+        {/* SECTION HEADER: White Desert Inspired Destination Framing */}
         <motion.div
           variants={childVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="flex flex-col items-start max-w-[64ch] w-full min-w-0"
+          viewport={{ once: true, margin: "-60px" }}
+          className="flex flex-col items-start max-w-[68ch] w-full min-w-0"
         >
-          <SectionLabel className="mb-4">Visit</SectionLabel>
-          <h2 className="font-display font-light text-h2 md:text-h1 text-cream leading-[1.15] tracking-[-0.015em]">
-            Finding us
+          <div className="flex items-center gap-3 mb-4">
+            <SectionLabel>Visit</SectionLabel>
+            <span className="font-ui text-[10px] tracking-[0.2em] text-cream-dim/40 uppercase select-none hidden sm:inline-block">
+              [ 03 / DESTINATION & CONCIERGE ]
+            </span>
+          </div>
+          <h2 className="font-display font-light text-h2 md:text-h1 text-cream leading-[1.12] tracking-[-0.015em]">
+            Finding the kitchen
           </h2>
           <p className="mt-4 font-display font-light text-body text-cream-dim leading-[1.6]">
-            A family kitchen near the water at Vizag Colony. Fresh catch arrives
-            each morning, and we cook only to order.
+            Beside the water at Vizag Colony, Devarakonda. Fresh catch arrives at
+            sunrise, and we cook only to order over open hearth fire.
           </p>
         </motion.div>
 
@@ -50,17 +55,22 @@ export function Visit() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="spacing-block pt-8 md:pt-12 border-t border-line grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 items-start w-full min-w-0"
+          viewport={{ once: true, margin: "-60px" }}
+          className="spacing-block pt-8 md:pt-12 border-t border-line/50 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 items-start w-full min-w-0"
         >
-          {/* COLUMN 1: LOCATION & ADDRESS */}
+          {/* COLUMN 1: LOCATION & APPROACH */}
           <motion.div
             variants={childVariants}
             className="flex flex-col items-start w-full min-w-0"
           >
-            <span className="font-ui font-medium text-micro uppercase tracking-[0.18em] text-cream-dim mb-4 select-none">
-              Location
-            </span>
+            <div className="flex items-center justify-between w-full pb-2 mb-4 border-b border-line/30 select-none">
+              <span className="font-ui font-medium text-micro uppercase tracking-[0.2em] text-cream-dim/60">
+                Location & Approach
+              </span>
+              <span className="font-ui text-[9px] tracking-widest text-cream-dim/40">
+                16°42′ N
+              </span>
+            </div>
             <p className="font-display font-light text-[17px] md:text-[18px] text-cream leading-[1.6]">
               {restaurant.address.line1}
               <br />
@@ -68,73 +78,91 @@ export function Visit() {
               <br />
               {restaurant.address.state} {restaurant.address.pincode}
             </p>
-            <span className="mt-3 block font-ui font-normal text-[12px] text-cream-dim tracking-wide">
+            <span className="mt-3 block font-ui font-normal text-[12px] text-cream-dim/80 tracking-wide">
               {restaurant.plusCode}
             </span>
-            <div className="mt-8">
+            <p className="mt-4 font-ui text-[12px] text-cream-dim/60 leading-relaxed">
+              Approx. 140 km from Hyderabad via Nagarjuna Sagar Highway. Turn
+              toward Vizag Colony boating point.
+            </p>
+            <div className="mt-7">
               <a
                 href={directionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Get directions to ${restaurant.name}`}
-                className="inline-flex items-center justify-center gap-2.5 rounded-full px-6 py-3 border border-line bg-transparent text-cream hover:bg-ink-soft hover:border-cream/30 transition-all duration-200 font-ui font-medium text-[13px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink cursor-pointer"
+                className="rollover-btn group rounded-full px-6 py-3 border border-line/80 bg-transparent text-cream hover:bg-ink-soft hover:border-cream/40 transition-all duration-300 font-ui font-medium text-[13px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink cursor-pointer"
               >
-                <DirectionsIcon className="w-[15px] h-[15px] text-cream shrink-0" />
-                <span>Get Directions</span>
+                <DirectionsIcon className="w-[14px] h-[14px] text-cream shrink-0 mr-2" />
+                <span className="rollover-text">
+                  <span className="rollover-main">Get Directions</span>
+                  <span className="rollover-clone">Get Directions</span>
+                </span>
               </a>
             </div>
           </motion.div>
 
-          {/* COLUMN 2: HOURS & STATUS */}
+          {/* COLUMN 2: HOURS & LIVE STATUS */}
           <motion.div
             variants={childVariants}
             className="flex flex-col items-start w-full min-w-0"
           >
-            <span className="font-ui font-medium text-micro uppercase tracking-[0.18em] text-cream-dim mb-4 select-none">
-              Kitchen Hours
-            </span>
+            <div className="flex items-center justify-between w-full pb-2 mb-4 border-b border-line/30 select-none">
+              <span className="font-ui font-medium text-micro uppercase tracking-[0.2em] text-cream-dim/60">
+                Kitchen Operating Hours
+              </span>
+              <span className="font-ui text-[9px] tracking-widest text-cream-dim/40">
+                DAILY
+              </span>
+            </div>
             <p className="font-display font-light text-[17px] md:text-[18px] text-cream leading-[1.6]">
               6:00 AM — 10:00 PM
             </p>
             <span className="mt-1 block font-ui font-normal text-[12px] text-cream-dim">
-              Open every day of the week
+              Open all 7 days of the week
             </span>
             <div className="mt-4">
               <OpenStatus />
             </div>
             <p className="mt-6 font-ui font-normal text-[12px] text-cream-dim leading-relaxed max-w-[32ch]">
-              Fish depends on the day&apos;s catch. Calling ahead ensures your
-              order is ready when you arrive.
+              Every dish depends on the river catch. Calling before you start your drive guarantees your fish is reserved and prepared fresh.
             </p>
           </motion.div>
 
-          {/* COLUMN 3: ENQUIRIES & CALL */}
+          {/* COLUMN 3: DIRECT CONCIERGE CALL */}
           <motion.div
             variants={childVariants}
             className="flex flex-col items-start w-full min-w-0 md:col-span-2 lg:col-span-1"
           >
-            <span className="font-ui font-medium text-micro uppercase tracking-[0.18em] text-cream-dim mb-4 select-none">
-              Phone & Enquiries
-            </span>
+            <div className="flex items-center justify-between w-full pb-2 mb-4 border-b border-line/30 select-none">
+              <span className="font-ui font-medium text-micro uppercase tracking-[0.2em] text-cream-dim/60">
+                Kitchen Direct Line
+              </span>
+              <span className="font-ui text-[9px] tracking-widest text-cream-dim/40">
+                VOICE
+              </span>
+            </div>
             <a
               href={`tel:${restaurant.phone}`}
               aria-label={`Call ${restaurant.name} at ${restaurant.phoneDisplay}`}
-              className="font-display font-light text-[22px] md:text-[24px] text-cream hover:underline underline-offset-4 decoration-cream/30 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink rounded-sm"
+              className="font-display font-light text-[22px] md:text-[25px] text-cream hover:text-cream/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink rounded-sm"
             >
               {restaurant.phoneDisplay}
             </a>
             <p className="mt-2 font-ui font-normal text-[12px] text-cream-dim leading-relaxed max-w-[32ch]">
-              Direct line to the kitchen. Call before making the drive to check
-              the morning&apos;s catch.
+              Direct connection to the hearth. Call to enquire about today&apos;s catch of freshwater murrel and rohtee.
             </p>
-            <div className="mt-8">
+            <div className="mt-7">
               <a
                 href={`tel:${restaurant.phone}`}
                 aria-label={`Call ${restaurant.name}`}
-                className="inline-flex items-center justify-center gap-2.5 rounded-full px-6 py-3 font-ui font-medium text-[13px] leading-none transition-all duration-200 border border-line md:border-transparent bg-transparent md:bg-ember text-cream hover:bg-ink-soft md:hover:bg-[#b04b23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink shadow-none cursor-pointer"
+                className="rollover-btn group rounded-full px-6 py-3 font-ui font-medium text-[13px] leading-none transition-all duration-300 bg-ember text-cream hover:bg-[#b04b23] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink shadow-[0_6px_20px_-4px_rgba(180,70,26,0.3)] cursor-pointer"
               >
-                <PhoneIcon className="w-[15px] h-[15px] text-cream shrink-0" />
-                <span>Call Kitchen</span>
+                <PhoneIcon className="w-[14px] h-[14px] text-cream shrink-0 mr-2" />
+                <span className="rollover-text">
+                  <span className="rollover-main">Call Kitchen</span>
+                  <span className="rollover-clone">Call Kitchen</span>
+                </span>
               </a>
             </div>
           </motion.div>

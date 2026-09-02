@@ -102,51 +102,62 @@ export function Hero() {
       {/* CONTENT LAYER */}
       <Container wide className="relative z-10 w-full h-full flex flex-col justify-start md:justify-center">
         {/* Mobile container: poised top padding (pt-28), natural breathing room, balanced max-widths */}
-        <div className="w-full text-left pt-28 sm:pt-32 md:pt-0 md:max-w-[40ch] lg:max-w-[52ch]">
+        <div className="w-full text-left pt-28 sm:pt-32 md:pt-0 md:max-w-[40ch] lg:max-w-[54ch]">
           <div className="flex flex-col items-start">
-            {/* 1. Hallmark Eyebrow */}
-            <div className="animate-luxury-eyebrow">
-              <SectionLabel className="mb-4 md:mb-6">
-                Devarakonda · Telangana
-              </SectionLabel>
+            {/* 1. Hallmark Eyebrow with Spatial Coordinates */}
+            <div className="curtain-mask mb-4 md:mb-6">
+              <div className="animate-curtain-eyebrow flex items-center gap-3">
+                <SectionLabel>
+                  Devarakonda · Telangana
+                </SectionLabel>
+                <span className="font-ui text-[10px] tracking-[0.2em] text-cream-dim/50 uppercase select-none hidden sm:inline-block">
+                  [ 16°42′ N · 78°55′ E ]
+                </span>
+              </div>
             </div>
 
-            {/* 2. H1: Majestic, confident, unhurried */}
-            <div className="animate-luxury-title w-full">
-              <h1 className="font-display font-light text-[38px] sm:text-[44px] md:text-hero text-cream leading-[1.08] tracking-[-0.02em] [text-wrap:balance] lg:whitespace-nowrap">
-                Sathamma <br className="block lg:hidden" />
-                <span>Fish Fry</span>
+            {/* 2. H1: Majestic, Staged Florentine Curtain Reveal (Line 1 then Line 2) */}
+            <div className="w-full">
+              <h1 className="font-display font-light text-[40px] sm:text-[46px] md:text-hero text-cream leading-[1.06] tracking-[-0.02em] [text-wrap:balance]">
+                <span className="curtain-mask">
+                  <span className="animate-curtain-title-1 block">Sathamma</span>
+                </span>
+                <span className="curtain-mask mt-1 md:mt-2">
+                  <span className="animate-curtain-title-2 block">Fish Fry</span>
+                </span>
               </h1>
             </div>
 
-            {/* 3. Tagline: Poetic measure, generous line height */}
-            <div className="animate-luxury-tagline">
-              <p className="mt-4 md:mt-6 font-display font-light text-[15px] sm:text-[16px] md:text-body text-cream-dim max-w-[28ch] sm:max-w-[32ch] md:max-w-[42ch] leading-[1.65] [text-wrap:balance]">
-                Fresh river fish, cooked the way it always has been.
+            {/* 3. Tagline: Poetic measure, Curtain Reveal */}
+            <div className="curtain-mask mt-4 md:mt-6">
+              <p className="animate-curtain-tagline font-display font-light text-[15px] sm:text-[17px] md:text-body text-cream-dim max-w-[28ch] sm:max-w-[34ch] md:max-w-[44ch] leading-[1.65] [text-wrap:balance]">
+                Fresh river fish from the Krishna backwaters, cooked the way it always has been.
               </p>
             </div>
 
-            {/* 4. Trust & Status Block (Anchored with delicate luxury hairline on mobile) */}
-            <div className="animate-luxury-meta mt-7 md:mt-8 flex flex-col items-start">
+            {/* 4. White Desert Inspired Exclusivity / Trust Metric Plaque */}
+            <div className="animate-curtain-meta mt-7 md:mt-8 flex flex-col items-start w-full">
               {/* Subtle hairline anchor on mobile */}
               <div className="w-10 h-px bg-line mb-5 block md:hidden" />
 
-              {/* Rating row */}
-              <div className="inline-flex items-center gap-2 select-none">
-                <StarIcon className="w-[12px] h-[12px] md:w-[13px] md:h-[13px] text-turmeric shrink-0" />
-                <span className="font-ui font-medium text-[12px] md:text-[13px] text-cream leading-none">
-                  {restaurant.rating}
-                </span>
-                <svg
-                  className="w-[3px] h-[3px] text-cream-dim/50 shrink-0"
-                  viewBox="0 0 6 6"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <circle cx="3" cy="3" r="3" />
-                </svg>
-                <span className="font-ui font-medium text-micro uppercase tracking-[0.16em] md:tracking-[0.18em] text-cream-dim leading-none">
-                  Rated on Google
+              {/* Factual Metrics Row */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 select-none">
+                {/* Rating Badge */}
+                <div className="inline-flex items-center gap-2">
+                  <StarIcon className="w-[12px] h-[12px] md:w-[13px] md:h-[13px] text-turmeric shrink-0" />
+                  <span className="font-ui font-medium text-[12px] md:text-[13px] text-cream leading-none">
+                    {restaurant.rating}
+                  </span>
+                  <span className="font-ui font-medium text-micro uppercase tracking-[0.16em] text-cream-dim leading-none">
+                    Rated on Google
+                  </span>
+                </div>
+
+                <span className="hidden sm:inline-block text-cream-dim/30 select-none">/</span>
+
+                {/* Sourcing Badge */}
+                <span className="font-ui font-normal text-micro uppercase tracking-[0.18em] text-cream-dim/70">
+                  Daily Fresh Catch · Woodfire Hearth
                 </span>
               </div>
 
@@ -156,33 +167,39 @@ export function Hero() {
               </div>
             </div>
 
-            {/* 5. Desktop CTA Row (ABSENT on mobile below md) */}
-            <div className="animate-luxury-cta hidden md:flex mt-10 w-auto">
-              <div className="flex items-center gap-3 w-auto">
-                {/* Primary CTA (Single permitted ember element on desktop) */}
+            {/* 5. Desktop CTA Row with ApeChain Rolling Text Interactions */}
+            <div className="animate-curtain-cta hidden md:flex mt-10 w-auto">
+              <div className="flex items-center gap-4 w-auto">
+                {/* Primary CTA (Ember Pill with Rolling Text) */}
                 <a
                   href={`tel:${restaurant.phone}`}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 bg-ember text-cream hover:bg-[#b04b23] transition-colors duration-200 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink shadow-none"
+                  className="rollover-btn group rounded-full px-7 py-3.5 bg-ember text-cream hover:bg-[#b04b23] transition-all duration-300 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink shadow-[0_8px_24px_-6px_rgba(180,70,26,0.35)] hover:shadow-[0_12px_28px_-4px_rgba(180,70,26,0.5)]"
                 >
-                  <PhoneIcon className="w-[16px] h-[16px] text-cream shrink-0" />
-                  <span>Call Now</span>
+                  <PhoneIcon className="w-[15px] h-[15px] text-cream shrink-0 mr-2.5" />
+                  <span className="rollover-text">
+                    <span className="rollover-main">Call Kitchen</span>
+                    <span className="rollover-clone">Call Kitchen</span>
+                  </span>
                 </a>
 
-                {/* Secondary CTA */}
+                {/* Secondary CTA (Ghost Hairline with Rolling Text) */}
                 <a
                   href={directionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 border border-line bg-transparent text-cream hover:bg-ink-soft hover:border-cream/30 transition-all duration-200 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                  className="rollover-btn group rounded-full px-7 py-3.5 border border-line/80 bg-transparent text-cream hover:bg-ink-soft hover:border-cream/40 transition-all duration-300 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                 >
-                  <DirectionsIcon className="w-[16px] h-[16px] text-cream shrink-0" />
-                  <span>Get Directions</span>
+                  <DirectionsIcon className="w-[15px] h-[15px] text-cream shrink-0 mr-2.5" />
+                  <span className="rollover-text">
+                    <span className="rollover-main">Get Directions</span>
+                    <span className="rollover-clone">Get Directions</span>
+                  </span>
                 </a>
               </div>
             </div>
 
             {/* 6. Desktop Open Status (Follows CTA row with md:mt-8) */}
-            <div className="animate-luxury-meta hidden md:block md:mt-8">
+            <div className="animate-curtain-cta hidden md:block md:mt-8">
               <OpenStatus />
             </div>
           </div>
