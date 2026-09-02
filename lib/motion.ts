@@ -4,20 +4,22 @@ export const defaultEase = [0.22, 1, 0.36, 1] as const;
 
 export const defaultViewport = {
   once: true,
-  margin: "-80px",
+  margin: "-60px",
 } as const;
 
+/**
+ * Calm, ultra-luxury fade — pure opacity, zero vertical position shifting
+ * to prevent any jitter, jumping, or shaking during kinetic scrolling.
+ */
 export const fadeUp: Variants = {
   hidden: {
     opacity: 0,
-    y: 14,
   },
   visible: {
     opacity: 1,
-    y: 0,
     transition: {
-      duration: 0.85,
-      ease: defaultEase,
+      duration: 0.5,
+      ease: "easeOut",
     },
   },
 };
@@ -29,28 +31,30 @@ export const stagger: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.11,
-    },
-  },
-};
-
-export const imageScale: Variants = {
-  hidden: {
-    scale: 1.04,
-    opacity: 0.8,
-  },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      duration: 1.4,
-      ease: defaultEase,
+      staggerChildren: 0.08,
     },
   },
 };
 
 /**
- * Reduced-motion variants fallback (disables transforms, keeps opacity only)
+ * Hero entrance image — pure tranquil opacity, zero scale/zoom shift
+ * to ensure the page opens completely rock-solid and calm upon entering.
+ */
+export const imageScale: Variants = {
+  hidden: {
+    opacity: 0.6,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+/**
+ * Reduced-motion variants fallback
  */
 export const fadeOnly: Variants = {
   hidden: {
@@ -59,7 +63,7 @@ export const fadeOnly: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.4,
+      duration: 0.3,
       ease: "easeOut",
     },
   },

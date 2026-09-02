@@ -50,13 +50,11 @@ export function MobileActionBar() {
   ];
 
   const variants = {
-    hidden: mounted && shouldReduceMotion ? { opacity: 0 } : { y: "100%" },
+    hidden: { opacity: 0 },
     visible: {
-      y: "0%",
       opacity: 1,
       transition: {
-        duration: 0.5,
-        delay: 0.4,
+        duration: 0.3,
         ease: defaultEase,
       },
     },

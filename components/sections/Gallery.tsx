@@ -10,45 +10,27 @@ import { fadeUp, fadeOnly, stagger } from "@/lib/motion";
 const galleryItems = [
   {
     id: "gallery-1",
-    aspect: "4 / 5",
-    sizes: "(min-width: 1024px) 42vw, (min-width: 768px) 50vw, 100vw",
-    desktopClass: "lg:col-start-1 lg:col-span-5 lg:row-start-1 lg:translate-y-0",
-    tabletClass: "md:col-start-1 md:row-start-1 md:translate-y-0",
+    sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
   },
   {
     id: "gallery-2",
-    aspect: "3 / 4",
     sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
-    desktopClass: "lg:col-start-7 lg:col-span-4 lg:row-start-1 lg:translate-y-24", // offset down 6rem
-    tabletClass: "md:col-start-2 md:row-start-1 md:translate-y-12", // offset down 3rem
   },
   {
     id: "gallery-3",
-    aspect: "4 / 5",
-    sizes: "(min-width: 1024px) 42vw, (min-width: 768px) 50vw, 100vw",
-    desktopClass: "lg:col-start-2 lg:col-span-5 lg:row-start-2 lg:translate-y-0",
-    tabletClass: "md:col-start-1 md:row-start-2 md:translate-y-12", // offset down 3rem (alternating)
+    sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
   },
   {
     id: "gallery-4",
-    aspect: "3 / 4",
-    sizes: "(min-width: 1024px) 42vw, (min-width: 768px) 50vw, 100vw",
-    desktopClass: "lg:col-start-8 lg:col-span-5 lg:row-start-2 lg:translate-y-16", // offset down 4rem
-    tabletClass: "md:col-start-2 md:row-start-2 md:translate-y-0",
+    sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
   },
   {
     id: "gallery-5",
-    aspect: "4 / 5",
     sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
-    desktopClass: "lg:col-start-1 lg:col-span-4 lg:row-start-3 lg:translate-y-0",
-    tabletClass: "md:col-start-1 md:row-start-3 md:translate-y-0",
   },
   {
     id: "gallery-6",
-    aspect: "3 / 4",
-    sizes: "(min-width: 1024px) 50vw, (min-width: 768px) 50vw, 100vw",
-    desktopClass: "lg:col-start-6 lg:col-span-6 lg:row-start-3 lg:translate-y-0",
-    tabletClass: "md:col-start-2 md:row-start-3 md:translate-y-12", // offset down 3rem
+    sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
   },
 ];
 
@@ -69,7 +51,7 @@ export function Gallery() {
           variants={childVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="flex flex-col items-start w-full min-w-0"
         >
           <SectionLabel className="mb-4">The Place</SectionLabel>
@@ -78,23 +60,23 @@ export function Gallery() {
           </h2>
         </motion.div>
 
-        {/* GALLERY GRID: 1-col mobile, 2-col tablet, 12-col asymmetric desktop */}
+        {/* GALLERY GRID: Symmetrical, calm, ultra-luxurious 3-column layout */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="spacing-block grid grid-cols-1 md:grid-cols-2 md:gap-x-8 md:gap-y-16 md:pb-12 lg:grid-cols-12 lg:gap-x-12 lg:gap-y-24 lg:pb-24 gap-y-12 items-start w-full min-w-0"
+          viewport={{ once: true, margin: "-60px" }}
+          className="spacing-block grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-start w-full min-w-0"
         >
           {galleryItems.map((item) => (
             <motion.div
               key={item.id}
               variants={childVariants}
-              className={`group flex flex-col w-full min-w-0 ${item.tabletClass} ${item.desktopClass}`}
+              className="group flex flex-col w-full min-w-0"
             >
-              {/* ImageSlot with Desktop Hover Scale */}
-              <div className="relative w-full overflow-hidden bg-ink-soft">
-                <div className="w-full h-full transition-transform duration-600 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]">
+              {/* ImageSlot with gentle luxury hover scale */}
+              <div className="relative w-full overflow-hidden bg-ink-soft rounded-[2px]">
+                <div className="w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02]">
                   <ImageSlot id={item.id} sizes={item.sizes} />
                 </div>
               </div>

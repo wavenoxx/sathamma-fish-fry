@@ -42,6 +42,10 @@
 }
 
 /* Mandatory overflow guard */
+html {
+  scrollbar-gutter: stable;
+}
+
 html,
 body {
   overflow-x: clip;
