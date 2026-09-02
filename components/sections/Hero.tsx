@@ -7,6 +7,7 @@ import { restaurant } from "@/data/restaurant";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { PhoneIcon, DirectionsIcon, StarIcon } from "@/components/ui/icons";
+import { OpenStatus } from "@/components/OpenStatus";
 import { fadeUp, fadeOnly, imageScale } from "@/lib/motion";
 
 export function Hero() {
@@ -45,45 +46,6 @@ export function Hero() {
   });
   const rawYParallax = useTransform(scrollYProgress, [0, 1], [0, 48]);
   const translateY = shouldReduceMotion ? 0 : rawYParallax;
-
-  // 3. Open Status: computed strictly client-side after mount in Asia/Kolkata timezone
-  const [openStatus, setOpenStatus] = useState<{
-    isOpen: boolean;
-    text: string;
-  } | null>(null);
-
-  useEffect(() => {
-    try {
-      const formatter = new Intl.DateTimeFormat("en-US", {
-        timeZone: "Asia/Kolkata",
-        hour: "numeric",
-        minute: "numeric",
-        hour12: false,
-      });
-      const parts = formatter.formatToParts(new Date());
-      const hour = parseInt(
-        parts.find((p) => p.type === "hour")?.value || "0",
-        10
-      );
-      const minute = parseInt(
-        parts.find((p) => p.type === "minute")?.value || "0",
-        10
-      );
-      const currentMinutes = hour * 60 + minute;
-
-      // Hours: 06:00 (360m) - 22:00 (1320m)
-      const isOpen = currentMinutes >= 360 && currentMinutes < 1320;
-      setOpenStatus({
-        isOpen,
-        text: isOpen ? "Open now · Closes 10 PM" : "Closed · Opens 6 AM",
-      });
-    } catch {
-      setOpenStatus({
-        isOpen: true,
-        text: "Open now · Closes 10 PM",
-      });
-    }
-  }, []);
 
   // Content entrance variants
   const contentContainerVariants = {
@@ -237,25 +199,9 @@ export function Hero() {
             </motion.div>
 
             {/* 6. Open Status (Follows rating directly with mt-6 on mobile, follows CTA with md:mt-8 on desktop) */}
-            {openStatus && (
-              <motion.div variants={childVariants} className="mt-6 md:mt-8">
-                <div className="inline-flex items-center gap-2 select-none">
-                  <svg
-                    className={`w-[5px] h-[5px] shrink-0 ${
-                      openStatus.isOpen ? "text-[#6B8F71]" : "text-cream-dim/70"
-                    }`}
-                    viewBox="0 0 10 10"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <circle cx="5" cy="5" r="5" />
-                  </svg>
-                  <span className="font-ui font-normal text-[11px] md:text-[12px] text-cream-dim leading-none">
-                    {openStatus.text}
-                  </span>
-                </div>
-              </motion.div>
-            )}
+            <motion.div variants={childVariants} className="mt-6 md:mt-8">
+              <OpenStatus />
+            </motion.div>
           </motion.div>
         </div>
       </Container>

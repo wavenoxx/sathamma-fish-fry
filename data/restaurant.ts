@@ -20,7 +20,7 @@ export const restaurant = {
   },
   mapsUrl: "", // TODO: https://maps.app.goo.gl/JVUzCwp9rxsBR79X8
   plusCode: "H476+38 Bachapoor",
-  googleProfileUrl: "", // TODO
+  googleProfileUrl: "https://maps.app.goo.gl/WZviYyWhJoZZwReu8",
   coords: {
     lat: 0,
     lng: 0,

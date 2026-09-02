@@ -1,12 +1,12 @@
 import React from "react";
-import { Container } from "@/components/ui/Container";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { Reveal } from "@/components/ui/Reveal";
 import { Hero } from "@/components/sections/Hero";
 import { Specials } from "@/components/sections/Specials";
 import { Menu } from "@/components/sections/Menu";
 import { About } from "@/components/sections/About";
-import { restaurant } from "@/data/restaurant";
+import { Gallery } from "@/components/sections/Gallery";
+import { Reviews } from "@/components/sections/Reviews";
+import { Visit } from "@/components/sections/Visit";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -23,77 +23,17 @@ export default function Home() {
       {/* 4. ABOUT SECTION */}
       <About />
 
-      {/* 5. GALLERY SECTION STUB */}
-      <section
-        id="gallery"
-        className="min-h-[60vh] flex items-center border-b border-line section-spacing"
-      >
-        <Container>
-          <Reveal>
-            <div>
-              <SectionLabel>Gallery</SectionLabel>
-              <h2 className="text-h1 font-display text-cream">
-                Gallery
-              </h2>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
+      {/* 5. GALLERY SECTION */}
+      <Gallery />
 
-      {/* 6. REVIEWS SECTION STUB */}
-      <section
-        id="reviews"
-        className="min-h-[60vh] flex items-center border-b border-line section-spacing"
-      >
-        <Container>
-          <Reveal>
-            <div>
-              <SectionLabel>Reviews</SectionLabel>
-              <h2 className="text-h1 font-display text-cream">
-                Reviews
-              </h2>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
+      {/* 6. REVIEWS SECTION */}
+      <Reviews />
 
-      {/* 7. VISIT SECTION STUB */}
-      <section
-        id="visit"
-        className="min-h-[60vh] flex items-center border-b border-line section-spacing pb-28 md:pb-24"
-      >
-        <Container>
-          <Reveal>
-            <div>
-              <SectionLabel>Visit</SectionLabel>
-              <h2 className="text-h1 font-display text-cream">
-                Visit
-              </h2>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
+      {/* 7. VISIT SECTION */}
+      <Visit />
 
-      {/* FOOTER SHELL */}
-      <footer className="border-t border-line py-16 bg-ink-soft/40 pb-28 md:pb-16">
-        <Container className="flex flex-col md:flex-row items-center justify-between gap-8 text-cream-dim">
-          <div className="flex flex-col items-center md:items-start gap-1">
-            <span className="font-display text-h3 text-cream font-normal">
-              {restaurant.name}
-            </span>
-          </div>
-
-          <div className="text-center md:text-right font-ui text-micro tracking-[0.18em] text-cream-dim/60">
-            <p>
-              &copy; {new Date().getFullYear()} {restaurant.name}. All rights
-              reserved.
-            </p>
-            <p className="mt-1">
-              Devarakonda, Nalgonda District, Telangana {restaurant.address.pincode}
-            </p>
-          </div>
-        </Container>
-      </footer>
+      {/* 8. FOOTER */}
+      <Footer />
     </main>
   );
 }
