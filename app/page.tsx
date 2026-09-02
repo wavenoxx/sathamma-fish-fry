@@ -2,27 +2,14 @@ import React from "react";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
+import { Hero } from "@/components/sections/Hero";
 import { restaurant } from "@/data/restaurant";
 
 export default function Home() {
   return (
     <main className="flex-1 w-full">
-      {/* 1. HERO SECTION STUB */}
-      <section
-        id="hero"
-        className="min-h-[100svh] flex items-center justify-center pt-24 pb-16 border-b border-line relative"
-      >
-        <Container>
-          <Reveal>
-            <div className="max-w-2xl">
-              <SectionLabel>Hero</SectionLabel>
-              <h1 className="text-hero font-display text-cream">
-                Hero
-              </h1>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
+      {/* 1. HERO SECTION */}
+      <Hero />
 
       {/* 2. SPECIALS SECTION STUB */}
       <section
