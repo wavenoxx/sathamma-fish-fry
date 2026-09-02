@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
 import { Hero } from "@/components/sections/Hero";
+import { Menu } from "@/components/sections/Menu";
 import { restaurant } from "@/data/restaurant";
 
 export default function Home() {
@@ -28,22 +29,8 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 3. MENU SECTION STUB */}
-      <section
-        id="menu"
-        className="min-h-[60vh] flex items-center border-b border-line section-spacing"
-      >
-        <Container>
-          <Reveal>
-            <div>
-              <SectionLabel>Menu</SectionLabel>
-              <h2 className="text-h1 font-display text-cream">
-                Menu
-              </h2>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
+      {/* 3. MENU SECTION */}
+      <Menu />
 
       {/* 4. ABOUT SECTION STUB */}
       <section

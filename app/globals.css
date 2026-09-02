@@ -44,7 +44,7 @@
 /* Mandatory overflow guard */
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
   background-color: var(--color-ink, #14100D);
   color: var(--color-cream, #F5EFE6);
