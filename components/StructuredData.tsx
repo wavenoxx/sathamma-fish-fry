@@ -4,8 +4,10 @@ import { menuCategories } from "@/data/menu";
 
 export function StructuredData() {
   const hasCoords =
-    restaurant.coords &&
-    (restaurant.coords.lat !== 0 || restaurant.coords.lng !== 0);
+    Boolean(
+      restaurant.coords &&
+        (restaurant.coords.lat !== 0 || restaurant.coords.lng !== 0)
+    );
 
   const hasGoogleProfile = Boolean(restaurant.googleProfileUrl);
 

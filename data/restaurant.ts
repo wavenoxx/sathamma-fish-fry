@@ -18,13 +18,13 @@ export const restaurant = {
     close: "22:00",
     days: "All days",
   },
-  mapsUrl: "", // TODO: https://maps.app.goo.gl/JVUzCwp9rxsBR79X8
+  mapsUrl: "https://maps.app.goo.gl/U7KC7MN64waQrwx87",
   plusCode: "H476+38 Bachapoor",
-  googleProfileUrl: "https://maps.app.goo.gl/WZviYyWhJoZZwReu8",
+  googleProfileUrl: "https://maps.app.goo.gl/U7KC7MN64waQrwx87",
   coords: {
-    lat: 0,
-    lng: 0,
-  }, // TODO
+    lat: 16.5626373,
+    lng: 79.1108342,
+  } as { lat: number; lng: number },
 } as const;
 
 export type Restaurant = typeof restaurant;

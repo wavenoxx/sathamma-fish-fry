@@ -17,8 +17,10 @@ export function Visit() {
   const containerVariants = shouldReduceMotion ? fadeOnly : stagger;
 
   const hasCoords =
-    restaurant.coords &&
-    (restaurant.coords.lat !== 0 || restaurant.coords.lng !== 0);
+    Boolean(
+      restaurant.coords &&
+        (restaurant.coords.lat !== 0 || restaurant.coords.lng !== 0)
+    );
   const hasPlusCode = Boolean(restaurant.plusCode);
   const mapQuery = hasCoords
     ? `${restaurant.coords.lat},${restaurant.coords.lng}`
@@ -27,7 +29,7 @@ export function Visit() {
     : null;
 
   const mapSrc = mapQuery
-    ? `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`
+    ? `https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=16&output=embed`
     : null;
 
   if (!mapSrc && typeof window === "undefined") {
