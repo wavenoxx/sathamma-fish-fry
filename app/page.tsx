@@ -10,18 +10,15 @@ export default function Home() {
       {/* 1. HERO SECTION STUB */}
       <section
         id="hero"
-        className="min-h-screen flex items-center justify-center pt-24 pb-16 border-b border-line relative"
+        className="min-h-[100svh] flex items-center justify-center pt-20 pb-16 border-b border-line relative"
       >
         <Container>
           <Reveal>
             <div className="max-w-3xl space-y-4">
-              <SectionLabel>River & Flame</SectionLabel>
-              <h1 className="text-hero font-display font-bold text-cream">
-                {restaurant.name}
+              <SectionLabel>Hero</SectionLabel>
+              <h1 className="text-hero font-display text-cream">
+                Hero
               </h1>
-              <p className="text-body text-cream-dim font-telugu text-h3 mt-2">
-                {restaurant.nameTelugu}
-              </p>
             </div>
           </Reveal>
         </Container>
@@ -35,9 +32,9 @@ export default function Home() {
         <Container>
           <Reveal>
             <div className="space-y-4">
-              <SectionLabel>Daily Catch</SectionLabel>
-              <h2 className="text-h1 font-display font-bold text-cream">
-                Today&apos;s Fresh Specials
+              <SectionLabel>Specials</SectionLabel>
+              <h2 className="text-h1 font-display text-cream">
+                Specials
               </h2>
             </div>
           </Reveal>
@@ -52,9 +49,9 @@ export default function Home() {
         <Container>
           <Reveal>
             <div className="space-y-4">
-              <SectionLabel>Offerings</SectionLabel>
-              <h2 className="text-h1 font-display font-bold text-cream">
-                Traditional River Menu
+              <SectionLabel>Menu</SectionLabel>
+              <h2 className="text-h1 font-display text-cream">
+                Menu
               </h2>
             </div>
           </Reveal>
@@ -69,9 +66,9 @@ export default function Home() {
         <Container>
           <Reveal>
             <div className="space-y-4">
-              <SectionLabel>Our Story</SectionLabel>
-              <h2 className="text-h1 font-display font-bold text-cream">
-                Born by the Riverbed
+              <SectionLabel>About</SectionLabel>
+              <h2 className="text-h1 font-display text-cream">
+                About
               </h2>
             </div>
           </Reveal>
@@ -86,9 +83,9 @@ export default function Home() {
         <Container>
           <Reveal>
             <div className="space-y-4">
-              <SectionLabel>Moments</SectionLabel>
-              <h2 className="text-h1 font-display font-bold text-cream">
-                The Riverside Experience
+              <SectionLabel>Gallery</SectionLabel>
+              <h2 className="text-h1 font-display text-cream">
+                Gallery
               </h2>
             </div>
           </Reveal>
@@ -103,9 +100,9 @@ export default function Home() {
         <Container>
           <Reveal>
             <div className="space-y-4">
-              <SectionLabel>Testimonials</SectionLabel>
-              <h2 className="text-h1 font-display font-bold text-cream">
-                Words from Our Guests
+              <SectionLabel>Reviews</SectionLabel>
+              <h2 className="text-h1 font-display text-cream">
+                Reviews
               </h2>
             </div>
           </Reveal>
@@ -120,9 +117,9 @@ export default function Home() {
         <Container>
           <Reveal>
             <div className="space-y-4">
-              <SectionLabel>Location & Hours</SectionLabel>
-              <h2 className="text-h1 font-display font-bold text-cream">
-                Visit Sathamma Fish Fry
+              <SectionLabel>Visit</SectionLabel>
+              <h2 className="text-h1 font-display text-cream">
+                Visit
               </h2>
             </div>
           </Reveal>
@@ -133,11 +130,8 @@ export default function Home() {
       <footer className="border-t border-line py-12 bg-ink-soft/40 pb-28 md:pb-12">
         <Container className="flex flex-col md:flex-row items-center justify-between gap-6 text-cream-dim text-small">
           <div className="flex flex-col items-center md:items-start gap-1">
-            <span className="font-display text-h3 text-cream font-semibold">
+            <span className="font-display text-h3 text-cream">
               {restaurant.name}
-            </span>
-            <span className="font-telugu text-micro text-cream-dim">
-              {restaurant.nameTelugu}
             </span>
           </div>
 

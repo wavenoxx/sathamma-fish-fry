@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { restaurant } from "@/data/restaurant";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { PhoneIcon } from "@/components/ui/icons";
 
 const navLinks = [
@@ -28,59 +27,62 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 h-[64px] md:h-[72px] transition-colors duration-300 ${
         isScrolled
           ? "bg-ink/90 backdrop-blur-md border-b border-line shadow-none"
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <Container className="h-20 flex items-center justify-between">
-        {/* Left: Wordmark */}
+      <Container className="h-full flex items-center justify-between">
+        {/* Left: Compact Wordmark */}
         <a
           href="#hero"
-          className="group flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember rounded-none p-1 -m-1"
+          className="inline-flex items-baseline gap-[10px] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember py-1"
         >
-          <span className="font-display text-h3 md:text-h2 font-bold tracking-tight text-cream group-hover:text-cream/90 transition-colors leading-none">
-            {restaurant.name}
+          <span className="font-display font-normal text-[20px] md:text-[22px] text-cream leading-none group-hover:text-cream/90 transition-colors">
+            Sathamma
           </span>
-          <span className="font-telugu text-[length:var(--text-micro,0.75rem)] text-cream-dim tracking-[0.14em] uppercase mt-1 leading-none">
-            {restaurant.nameTelugu}
+          <span className="font-body font-medium text-[10px] uppercase tracking-[0.2em] text-cream-dim leading-none">
+            FISH FRY
           </span>
         </a>
 
         {/* Desktop Right: Anchor Nav & Call CTA */}
-        <div className="hidden md:flex items-center gap-8">
-          <nav className="flex items-center gap-6" aria-label="Main Navigation">
+        <div className="hidden md:flex items-center gap-10">
+          <nav className="flex items-center gap-[40px]" aria-label="Main Navigation">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[length:var(--text-small,0.875rem)] uppercase tracking-[0.1em] text-cream-dim hover:text-cream transition-colors duration-200 py-2 px-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember"
+                className="relative group text-[13px] font-medium uppercase tracking-[0.14em] text-cream-dim hover:text-cream transition-colors duration-200 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember"
               >
-                {link.label}
+                <span>{link.label}</span>
+                <span
+                  className="absolute left-0 bottom-0 w-full h-[1px] bg-ember origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-200 ease-out"
+                  aria-hidden="true"
+                />
               </a>
             ))}
           </nav>
 
-          <Button
+          {/* Desktop Call button: rounded-full ghost -> ember hover */}
+          <a
             href={`tel:${restaurant.phone}`}
-            variant="primary"
-            size="sm"
-            className="gap-2"
+            className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 border border-line bg-transparent text-cream hover:bg-ember hover:border-ember transition-all duration-250 ease-out text-[14px] font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember cursor-pointer"
           >
-            <PhoneIcon className="w-4 h-4" />
+            <PhoneIcon className="w-4 h-4 text-cream shrink-0" />
             <span>Call {restaurant.phoneDisplay}</span>
-          </Button>
+          </a>
         </div>
 
-        {/* Mobile Right: Single Call Button (min 48px tap target) */}
+        {/* Mobile Right: 44px solid ember circle call button */}
         <div className="flex md:hidden items-center">
           <a
             href={`tel:${restaurant.phone}`}
             aria-label={`Call ${restaurant.name}`}
-            className="min-w-[48px] min-h-[48px] flex items-center justify-center text-cream bg-ink-soft border border-line hover:border-cream-dim/40 active:bg-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember transition-colors"
+            className="w-[44px] h-[44px] rounded-full bg-ember flex items-center justify-center text-cream border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream active:scale-95 transition-transform shrink-0"
           >
-            <PhoneIcon className="w-5 h-5 text-ember" />
+            <PhoneIcon className="w-[18px] h-[18px] text-cream" />
           </a>
         </div>
       </Container>

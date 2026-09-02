@@ -1,30 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter, Noto_Sans_Telugu } from "next/font/google";
+import { Instrument_Serif, Geist } from "next/font/google";
 import "./globals.css";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
 import { Header } from "@/components/Header";
 import { MobileActionBar } from "@/components/MobileActionBar";
 import { restaurant } from "@/data/restaurant";
 
-const fraunces = Fraunces({
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  style: ["normal", "italic"],
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
   preload: true,
-  axes: ["opsz"],
 });
 
-const inter = Inter({
+const geist = Geist({
   subsets: ["latin"],
+  weight: ["400", "500"],
   variable: "--font-body",
   display: "swap",
-});
-
-const notoSansTelugu = Noto_Sans_Telugu({
-  subsets: ["telugu"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-telugu",
-  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -56,9 +52,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${notoSansTelugu.variable} scroll-smooth`}
+      className={`${instrumentSerif.variable} ${geist.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-ink text-cream antialiased selection:bg-ember selection:text-cream flex flex-col">
+      <body className="min-h-screen bg-ink text-cream antialiased selection:bg-ember selection:text-cream flex flex-col font-sans">
         {/* Subtle SVG Grain Overlay */}
         <NoiseOverlay />
 
