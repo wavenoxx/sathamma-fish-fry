@@ -1,4 +1,4 @@
-import type { Variants, Transition } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 export const defaultEase = [0.22, 1, 0.36, 1] as const;
 
@@ -10,13 +10,13 @@ export const defaultViewport = {
 export const fadeUp: Variants = {
   hidden: {
     opacity: 0,
-    y: 24,
+    y: 14,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.7,
+      duration: 0.85,
       ease: defaultEase,
     },
   },
@@ -29,36 +29,21 @@ export const stagger: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-export const revealMask: Variants = {
-  hidden: {
-    clipPath: "inset(100% 0% 0% 0%)",
-    opacity: 0,
-  },
-  visible: {
-    clipPath: "inset(0% 0% 0% 0%)",
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      ease: defaultEase,
+      staggerChildren: 0.11,
     },
   },
 };
 
 export const imageScale: Variants = {
   hidden: {
-    scale: 1.08,
+    scale: 1.04,
     opacity: 0.8,
   },
   visible: {
     scale: 1,
     opacity: 1,
     transition: {
-      duration: 0.9,
+      duration: 1.4,
       ease: defaultEase,
     },
   },

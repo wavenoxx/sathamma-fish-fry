@@ -15,19 +15,19 @@ export interface ButtonProps
 }
 
 const baseStyles =
-  "inline-flex items-center justify-center font-medium transition-colors duration-200 cursor-pointer select-none rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none min-h-[48px] min-w-[48px]";
+  "inline-flex items-center justify-center font-ui font-medium transition-colors duration-200 cursor-pointer select-none rounded-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cream/40 active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none min-h-[48px] min-w-[48px]";
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
     "bg-ember text-cream hover:bg-[#b04b23] border border-transparent shadow-none",
   ghost:
-    "bg-transparent text-cream border border-line hover:bg-ink-soft hover:border-cream-dim/30",
+    "bg-transparent text-cream border border-line hover:bg-ink-soft hover:border-cream/30",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "text-small px-4 py-2 text-sm",
-  md: "text-body px-6 py-3 text-base",
-  lg: "text-h3 px-8 py-4 text-lg font-semibold",
+  sm: "text-[12px] uppercase tracking-[0.14em] px-4 py-2",
+  md: "text-[13px] uppercase tracking-[0.14em] px-6 py-3",
+  lg: "text-[14px] uppercase tracking-[0.14em] px-8 py-4",
 };
 
 export function Button({

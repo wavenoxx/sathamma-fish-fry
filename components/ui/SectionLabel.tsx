@@ -8,13 +8,9 @@ interface SectionLabelProps {
 export function SectionLabel({ children, className = "" }: SectionLabelProps) {
   return (
     <div
-      className={`inline-flex items-center gap-3 text-cream-dim text-[11px] uppercase tracking-[0.16em] font-medium select-none ${className}`}
+      className={`block font-ui text-[length:var(--text-micro,0.6875rem)] uppercase tracking-[0.18em] font-medium text-cream-dim select-none mb-6 ${className}`}
     >
-      <span
-        className="w-6 h-[1px] bg-ember shrink-0 inline-block"
-        aria-hidden="true"
-      />
-      <span>{children}</span>
+      {children}
     </div>
   );
 }

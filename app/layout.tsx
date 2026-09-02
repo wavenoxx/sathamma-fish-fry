@@ -1,24 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Geist } from "next/font/google";
+import { Newsreader, Geist } from "next/font/google";
 import "./globals.css";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
 import { Header } from "@/components/Header";
 import { MobileActionBar } from "@/components/MobileActionBar";
 import { restaurant } from "@/data/restaurant";
 
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  style: ["normal", "italic"],
+const newsreader = Newsreader({
   subsets: ["latin"],
-  variable: "--font-display",
+  weight: "variable",
+  style: ["normal", "italic"],
+  variable: "--font-newsreader",
   display: "swap",
   preload: true,
+  axes: ["opsz"],
 });
 
 const geist = Geist({
   subsets: ["latin"],
   weight: ["400", "500"],
-  variable: "--font-body",
+  variable: "--font-geist",
   display: "swap",
   preload: false,
 });
@@ -52,9 +53,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${instrumentSerif.variable} ${geist.variable} scroll-smooth`}
+      className={`${newsreader.variable} ${geist.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-ink text-cream antialiased selection:bg-ember selection:text-cream flex flex-col font-sans">
+      <body className="min-h-screen bg-ink text-cream antialiased selection:bg-ink-soft selection:text-cream flex flex-col font-serif">
         {/* Subtle SVG Grain Overlay */}
         <NoiseOverlay />
 

@@ -10,11 +10,11 @@ export default function Home() {
       {/* 1. HERO SECTION STUB */}
       <section
         id="hero"
-        className="min-h-[100svh] flex items-center justify-center pt-20 pb-16 border-b border-line relative"
+        className="min-h-[100svh] flex items-center justify-center pt-24 pb-16 border-b border-line relative"
       >
         <Container>
           <Reveal>
-            <div className="max-w-3xl space-y-4">
+            <div className="max-w-2xl">
               <SectionLabel>Hero</SectionLabel>
               <h1 className="text-hero font-display text-cream">
                 Hero
@@ -31,7 +31,7 @@ export default function Home() {
       >
         <Container>
           <Reveal>
-            <div className="space-y-4">
+            <div>
               <SectionLabel>Specials</SectionLabel>
               <h2 className="text-h1 font-display text-cream">
                 Specials
@@ -48,7 +48,7 @@ export default function Home() {
       >
         <Container>
           <Reveal>
-            <div className="space-y-4">
+            <div>
               <SectionLabel>Menu</SectionLabel>
               <h2 className="text-h1 font-display text-cream">
                 Menu
@@ -65,7 +65,7 @@ export default function Home() {
       >
         <Container>
           <Reveal>
-            <div className="space-y-4">
+            <div>
               <SectionLabel>About</SectionLabel>
               <h2 className="text-h1 font-display text-cream">
                 About
@@ -82,7 +82,7 @@ export default function Home() {
       >
         <Container>
           <Reveal>
-            <div className="space-y-4">
+            <div>
               <SectionLabel>Gallery</SectionLabel>
               <h2 className="text-h1 font-display text-cream">
                 Gallery
@@ -99,7 +99,7 @@ export default function Home() {
       >
         <Container>
           <Reveal>
-            <div className="space-y-4">
+            <div>
               <SectionLabel>Reviews</SectionLabel>
               <h2 className="text-h1 font-display text-cream">
                 Reviews
@@ -116,7 +116,7 @@ export default function Home() {
       >
         <Container>
           <Reveal>
-            <div className="space-y-4">
+            <div>
               <SectionLabel>Visit</SectionLabel>
               <h2 className="text-h1 font-display text-cream">
                 Visit
@@ -127,15 +127,15 @@ export default function Home() {
       </section>
 
       {/* FOOTER SHELL */}
-      <footer className="border-t border-line py-12 bg-ink-soft/40 pb-28 md:pb-12">
-        <Container className="flex flex-col md:flex-row items-center justify-between gap-6 text-cream-dim text-small">
+      <footer className="border-t border-line py-16 bg-ink-soft/40 pb-28 md:pb-16">
+        <Container className="flex flex-col md:flex-row items-center justify-between gap-8 text-cream-dim">
           <div className="flex flex-col items-center md:items-start gap-1">
-            <span className="font-display text-h3 text-cream">
+            <span className="font-display text-h3 text-cream font-normal">
               {restaurant.name}
             </span>
           </div>
 
-          <div className="text-center md:text-right text-micro tracking-[0.08em] text-cream-dim/70">
+          <div className="text-center md:text-right font-ui text-micro tracking-[0.18em] text-cream-dim/60">
             <p>
               &copy; {new Date().getFullYear()} {restaurant.name}. All rights
               reserved.
