@@ -107,7 +107,7 @@ export function Hero() {
       />
 
       {/* CONTENT LAYER */}
-      <Container className="relative z-10 w-full h-full flex flex-col justify-start md:justify-center">
+      <Container wide className="relative z-10 w-full h-full flex flex-col justify-start md:justify-center">
         {/* Mobile container: poised top padding (pt-28), natural breathing room, balanced max-widths */}
         <div className="w-full text-left pt-28 sm:pt-32 md:pt-0 md:max-w-[40ch] lg:max-w-[52ch]">
           <motion.div

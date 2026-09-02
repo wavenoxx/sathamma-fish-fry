@@ -41,7 +41,7 @@ export function Header() {
           : "bg-transparent border-b border-transparent backdrop-blur-none"
       }`}
     >
-      <Container className="h-full flex items-center justify-between">
+      <Container wide className="h-full flex items-center justify-between">
         {/* Left: Restrained Wordmark */}
         <a
           href="#hero"
