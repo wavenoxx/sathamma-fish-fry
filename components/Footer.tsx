@@ -19,7 +19,7 @@ export function Footer() {
           <div className="md:col-span-4 flex flex-col items-start">
             <a
               href="#hero"
-              className="inline-flex items-baseline gap-[12px] group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cream/40"
+              className="inline-flex items-baseline gap-[12px] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
               <span className="font-display font-normal text-[20px] text-cream leading-none tracking-[-0.015em]">
                 Sathamma
@@ -43,7 +43,7 @@ export function Footer() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="font-ui font-medium text-[12px] uppercase tracking-[0.16em] text-cream-dim hover:text-cream transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cream/40"
+                  className="font-ui font-medium text-[12px] uppercase tracking-[0.16em] text-cream-dim hover:text-cream transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                 >
                   {link.label}
                 </a>
@@ -55,7 +55,7 @@ export function Footer() {
           <div className="md:col-span-4 flex flex-col items-start md:items-end space-y-2 md:text-right font-ui font-normal text-[12px] text-cream-dim leading-relaxed">
             <a
               href={`tel:${restaurant.phone}`}
-              className="hover:text-cream transition-colors duration-200"
+              className="hover:text-cream transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink rounded-sm"
             >
               {restaurant.phoneDisplay}
             </a>

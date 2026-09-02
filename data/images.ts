@@ -108,4 +108,13 @@ export const imageSlots: Record<string, ImageSlot> = {
     aspect: "16 / 9",
     intent: "The approach to the place, daylight",
   },
+
+  // OPEN GRAPH SHARE CARD (Step 6)
+  "og-share": {
+    id: "og-share",
+    file: "/images/og.jpg",
+    aspect: "1200 / 630",
+    intent:
+      "Wide hero-style fish fry shot with room at the left for nothing — this is a share card, no text overlay.",
+  },
 };

@@ -5,7 +5,7 @@
   --color-ink-soft: #1F1A16;
   --color-cream: #F5EFE6;
   --color-cream-dim: #B8AE9F;
-  --color-ember: #C4562A;
+  --color-ember: #B4461A;
   --color-turmeric: #D99A2B;
   --color-river: #38564A;
   --color-line: rgba(245, 239, 230, 0.07);
@@ -146,4 +146,22 @@ h2, h3, h4, h5, h6 {
   html {
     scroll-behavior: auto;
   }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  [style*="transform"] {
+    transform: none !important;
+  }
 }
+
+/* Accessible focus ring: 2px ember outline with 2px offset */
+:focus-visible {
+  outline: 2px solid var(--color-ember, #B4461A) !important;
+  outline-offset: 2px !important;
+}
+

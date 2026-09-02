@@ -92,7 +92,7 @@ export function Menu() {
                         window.scrollTo({ top, behavior: "smooth" });
                       }
                     }}
-                    className={`font-ui font-medium text-[12px] uppercase tracking-[0.16em] text-left transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cream/40 py-0.5 ${
+                    className={`font-ui font-medium text-[12px] uppercase tracking-[0.16em] text-left transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink py-0.5 ${
                       isActive
                         ? "text-cream"
                         : "text-cream-dim hover:text-cream"

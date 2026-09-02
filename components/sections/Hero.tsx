@@ -179,7 +179,7 @@ export function Hero() {
                 {/* Primary CTA (Single permitted ember element on desktop) */}
                 <a
                   href={`tel:${restaurant.phone}`}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 bg-ember text-cream hover:bg-[#b04b23] transition-colors duration-200 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream shadow-none"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 bg-ember text-cream hover:bg-[#b04b23] transition-colors duration-200 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink shadow-none"
                 >
                   <PhoneIcon className="w-[16px] h-[16px] text-cream shrink-0" />
                   <span>Call Now</span>
@@ -190,7 +190,7 @@ export function Hero() {
                   href={directionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 border border-line bg-transparent text-cream hover:bg-ink-soft hover:border-cream/30 transition-all duration-200 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cream/40"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 border border-line bg-transparent text-cream hover:bg-ink-soft hover:border-cream/30 transition-all duration-200 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                 >
                   <DirectionsIcon className="w-[16px] h-[16px] text-cream shrink-0" />
                   <span>Get Directions</span>

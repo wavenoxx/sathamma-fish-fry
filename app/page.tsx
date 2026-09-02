@@ -9,7 +9,7 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="flex-1 w-full">
+    <main id="main-content" tabIndex={-1} className="flex-1 w-full outline-none">
       {/* 1. HERO SECTION */}
       <Hero />
 

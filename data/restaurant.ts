@@ -28,3 +28,6 @@ export const restaurant = {
 } as const;
 
 export type Restaurant = typeof restaurant;
+
+// TODO: Replace with live production domain when configured
+export const SITE_URL = "https://sathammafishfry.com";

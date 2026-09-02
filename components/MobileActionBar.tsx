@@ -28,18 +28,21 @@ export function MobileActionBar() {
   const actions = [
     {
       label: "Call",
+      ariaLabel: `Call ${restaurant.name}`,
       href: `tel:${restaurant.phone}`,
       icon: PhoneIcon,
       target: undefined,
     },
     {
       label: "WhatsApp",
+      ariaLabel: `Message ${restaurant.name} on WhatsApp`,
       href: whatsappUrl,
       icon: WhatsAppIcon,
       target: "_blank",
     },
     {
       label: "Directions",
+      ariaLabel: `Get directions to ${restaurant.name}`,
       href: directionsUrl,
       icon: DirectionsIcon,
       target: "_blank",
@@ -76,7 +79,8 @@ export function MobileActionBar() {
               href={action.href}
               target={action.target}
               rel={action.target ? "noopener noreferrer" : undefined}
-              className="group h-[58px] flex flex-col items-center justify-center gap-1 text-cream active:bg-ink-soft transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cream/40 cursor-pointer"
+              aria-label={action.ariaLabel}
+              className="group h-[58px] flex flex-col items-center justify-center gap-1 text-cream active:bg-ink-soft transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-ink cursor-pointer"
             >
               <Icon className="w-[19px] h-[19px] text-cream" />
               <span className="font-ui text-[9px] font-medium uppercase tracking-[0.14em] text-cream-dim leading-none">
