@@ -109,7 +109,7 @@ export function Hero() {
       id="hero"
       ref={heroRef}
       aria-label="Hero"
-      className="relative w-full min-h-[100svh] flex flex-col justify-start md:justify-center overflow-hidden pt-16 sm:pt-20 md:pt-0 pb-32 md:pb-0 bg-ink"
+      className="relative w-full min-h-[100svh] flex flex-col justify-start md:justify-center overflow-hidden bg-ink"
     >
       {/* BACKGROUND IMAGE LAYER WITH PARALLAX */}
       <motion.div
@@ -143,10 +143,10 @@ export function Hero() {
         className="hidden md:block absolute inset-0 bg-[linear-gradient(to_right,rgba(20,16,13,0.82)_0%,rgba(20,16,13,0.55)_45%,transparent_75%)] pointer-events-none"
       />
 
-      {/* 2. Mobile gradient to the top: ink 20% at bottom -> ink 55% at 45% -> ink 85% at top */}
+      {/* 2. Mobile deepened overlay: ink 92% at top -> 70% at 40% height -> 30% at 60% -> 10% at bottom */}
       <div
         aria-hidden="true"
-        className="block md:hidden absolute inset-0 bg-[linear-gradient(to_top,rgba(20,16,13,0.20)_0%,rgba(20,16,13,0.55)_45%,rgba(20,16,13,0.85)_100%)] pointer-events-none"
+        className="block md:hidden absolute inset-0 bg-[linear-gradient(to_bottom,rgba(20,16,13,0.92)_0%,rgba(20,16,13,0.70)_40%,rgba(20,16,13,0.30)_60%,rgba(20,16,13,0.10)_100%)] pointer-events-none"
       />
 
       {/* 3. Subtle full-frame ink wash at 15% opacity to unify image with page */}
@@ -156,8 +156,9 @@ export function Hero() {
       />
 
       {/* CONTENT LAYER */}
-      <Container className="relative z-10 w-full">
-        <div className="max-w-[46ch] w-full text-left">
+      <Container className="relative z-10 w-full h-full flex flex-col justify-start md:justify-center">
+        {/* Mobile safe container: max-h-[50svh], pt-20 sm:pt-24 md:pt-0, max-w-[40ch] at tablet, max-w-[52ch] at lg */}
+        <div className="w-full text-left pt-20 sm:pt-24 md:pt-0 max-h-[50svh] md:max-h-none md:max-w-[40ch] lg:max-w-[52ch]">
           <motion.div
             variants={contentContainerVariants}
             initial="hidden"
@@ -166,31 +167,31 @@ export function Hero() {
           >
             {/* 1. Eyebrow */}
             <motion.div variants={childVariants}>
-              <SectionLabel className="mb-1.5 sm:mb-2 md:mb-6">
+              <SectionLabel className="mb-2 md:mb-6">
                 Devarakonda · Telangana
               </SectionLabel>
             </motion.div>
 
-            {/* 2. H1 */}
-            <motion.div variants={childVariants}>
-              <h1 className="font-display font-light text-hero text-cream leading-[1.05] tracking-[-0.015em]">
-                Sathamma <br className="block sm:hidden" />
-                Fish Fry
+            {/* 2. H1 (Single line at lg+, balanced two-line split below lg) */}
+            <motion.div variants={childVariants} className="w-full">
+              <h1 className="font-display font-light text-hero text-cream leading-[1.05] tracking-[-0.015em] [text-wrap:balance] lg:whitespace-nowrap">
+                Sathamma <br className="block lg:hidden" />
+                <span>Fish Fry</span>
               </h1>
             </motion.div>
 
-            {/* 3. Tagline */}
+            {/* 3. Tagline (max-w-[30ch] below md for balanced 2-line break) */}
             <motion.div variants={childVariants}>
-              <p className="mt-2 sm:mt-3 md:mt-6 font-display font-light text-body text-cream-dim max-w-[42ch] leading-[1.6]">
+              <p className="mt-3 md:mt-6 font-display font-light text-body text-cream-dim max-w-[30ch] md:max-w-[42ch] leading-[1.6] [text-wrap:balance]">
                 Fresh river fish, cooked the way it always has been.
               </p>
             </motion.div>
 
-            {/* 4. Rating */}
-            <motion.div variants={childVariants} className="mt-3 sm:mt-4 md:mt-8">
+            {/* 4. Rating Row */}
+            <motion.div variants={childVariants} className="mt-4 md:mt-8">
               <div className="inline-flex items-center gap-2 select-none">
-                <StarIcon className="w-[13px] h-[13px] text-turmeric shrink-0" />
-                <span className="font-ui font-medium text-[13px] text-cream leading-none">
+                <StarIcon className="w-[11px] h-[11px] md:w-[13px] md:h-[13px] text-turmeric shrink-0" />
+                <span className="font-ui font-medium text-[12px] md:text-[13px] text-cream leading-none">
                   {restaurant.rating}
                 </span>
                 <svg
@@ -201,22 +202,22 @@ export function Hero() {
                 >
                   <circle cx="3" cy="3" r="3" />
                 </svg>
-                <span className="font-ui font-medium text-micro uppercase tracking-[0.18em] text-cream-dim leading-none">
+                <span className="font-ui font-medium text-micro uppercase tracking-[0.14em] md:tracking-[0.18em] text-cream-dim leading-none">
                   Rated on Google
                 </span>
               </div>
             </motion.div>
 
-            {/* 5. CTA Row */}
+            {/* 5. Desktop CTA Row (ABSENT on mobile below md) */}
             <motion.div
               variants={childVariants}
-              className="mt-4 sm:mt-6 md:mt-10 w-full md:w-auto"
+              className="hidden md:flex mt-10 w-auto"
             >
-              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 w-full md:w-auto">
-                {/* Primary CTA (Single permitted ember element in hero) */}
+              <div className="flex items-center gap-3 w-auto">
+                {/* Primary CTA (Single permitted ember element on desktop) */}
                 <a
                   href={`tel:${restaurant.phone}`}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-full px-6 sm:px-7 py-2.5 sm:py-3 md:py-3.5 bg-ember text-cream hover:bg-[#b04b23] transition-colors duration-200 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream shadow-none w-full md:w-auto"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 bg-ember text-cream hover:bg-[#b04b23] transition-colors duration-200 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream shadow-none"
                 >
                   <PhoneIcon className="w-[16px] h-[16px] text-cream shrink-0" />
                   <span>Call Now</span>
@@ -227,7 +228,7 @@ export function Hero() {
                   href={directionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2.5 rounded-full px-6 sm:px-7 py-2.5 sm:py-3 md:py-3.5 border border-line bg-transparent text-cream hover:bg-ink-soft hover:border-cream/30 transition-all duration-200 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cream/40 w-full md:w-auto"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 border border-line bg-transparent text-cream hover:bg-ink-soft hover:border-cream/30 transition-all duration-200 font-ui font-medium text-[14px] leading-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cream/40"
                 >
                   <DirectionsIcon className="w-[16px] h-[16px] text-cream shrink-0" />
                   <span>Get Directions</span>
@@ -235,9 +236,9 @@ export function Hero() {
               </div>
             </motion.div>
 
-            {/* 6. Open Status (Computed strictly client-side after mount) */}
+            {/* 6. Open Status (Follows rating directly with mt-6 on mobile, follows CTA with md:mt-8 on desktop) */}
             {openStatus && (
-              <motion.div variants={childVariants} className="mt-3 sm:mt-4 md:mt-8">
+              <motion.div variants={childVariants} className="mt-6 md:mt-8">
                 <div className="inline-flex items-center gap-2 select-none">
                   <svg
                     className={`w-[5px] h-[5px] shrink-0 ${
@@ -249,7 +250,7 @@ export function Hero() {
                   >
                     <circle cx="5" cy="5" r="5" />
                   </svg>
-                  <span className="font-ui font-normal text-[12px] text-cream-dim leading-none">
+                  <span className="font-ui font-normal text-[11px] md:text-[12px] text-cream-dim leading-none">
                     {openStatus.text}
                   </span>
                 </div>

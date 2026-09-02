@@ -47,7 +47,7 @@ export function Header() {
           </span>
         </a>
 
-        {/* Desktop Right: Anchor Nav & Call CTA */}
+        {/* Desktop Right: Anchor Nav & Ghost Call CTA */}
         <div className="hidden md:flex items-center gap-10">
           <nav className="flex items-center gap-[44px]" aria-label="Main Navigation">
             {navLinks.map((link) => (
@@ -71,14 +71,14 @@ export function Header() {
           </a>
         </div>
 
-        {/* Mobile Right: 42px solid ember circle call button (the 1 permitted ember element on mobile) */}
+        {/* Mobile Right: 40px circle, transparent bg, 1px border-line, 16px cream icon (Monochrome, Zero Ember) */}
         <div className="flex md:hidden items-center">
           <a
             href={`tel:${restaurant.phone}`}
             aria-label={`Call ${restaurant.name}`}
-            className="w-[42px] h-[42px] rounded-full bg-ember flex items-center justify-center text-cream border-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream active:scale-95 transition-transform shrink-0"
+            className="w-[40px] h-[40px] rounded-full bg-transparent border border-line flex items-center justify-center text-cream active:bg-ink-soft focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cream/40 transition-colors shrink-0"
           >
-            <PhoneIcon className="w-[17px] h-[17px] text-cream" />
+            <PhoneIcon className="w-[16px] h-[16px] text-cream" />
           </a>
         </div>
       </Container>

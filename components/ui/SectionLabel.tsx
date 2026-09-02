@@ -8,7 +8,7 @@ interface SectionLabelProps {
 export function SectionLabel({ children, className = "" }: SectionLabelProps) {
   return (
     <div
-      className={`block font-ui text-[length:var(--text-micro,0.6875rem)] uppercase tracking-[0.18em] font-medium text-cream-dim select-none mb-6 ${className}`}
+      className={`block font-ui text-[length:var(--text-micro,0.625rem)] uppercase tracking-[0.14em] md:tracking-[0.18em] font-medium text-cream-dim select-none mb-4 md:mb-6 ${className}`}
     >
       {children}
     </div>

@@ -16,26 +16,26 @@
   --font-ui: var(--font-geist), "Geist", system-ui, sans-serif;
   --font-sans: var(--font-geist), "Geist", system-ui, sans-serif;
 
-  --text-hero: clamp(2.25rem, 5vw, 3.75rem);
-  --text-h1: clamp(1.75rem, 3.5vw, 2.75rem);
+  --text-hero: clamp(1.875rem, 5vw, 3.75rem);
+  --text-h1: clamp(1.5rem, 3.5vw, 2.75rem);
   --text-h2: clamp(1.375rem, 2.5vw, 2rem);
   --text-h3: clamp(1.125rem, 1.6vw, 1.375rem);
-  --text-body: clamp(1rem, 1.05vw, 1.0625rem);
+  --text-body: clamp(0.9375rem, 1.05vw, 1.0625rem);
   --text-small: 0.875rem;
-  --text-micro: 0.6875rem;
+  --text-micro: 0.625rem;
 
   --spacing-section: clamp(7rem, 16vw, 12rem);
   --spacing-block: clamp(2rem, 4vw, 3.5rem);
 }
 
 :root {
-  --text-hero: clamp(2.25rem, 5vw, 3.75rem);
-  --text-h1: clamp(1.75rem, 3.5vw, 2.75rem);
+  --text-hero: clamp(1.875rem, 5vw, 3.75rem);
+  --text-h1: clamp(1.5rem, 3.5vw, 2.75rem);
   --text-h2: clamp(1.375rem, 2.5vw, 2rem);
   --text-h3: clamp(1.125rem, 1.6vw, 1.375rem);
-  --text-body: clamp(1rem, 1.05vw, 1.0625rem);
+  --text-body: clamp(0.9375rem, 1.05vw, 1.0625rem);
   --text-small: 0.875rem;
-  --text-micro: 0.6875rem;
+  --text-micro: 0.625rem;
   --spacing-section: clamp(7rem, 16vw, 12rem);
   --spacing-block: clamp(2rem, 4vw, 3.5rem);
   --color-line: rgba(245, 239, 230, 0.07);
@@ -114,9 +114,15 @@ h2, h3, h4, h5, h6 {
   font-family: var(--font-ui);
   font-size: var(--text-micro);
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-cream-dim, #B8AE9F);
+}
+
+@media (min-width: 768px) {
+  .text-micro {
+    letter-spacing: 0.18em;
+  }
 }
 
 /* Section vertical spacing utility */
