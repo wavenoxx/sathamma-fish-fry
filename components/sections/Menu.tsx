@@ -69,9 +69,9 @@ export function Menu() {
         </motion.div>
 
         {/* SECTION BODY: 1/4 STICKY NAV (LG+) + 3/4 MENU LIST */}
-        <div className="spacing-block flex flex-col lg:flex-row lg:gap-16 items-start relative">
+        <div className="spacing-block flex flex-col lg:flex-row lg:gap-16 items-start relative w-full min-w-0">
           {/* DESKTOP STICKY CATEGORY NAV (LG AND UP ONLY) */}
-          <aside className="hidden lg:block lg:w-1/4 sticky top-[calc(76px+3rem)] self-start">
+          <aside className="hidden lg:block lg:w-1/4 shrink-0 min-w-0 sticky top-[calc(76px+3rem)] self-start z-10">
             <nav className="flex flex-col gap-5" aria-label="Menu Category Navigation">
               {menuCategories.map((category) => {
                 const isActive = activeId === category.id;
@@ -106,7 +106,7 @@ export function Menu() {
           </aside>
 
           {/* MENU LIST (3/4 ON DESKTOP, FULL WIDTH ON MOBILE/TABLET) */}
-          <div className="w-full lg:w-3/4 flex flex-col space-y-[clamp(3.5rem,7vw,5rem)]">
+          <div className="w-full lg:flex-1 min-w-0 flex flex-col space-y-[clamp(3.5rem,7vw,5rem)] relative z-0">
             {menuCategories.map((category) => (
               <motion.div
                 key={category.id}
@@ -115,22 +115,22 @@ export function Menu() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-80px" }}
-                className="w-full"
+                className="w-full min-w-0"
               >
                 {/* Full-width hairline + 2.5rem space + category title in Newsreader 400 at text-h3 */}
-                <div className="border-t border-line pt-10 mb-8">
+                <div className="border-t border-line pt-10 mb-8 w-full min-w-0">
                   <h3 className="font-display font-normal text-h3 text-cream leading-tight">
                     {category.title}
                   </h3>
                 </div>
 
                 {/* Semantic Items List */}
-                <ul className="flex flex-col">
+                <ul className="flex flex-col w-full min-w-0">
                   {category.items.map((item) => (
-                    <li key={item.name} className="group py-3.5">
-                      <div className="flex flex-wrap md:flex-nowrap items-baseline justify-between gap-x-3 gap-y-1">
+                    <li key={item.name} className="group py-3.5 w-full min-w-0">
+                      <div className="w-full min-w-0 flex flex-wrap md:flex-nowrap items-baseline justify-between gap-x-3 gap-y-1">
                         {/* Name + Unfilled 4px Turmeric Diamond */}
-                        <div className="flex items-baseline gap-2 min-w-0 max-w-full">
+                        <div className="flex items-baseline gap-2 min-w-0">
                           <span className="font-display font-normal text-body text-cream">
                             {item.name}
                           </span>
@@ -146,12 +146,12 @@ export function Menu() {
 
                         {/* Leader line on desktop and non-wrapping layouts */}
                         <div
-                          className="hidden md:block flex-1 border-b border-line group-hover:border-cream/18 transition-colors duration-200 mb-[5px] mx-3"
+                          className="hidden md:block flex-1 min-w-4 border-b border-line group-hover:border-cream/18 transition-colors duration-200 mb-[5px]"
                           aria-hidden="true"
                         />
 
                         {/* Price formatted with ₹ and no decimals */}
-                        <div className="font-ui font-medium text-body text-cream tabular-nums ml-auto shrink-0 text-right">
+                        <div className="font-ui font-medium text-body text-cream tabular-nums shrink-0 text-right ml-auto md:ml-0">
                           ₹{item.price}
                         </div>
                       </div>
