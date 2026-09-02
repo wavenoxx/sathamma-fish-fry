@@ -3,7 +3,9 @@ import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
 import { Hero } from "@/components/sections/Hero";
+import { Specials } from "@/components/sections/Specials";
 import { Menu } from "@/components/sections/Menu";
+import { About } from "@/components/sections/About";
 import { restaurant } from "@/data/restaurant";
 
 export default function Home() {
@@ -12,42 +14,14 @@ export default function Home() {
       {/* 1. HERO SECTION */}
       <Hero />
 
-      {/* 2. SPECIALS SECTION STUB */}
-      <section
-        id="specials"
-        className="min-h-[60vh] flex items-center border-b border-line section-spacing"
-      >
-        <Container>
-          <Reveal>
-            <div>
-              <SectionLabel>Specials</SectionLabel>
-              <h2 className="text-h1 font-display text-cream">
-                Specials
-              </h2>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
+      {/* 2. SPECIALS SECTION */}
+      <Specials />
 
       {/* 3. MENU SECTION */}
       <Menu />
 
-      {/* 4. ABOUT SECTION STUB */}
-      <section
-        id="about"
-        className="min-h-[60vh] flex items-center border-b border-line section-spacing"
-      >
-        <Container>
-          <Reveal>
-            <div>
-              <SectionLabel>About</SectionLabel>
-              <h2 className="text-h1 font-display text-cream">
-                About
-              </h2>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
+      {/* 4. ABOUT SECTION */}
+      <About />
 
       {/* 5. GALLERY SECTION STUB */}
       <section
