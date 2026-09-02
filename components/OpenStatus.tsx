@@ -41,7 +41,7 @@ export function OpenStatus({
       const isOpen = currentMinutes >= 360 && currentMinutes < 1320;
       setOpenStatus({
         isOpen,
-        text: isOpen ? "Open now · Closes 10 PM" : "Closed · Opens 6 AM",
+        text: isOpen ? "Open now · Closes 10 PM" : "Closed at 10 PM · Opens 6 AM",
       });
     } catch {
       setOpenStatus({

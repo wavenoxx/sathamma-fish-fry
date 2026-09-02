@@ -94,10 +94,10 @@ export function Hero() {
         className="hidden md:block absolute inset-0 bg-[linear-gradient(to_right,rgba(20,16,13,0.82)_0%,rgba(20,16,13,0.55)_45%,transparent_75%)] pointer-events-none"
       />
 
-      {/* 2. Mobile deepened overlay: ink 92% at top -> 70% at 40% height -> 30% at 60% -> 10% at bottom */}
+      {/* 2. Mobile refined cinematic overlay: text contrast at top, warm food visibility in center, gentle fade at bottom */}
       <div
         aria-hidden="true"
-        className="block md:hidden absolute inset-0 bg-[linear-gradient(to_bottom,rgba(20,16,13,0.92)_0%,rgba(20,16,13,0.70)_40%,rgba(20,16,13,0.30)_60%,rgba(20,16,13,0.10)_100%)] pointer-events-none"
+        className="block md:hidden absolute inset-0 bg-[linear-gradient(to_bottom,rgba(20,16,13,0.92)_0%,rgba(20,16,13,0.72)_36%,rgba(20,16,13,0.20)_65%,rgba(20,16,13,0.88)_100%)] pointer-events-none"
       />
 
       {/* 3. Subtle full-frame ink wash at 15% opacity to unify image with page */}
@@ -108,54 +108,63 @@ export function Hero() {
 
       {/* CONTENT LAYER */}
       <Container className="relative z-10 w-full h-full flex flex-col justify-start md:justify-center">
-        {/* Mobile safe container: max-h-[50svh], pt-20 sm:pt-24 md:pt-0, max-w-[40ch] at tablet, max-w-[52ch] at lg */}
-        <div className="w-full text-left pt-20 sm:pt-24 md:pt-0 max-h-[50svh] md:max-h-none md:max-w-[40ch] lg:max-w-[52ch]">
+        {/* Mobile container: poised top padding (pt-28), natural breathing room, balanced max-widths */}
+        <div className="w-full text-left pt-28 sm:pt-32 md:pt-0 md:max-w-[40ch] lg:max-w-[52ch]">
           <motion.div
             variants={contentContainerVariants}
             initial="hidden"
             animate="visible"
             className="flex flex-col items-start"
           >
-            {/* 1. Eyebrow */}
+            {/* 1. Hallmark Eyebrow */}
             <motion.div variants={childVariants}>
-              <SectionLabel className="mb-2 md:mb-6">
+              <SectionLabel className="mb-4 md:mb-6">
                 Devarakonda · Telangana
               </SectionLabel>
             </motion.div>
 
-            {/* 2. H1 (Single line at lg+, balanced two-line split below lg) */}
+            {/* 2. H1: Majestic, confident, unhurried */}
             <motion.div variants={childVariants} className="w-full">
-              <h1 className="font-display font-light text-hero text-cream leading-[1.05] tracking-[-0.015em] [text-wrap:balance] lg:whitespace-nowrap">
+              <h1 className="font-display font-light text-[38px] sm:text-[44px] md:text-hero text-cream leading-[1.08] tracking-[-0.02em] [text-wrap:balance] lg:whitespace-nowrap">
                 Sathamma <br className="block lg:hidden" />
                 <span>Fish Fry</span>
               </h1>
             </motion.div>
 
-            {/* 3. Tagline (max-w-[30ch] below md for balanced 2-line break) */}
+            {/* 3. Tagline: Poetic measure, generous line height */}
             <motion.div variants={childVariants}>
-              <p className="mt-3 md:mt-6 font-display font-light text-body text-cream-dim max-w-[30ch] md:max-w-[42ch] leading-[1.6] [text-wrap:balance]">
+              <p className="mt-4 md:mt-6 font-display font-light text-[15px] sm:text-[16px] md:text-body text-cream-dim max-w-[28ch] sm:max-w-[32ch] md:max-w-[42ch] leading-[1.65] [text-wrap:balance]">
                 Fresh river fish, cooked the way it always has been.
               </p>
             </motion.div>
 
-            {/* 4. Rating Row */}
-            <motion.div variants={childVariants} className="mt-4 md:mt-8">
+            {/* 4. Trust & Status Block (Anchored with delicate luxury hairline on mobile) */}
+            <motion.div variants={childVariants} className="mt-7 md:mt-8 flex flex-col items-start">
+              {/* Subtle hairline anchor on mobile */}
+              <div className="w-10 h-px bg-line mb-5 block md:hidden" />
+
+              {/* Rating row */}
               <div className="inline-flex items-center gap-2 select-none">
-                <StarIcon className="w-[11px] h-[11px] md:w-[13px] md:h-[13px] text-turmeric shrink-0" />
+                <StarIcon className="w-[12px] h-[12px] md:w-[13px] md:h-[13px] text-turmeric shrink-0" />
                 <span className="font-ui font-medium text-[12px] md:text-[13px] text-cream leading-none">
                   {restaurant.rating}
                 </span>
                 <svg
-                  className="w-[3px] h-[3px] text-cream-dim/60 shrink-0"
+                  className="w-[3px] h-[3px] text-cream-dim/50 shrink-0"
                   viewBox="0 0 6 6"
                   fill="currentColor"
                   aria-hidden="true"
                 >
                   <circle cx="3" cy="3" r="3" />
                 </svg>
-                <span className="font-ui font-medium text-micro uppercase tracking-[0.14em] md:tracking-[0.18em] text-cream-dim leading-none">
+                <span className="font-ui font-medium text-micro uppercase tracking-[0.16em] md:tracking-[0.18em] text-cream-dim leading-none">
                   Rated on Google
                 </span>
+              </div>
+
+              {/* Open Status on mobile directly follows rating */}
+              <div className="mt-3 block md:hidden">
+                <OpenStatus />
               </div>
             </motion.div>
 
@@ -187,8 +196,8 @@ export function Hero() {
               </div>
             </motion.div>
 
-            {/* 6. Open Status (Follows rating directly with mt-6 on mobile, follows CTA with md:mt-8 on desktop) */}
-            <motion.div variants={childVariants} className="mt-6 md:mt-8">
+            {/* 6. Desktop Open Status (Follows CTA row with md:mt-8) */}
+            <motion.div variants={childVariants} className="hidden md:block md:mt-8">
               <OpenStatus />
             </motion.div>
           </motion.div>
