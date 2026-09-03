@@ -15,6 +15,25 @@ const navItems = [
 export function Header() {
   const { theme, toggleTheme, isMenuOpen, setIsMenuOpen } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [timeString, setTimeString] = useState<string>("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setTimeString(
+        now.toLocaleTimeString("en-IN", {
+          timeZone: "Asia/Kolkata",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: true,
+        })
+      );
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     let ticking = false;
@@ -33,20 +52,24 @@ export function Header() {
 
   return (
     <>
-      {/* 1. TOP UTILITY BAR (Patrizia Garganti Top Bar) */}
+      {/* 1. TOP UTILITY BAR (Patrizia Garganti Top Bar with Live Hearth Clock) */}
       <div className="fixed top-0 left-0 right-0 z-50 h-[32px] md:h-[36px] bg-[var(--bg-page)] border-b border-[var(--border-hairline)] px-4 sm:px-8 flex items-center justify-between font-ui text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[var(--text-secondary)] select-none transition-colors duration-500">
         <div className="flex items-center gap-2 sm:gap-3 truncate">
           <span className="font-medium text-[var(--text-primary)]">
-            RESERVATIONS
+            RESERVATIONS & ORDERS
           </span>
           <span className="hidden sm:inline-block opacity-40">/</span>
-          <span className="hidden sm:inline-block opacity-75">
-            DEVARAKONDA · 16°42′ N
+          <span className="hidden md:inline-block opacity-80 font-mono tracking-widest text-[9px]">
+            {timeString ? `HEARTH IST: ${timeString}` : "DEVARAKONDA · 16°42′ N"}
+          </span>
+          <span className="hidden sm:inline-block md:hidden opacity-75">
+            16°42′ N · TELANGANA
           </span>
         </div>
 
         <a
           href={`tel:${restaurant.phone}`}
+          data-cursor="button"
           className="hover:text-[var(--text-primary)] transition-colors shrink-0 flex items-center gap-2"
         >
           <span>TEL: {restaurant.phoneDisplay}</span>
@@ -64,6 +87,7 @@ export function Header() {
         {/* Left: Double Hairline Hamburger + MENU */}
         <button
           type="button"
+          data-cursor="button"
           onClick={() => setIsMenuOpen(true)}
           className="group flex items-center gap-3 py-2 bg-transparent border-0 cursor-pointer select-none text-[var(--text-primary)] focus-visible:outline-none"
           aria-label="Open Navigation Menu"
@@ -81,6 +105,7 @@ export function Header() {
         {/* Center: Monogram Crest & Hairline Bridge */}
         <a
           href="#hero"
+          data-cursor="button"
           className="flex flex-col items-center justify-center text-center select-none group"
         >
           <div className="flex items-center gap-2">
@@ -101,6 +126,7 @@ export function Header() {
 
           <button
             type="button"
+            data-cursor="button"
             onClick={toggleTheme}
             className="flex items-center gap-2 py-1.5 px-2.5 rounded-full border border-[var(--border-hairline)] bg-transparent hover:border-[var(--text-primary)] transition-all duration-300 cursor-pointer text-[var(--text-primary)] focus-visible:outline-none"
             aria-label="Toggle Light / Dark Ambient Hearth"

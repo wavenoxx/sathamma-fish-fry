@@ -7,6 +7,8 @@ import { MobileActionBar } from "@/components/MobileActionBar";
 import { StructuredData } from "@/components/StructuredData";
 import { SITE_URL } from "@/data/restaurant";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { AmbientGlow } from "@/components/ui/AmbientGlow";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -68,6 +70,7 @@ export const viewport: Viewport = {
 };
 
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -82,6 +85,12 @@ export default function RootLayout({
     >
       <body className="min-h-screen antialiased flex flex-col font-serif">
         <ThemeProvider>
+          {/* Patrizia Garganti Inverting Dynamic Cursor */}
+          <CustomCursor />
+
+          {/* Living Ambient Hearth Illumination */}
+          <AmbientGlow />
+
           {/* Skip to Content accessible navigation */}
           <a
             href="#main-content"
@@ -100,7 +109,7 @@ export default function RootLayout({
           <Header />
 
           {/* Main Content */}
-          <div className="flex-1 flex flex-col" id="main-content">
+          <div className="flex-1 flex flex-col relative z-10" id="main-content">
             {children}
           </div>
 

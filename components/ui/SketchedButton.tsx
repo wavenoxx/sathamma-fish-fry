@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState } from "react";
 
 interface SketchedButtonProps {
   line1: string;
@@ -21,12 +21,41 @@ export function SketchedButton({
   rel,
   className = "",
 }: SketchedButtonProps) {
+  const btnRef = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+  // Magnetic Attraction Physics
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!btnRef.current) return;
+    const rect = btnRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const deltaX = (e.clientX - centerX) * 0.22;
+    const deltaY = (e.clientY - centerY) * 0.22;
+
+    setOffset({ x: deltaX, y: deltaY });
+  };
+
+  const handleMouseLeave = () => {
+    setOffset({ x: 0, y: 0 });
+  };
+
   const content = (
-    <div className="relative inline-flex items-center justify-center py-6 px-10 group cursor-pointer select-none">
+    <div
+      ref={btnRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      data-cursor="button"
+      className="relative inline-flex items-center justify-center py-6 px-10 group cursor-pointer select-none transition-transform duration-300 ease-out will-change-transform"
+      style={{
+        transform: `translate3d(${offset.x}px, ${offset.y}px, 0)`,
+      }}
+    >
       {/* Centered Uppercase Text with Rollover */}
       <div className="flex flex-col items-center justify-center text-center z-10">
         <div className="rollover-text">
-          <span className="rollover-main font-ui text-[11px] sm:text-[12px] uppercase font-medium tracking-[0.22em]">
+          <span className="rollover-main font-ui text-[11px] sm:text-[12px] uppercase font-medium tracking-[0.22em] text-[var(--text-primary)]">
             {line1}
           </span>
           <span className="rollover-clone font-ui text-[11px] sm:text-[12px] uppercase font-medium tracking-[0.22em] text-ember">
@@ -35,7 +64,7 @@ export function SketchedButton({
         </div>
         {line2 && (
           <div className="rollover-text mt-0.5">
-            <span className="rollover-main font-ui text-[10px] sm:text-[11px] uppercase font-normal tracking-[0.2em] opacity-70">
+            <span className="rollover-main font-ui text-[10px] sm:text-[11px] uppercase font-normal tracking-[0.2em] text-[var(--text-secondary)]">
               {line2}
             </span>
             <span className="rollover-clone font-ui text-[10px] sm:text-[11px] uppercase font-normal tracking-[0.2em] text-ember">
@@ -57,13 +86,13 @@ export function SketchedButton({
           <path
             stroke="currentColor"
             strokeWidth="1"
-            className="opacity-40 transition-opacity duration-300 group-hover:opacity-90"
+            className="opacity-40 transition-opacity duration-300 group-hover:opacity-90 text-[var(--text-primary)]"
             d="M33.28,24.27a186.31,186.31,0,0,1,119-11.69c6.43,1.51,13,3.51,17.87,8,6.14,5.65,8.51,14.67,7.25,22.91-1.54,10.09-8,19-16.11,25.16s-17.81,10-27.58,12.91a198.35,198.35,0,0,1-68.8,8c-14.06-.84-28.13-3.21-41.27-8.3C13.53,77.36,3.16,70.73.58,60.21-1.34,52.35,1.69,43.9,6.87,37.69S19.15,27.18,26.35,23.5C57.08,7.78,91.87,1.34,126.37,0"
           />
           {/* Accent drawing stroke on hover */}
           <path
             stroke="var(--color-ember, #B4461A)"
-            strokeWidth="1.25"
+            strokeWidth="1.35"
             strokeDasharray="400"
             strokeDashoffset="400"
             className="transition-all duration-700 ease-out group-hover:stroke-dashoffset-0 opacity-0 group-hover:opacity-100"
@@ -80,6 +109,7 @@ export function SketchedButton({
         href={href}
         target={target}
         rel={rel}
+        data-cursor="button"
         className={`inline-block ${className}`}
       >
         {content}
@@ -91,6 +121,7 @@ export function SketchedButton({
     <button
       type="button"
       onClick={onClick}
+      data-cursor="button"
       className={`inline-block bg-transparent border-0 p-0 ${className}`}
     >
       {content}
