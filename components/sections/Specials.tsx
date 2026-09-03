@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import { HairlineDivider } from "@/components/ui/HairlineDivider";
 import { SketchedButton } from "@/components/ui/SketchedButton";
+import { CinematicLightFrame } from "@/components/ui/CinematicLightFrame";
 
 export function Specials() {
   const [plate1, plate2, plate3, plate4] = specials;
@@ -40,7 +41,7 @@ export function Specials() {
               PLATE 01: HEROIC FEATURE MONOLITH (Cinematic Panoramic Presence)
               ================================================================= */}
           <article
-            className="group relative w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-6 sm:p-10 lg:p-12 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50"
+            className="group relative w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-6 sm:p-10 lg:p-12 backdrop-blur-sm transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-[var(--text-primary)]/40"
           >
             {/* Architectural Plaque Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-6 border-b border-[var(--border-hairline)] gap-2 select-none">
@@ -58,18 +59,16 @@ export function Specials() {
               </span>
             </div>
 
-            {/* Panoramic Visual Frame with 1800ms Hypnotic Lens Drift */}
-            <div
-              data-cursor="view"
-              className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-black/20"
+            {/* Panoramic Visual Frame with Living Cinematic Light Drift */}
+            <CinematicLightFrame
+              dataCursor="view"
+              className="w-full aspect-[16/9] sm:aspect-[21/9] bg-black/20"
             >
-              <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
-                <ImageSlot
-                  id={plate1.imageSlotId}
-                  sizes="(min-width: 1200px) 80vw, 100vw"
-                />
-              </div>
-            </div>
+              <ImageSlot
+                id={plate1.imageSlotId}
+                sizes="(min-width: 1200px) 80vw, 100vw"
+              />
+            </CinematicLightFrame>
 
             {/* Editorial Monolith Details */}
             <div className="mt-8 pt-6 border-t border-[var(--border-hairline)] flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -100,7 +99,7 @@ export function Specials() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-start w-full">
             
             {/* PLATE 02: Tall Florentine Arch Ratio (Fresh Fish Curry) */}
-            <article className="lg:col-span-6 group relative w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50">
+            <article className="lg:col-span-6 group relative w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-sm transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-[var(--text-primary)]/40">
               <div className="flex items-center justify-between pb-3 mb-5 border-b border-[var(--border-hairline)] select-none">
                 <span className="font-ui font-semibold text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
                   NO. 02 / FRESH FISH CURRY
@@ -110,18 +109,16 @@ export function Specials() {
                 </span>
               </div>
 
-              {/* Tall Arched Visual Window */}
-              <div
-                data-cursor="view"
-                className="relative w-full aspect-[4/5] overflow-hidden bg-black/20"
+              {/* Tall Arched Visual Window with Living Cinematic Light Drift */}
+              <CinematicLightFrame
+                dataCursor="view"
+                className="w-full aspect-[4/5] bg-black/20"
               >
-                <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
-                  <ImageSlot
-                    id={plate2.imageSlotId}
-                    sizes="(min-width: 1024px) 45vw, 100vw"
-                  />
-                </div>
-              </div>
+                <ImageSlot
+                  id={plate2.imageSlotId}
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                />
+              </CinematicLightFrame>
 
               <div className="mt-6 pt-4 border-t border-[var(--border-hairline)] flex items-baseline justify-between gap-4">
                 <h3 className="font-display font-light text-[22px] sm:text-[26px] uppercase tracking-[0.02em] text-[var(--text-primary)]">
@@ -138,7 +135,7 @@ export function Specials() {
             </article>
 
             {/* PLATE 03: Balanced Landscape Frame (Chepala Pulusu) */}
-            <article className="lg:col-span-6 group relative w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50">
+            <article className="lg:col-span-6 group relative w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-sm transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-[var(--text-primary)]/40">
               <div className="flex items-center justify-between pb-3 mb-5 border-b border-[var(--border-hairline)] select-none">
                 <span className="font-ui font-semibold text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
                   NO. 03 / HERITAGE SIMMER
@@ -148,28 +145,26 @@ export function Specials() {
                 </span>
               </div>
 
-              {/* Expansive Landscape Visual Window */}
-              <div
-                data-cursor="view"
-                className="relative w-full aspect-[4/5] sm:aspect-[16/11] overflow-hidden bg-black/20"
+              {/* Expansive Landscape Visual Window with Living Cinematic Light Drift */}
+              <CinematicLightFrame
+                dataCursor="view"
+                className="w-full aspect-[4/5] sm:aspect-[16/11] bg-black/20"
               >
-                <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
-                  {/* Art-Directed Mobile Portrait (4:5) */}
-                  <div className="sm:hidden w-full h-full">
-                    <ImageSlot
-                      id="special-3-portrait"
-                      sizes="100vw"
-                    />
-                  </div>
-                  {/* Art-Directed Desktop Wide (16:11) */}
-                  <div className="hidden sm:block w-full h-full">
-                    <ImageSlot
-                      id="special-3-wide"
-                      sizes="(min-width: 1024px) 45vw, 100vw"
-                    />
-                  </div>
+                {/* Art-Directed Mobile Portrait (4:5) */}
+                <div className="sm:hidden w-full h-full">
+                  <ImageSlot
+                    id="special-3-portrait"
+                    sizes="100vw"
+                  />
                 </div>
-              </div>
+                {/* Art-Directed Desktop Wide (16:11) */}
+                <div className="hidden sm:block w-full h-full">
+                  <ImageSlot
+                    id="special-3-wide"
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                  />
+                </div>
+              </CinematicLightFrame>
 
               <div className="mt-6 pt-4 border-t border-[var(--border-hairline)] flex items-baseline justify-between gap-4">
                 <h3 className="font-display font-light text-[22px] sm:text-[26px] uppercase tracking-[0.02em] text-[var(--text-primary)]">
@@ -191,7 +186,7 @@ export function Specials() {
               PLATE 04: GRAND ARTISANAL ANCHOR MONOLITH (Natu Kodi Pulusu)
               ================================================================= */}
           <article
-            className="group relative w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-6 sm:p-10 lg:p-12 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50"
+            className="group relative w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-6 sm:p-10 lg:p-12 backdrop-blur-sm transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-[var(--text-primary)]/40"
           >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-6 border-b border-[var(--border-hairline)] gap-2 select-none">
               <div className="flex items-center gap-3">
@@ -208,18 +203,16 @@ export function Specials() {
               </span>
             </div>
 
-            {/* Cinematic Frame */}
-            <div
-              data-cursor="view"
-              className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-black/20"
+            {/* Cinematic Frame with Living Cinematic Light Drift */}
+            <CinematicLightFrame
+              dataCursor="view"
+              className="w-full aspect-[16/9] sm:aspect-[21/9] bg-black/20"
             >
-              <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
-                <ImageSlot
-                  id={plate4.imageSlotId}
-                  sizes="(min-width: 1200px) 80vw, 100vw"
-                />
-              </div>
-            </div>
+              <ImageSlot
+                id={plate4.imageSlotId}
+                sizes="(min-width: 1200px) 80vw, 100vw"
+              />
+            </CinematicLightFrame>
 
             <div className="mt-8 pt-6 border-t border-[var(--border-hairline)] flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div className="max-w-xl">

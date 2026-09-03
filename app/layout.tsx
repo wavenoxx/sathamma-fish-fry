@@ -89,6 +89,44 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Media-Aware High-Priority Hero Preloads: Prevents dual-asset network fetching */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero-mobile.png"
+          media="(max-width: 639px)"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero-desktop.png"
+          media="(min-width: 640px)"
+          fetchPriority="high"
+        />
+
+        {/* Early session-check script: Prevents one-frame cream flash on same-session revisits */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (sessionStorage.getItem('sathamma-intro-seen-v1')) {
+                  document.documentElement.classList.add('intro-seen');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              html.intro-seen #intro-portal-container {
+                display: none !important;
+              }
+            `,
+          }}
+        />
+
         <script
           dangerouslySetInnerHTML={{
             __html: `

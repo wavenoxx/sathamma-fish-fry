@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import { HairlineDivider } from "@/components/ui/HairlineDivider";
 import { SketchedButton } from "@/components/ui/SketchedButton";
+import { CinematicLightFrame } from "@/components/ui/CinematicLightFrame";
 
 export function About() {
   return (
@@ -36,16 +37,14 @@ export function About() {
           <div className="lg:col-span-6 w-full">
             <div
               data-cursor="view"
-              className="group relative w-full aspect-[4/5] border border-[var(--border-hairline)] bg-[var(--card-bg)] p-4 sm:p-6 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50 cursor-pointer"
+              className="group relative w-full aspect-[4/5] border border-[var(--border-hairline)] bg-[var(--card-bg)] p-4 sm:p-6 backdrop-blur-sm transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-[var(--text-primary)]/40 cursor-pointer"
             >
-              <div className="relative w-full h-full overflow-hidden bg-black/20">
-                <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
-                  <ImageSlot
-                    id="about-portrait"
-                    sizes="(min-width: 1024px) 45vw, 100vw"
-                  />
-                </div>
-              </div>
+              <CinematicLightFrame className="w-full h-full bg-black/20">
+                <ImageSlot
+                  id="about-portrait"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                />
+              </CinematicLightFrame>
             </div>
           </div>
 
@@ -80,19 +79,17 @@ export function About() {
           </div>
         </div>
 
-        {/* Wide Architectural River Landscape Monograph */}
+        {/* Wide Architectural River Landscape Monograph with Living Cinematic Light Drift */}
         <div
           data-cursor="view"
-          className="group w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-4 sm:p-6 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50 cursor-pointer"
+          className="group w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-4 sm:p-6 backdrop-blur-sm transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-[var(--text-primary)]/40 cursor-pointer"
         >
-          <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-black/20">
-            <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
-              <ImageSlot
-                id="about-wide"
-                sizes="(min-width: 1024px) 80vw, 100vw"
-              />
-            </div>
-          </div>
+          <CinematicLightFrame className="w-full aspect-[16/9] sm:aspect-[21/9] bg-black/20">
+            <ImageSlot
+              id="about-wide"
+              sizes="(min-width: 1024px) 80vw, 100vw"
+            />
+          </CinematicLightFrame>
           <div className="mt-3 flex items-center justify-between font-ui text-[9px] uppercase tracking-[0.22em] text-[var(--text-secondary)] select-none">
             <span>THE KRISHNA RIVER EDGE · NEAR VIZAG COLONY</span>
             <span>SOURCE OF FRESH RIVER CATCH</span>

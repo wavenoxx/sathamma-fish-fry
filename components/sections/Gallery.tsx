@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import { HairlineDivider } from "@/components/ui/HairlineDivider";
 import { SketchedButton } from "@/components/ui/SketchedButton";
+import { CinematicLightFrame } from "@/components/ui/CinematicLightFrame";
 
 const galleryItems = [
   {
@@ -94,7 +95,7 @@ export function Gallery() {
             <div
               data-cursor="view"
               onClick={() => setActivePlate(item1)}
-              className="lg:col-span-7 group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-5 sm:p-7 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50 cursor-pointer"
+              className="lg:col-span-7 group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-5 sm:p-7 backdrop-blur-sm transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-[var(--text-primary)]/40 cursor-pointer"
             >
               <div className="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border-hairline)] select-none">
                 <span className="font-ui font-semibold text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
@@ -104,11 +105,9 @@ export function Gallery() {
                   DAWN CATCH
                 </span>
               </div>
-              <div className="relative w-full aspect-[16/10] overflow-hidden bg-black/20">
-                <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
-                  <ImageSlot id={item1.id} sizes={item1.sizes} />
-                </div>
-              </div>
+              <CinematicLightFrame className="w-full aspect-[16/10] bg-black/20">
+                <ImageSlot id={item1.id} sizes={item1.sizes} />
+              </CinematicLightFrame>
               <div className="mt-4 pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between font-ui text-[10px] uppercase tracking-[0.2em] text-[var(--text-secondary)]">
                 <span>{item1.title}</span>
                 <span className="text-ember font-medium opacity-0 group-hover:opacity-100 transition-opacity">INSPECT ↗</span>
@@ -119,7 +118,7 @@ export function Gallery() {
             <div
               data-cursor="view"
               onClick={() => setActivePlate(item2)}
-              className="lg:col-span-5 group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-5 sm:p-7 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50 cursor-pointer"
+              className="lg:col-span-5 group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-5 sm:p-7 backdrop-blur-sm transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-[var(--text-primary)]/40 cursor-pointer"
             >
               <div className="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border-hairline)] select-none">
                 <span className="font-ui font-semibold text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
@@ -129,11 +128,9 @@ export function Gallery() {
                   KITCHEN FIRE
                 </span>
               </div>
-              <div className="relative w-full aspect-[4/5] overflow-hidden bg-black/20">
-                <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
-                  <ImageSlot id={item2.id} sizes={item2.sizes} />
-                </div>
-              </div>
+              <CinematicLightFrame className="w-full aspect-[4/5] bg-black/20">
+                <ImageSlot id={item2.id} sizes={item2.sizes} />
+              </CinematicLightFrame>
               <div className="mt-4 pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between font-ui text-[10px] uppercase tracking-[0.2em] text-[var(--text-secondary)]">
                 <span>{item2.title}</span>
                 <span className="text-ember font-medium opacity-0 group-hover:opacity-100 transition-opacity">INSPECT ↗</span>
@@ -149,7 +146,7 @@ export function Gallery() {
                 key={item.id}
                 data-cursor="view"
                 onClick={() => setActivePlate(item)}
-                className="group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-5 sm:p-6 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50 cursor-pointer"
+                className="group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-5 sm:p-6 backdrop-blur-sm transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-[var(--text-primary)]/40 cursor-pointer"
               >
                 <div className="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border-hairline)] select-none">
                   <span className="font-ui font-semibold text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
@@ -159,11 +156,9 @@ export function Gallery() {
                     {item.tag}
                   </span>
                 </div>
-                <div className="relative w-full aspect-[4/5] overflow-hidden bg-black/20">
-                  <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
-                    <ImageSlot id={item.id} sizes={item.sizes} />
-                  </div>
-                </div>
+                <CinematicLightFrame className="w-full aspect-[4/5] bg-black/20">
+                  <ImageSlot id={item.id} sizes={item.sizes} />
+                </CinematicLightFrame>
                 <div className="mt-4 pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between font-ui text-[10px] uppercase tracking-[0.2em] text-[var(--text-secondary)]">
                   <span>{item.title}</span>
                   <span className="text-ember font-medium opacity-0 group-hover:opacity-100 transition-opacity">INSPECT ↗</span>
@@ -177,7 +172,7 @@ export function Gallery() {
           <div
             data-cursor="view"
             onClick={() => setActivePlate(item6)}
-            className="group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50 cursor-pointer"
+            className="group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-sm transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-[var(--text-primary)]/40 cursor-pointer"
           >
             <div className="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border-hairline)] select-none">
               <span className="font-ui font-semibold text-[9px] uppercase tracking-[0.24em] text-ember">
@@ -187,11 +182,9 @@ export function Gallery() {
                 VIZAG COLONY RESERVOIR
               </span>
             </div>
-            <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-black/20">
-              <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
-                <ImageSlot id={item6.id} sizes={item6.sizes} />
-              </div>
-            </div>
+            <CinematicLightFrame className="w-full aspect-[16/9] sm:aspect-[21/9] bg-black/20">
+              <ImageSlot id={item6.id} sizes={item6.sizes} />
+            </CinematicLightFrame>
             <div className="mt-4 pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between font-ui text-[10px] uppercase tracking-[0.2em] text-[var(--text-secondary)]">
               <span>{item6.title} · SUNSET DOCKING POINT</span>
               <span className="text-ember font-medium opacity-0 group-hover:opacity-100 transition-opacity">INSPECT ↗</span>

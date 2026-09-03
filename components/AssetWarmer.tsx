@@ -9,7 +9,10 @@ export function AssetWarmer() {
     if (typeof window === "undefined") return;
 
     const warmAssets = () => {
-      const urls = Object.values(imageSlots).map((slot) => slot.file);
+      // Exclude hero images since hero is already mounted above the fold with media-aware loading
+      const urls = Object.values(imageSlots)
+        .filter((slot) => !slot.id.startsWith("hero-"))
+        .map((slot) => slot.file);
       urls.forEach((url) => {
         const img = new window.Image();
         img.decoding = "async";

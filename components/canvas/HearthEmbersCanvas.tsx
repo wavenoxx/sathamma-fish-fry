@@ -126,11 +126,18 @@ export function HearthEmbersCanvas() {
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("resize", handleResize, { passive: true });
 
-    // 5. 120 FPS Render Loop
-    let animId: number;
+    // 5. Lifecycle-Aware Render Loop (Pauses off-screen & on hidden tab)
+    let animId: number | null = null;
     let clock = new THREE.Clock();
+    let isIntersecting = true;
+    let isDocumentVisible = typeof document !== "undefined" ? document.visibilityState === "visible" : true;
 
     const render = () => {
+      if (!isIntersecting || !isDocumentVisible) {
+        animId = null;
+        return;
+      }
+
       const delta = clock.getDelta();
 
       // Camera silky lerp for 3D parallax depth
@@ -158,20 +165,60 @@ export function HearthEmbersCanvas() {
       // Subtle rotation
       particles.rotation.y = clock.elapsedTime * 0.02;
 
-      renderer.render(scene, camera);
+      renderer?.render(scene, camera);
       animId = requestAnimationFrame(render);
     };
 
+    const resumeRendering = () => {
+      if (!animId && isIntersecting && isDocumentVisible) {
+        clock.start();
+        animId = requestAnimationFrame(render);
+      }
+    };
+
+    // Pause when tab is inactive
+    const handleVisibilityChange = () => {
+      isDocumentVisible = document.visibilityState === "visible";
+      if (isDocumentVisible) {
+        resumeRendering();
+      } else if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    // Pause when scrolled past hero section
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isIntersecting = entry.isIntersecting;
+        if (isIntersecting) {
+          resumeRendering();
+        } else if (animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(canvas);
+
+    // Start render loop
     animId = requestAnimationFrame(render);
 
     return () => {
-      cancelAnimationFrame(animId);
+      if (animId) cancelAnimationFrame(animId);
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
       geometry.dispose();
       material.dispose();
       particleTexture.dispose();
-      renderer?.dispose();
+      if (renderer) {
+        renderer.dispose();
+        renderer.forceContextLoss();
+      }
     };
   }, []);
 

@@ -8,6 +8,7 @@ import { useIntro } from "@/context/IntroContext";
 export function IntroPortalReveal() {
   const pathname = usePathname();
   const { isIntroFinished, finishIntro } = useIntro();
+  const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const portalCircleRef = useRef<SVGEllipseElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -21,20 +22,34 @@ export function IntroPortalReveal() {
 
     if (isIntroFinished) return;
 
+    // Accessibility: Instant finish for reduced motion
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      finishIntro();
+      return;
+    }
+
+    const container = containerRef.current;
     const ellipse = portalCircleRef.current;
     const text = textRef.current;
     const svg = svgRef.current;
-    if (!ellipse || !text || !svg) return;
+    if (!container || !ellipse || !text || !svg) return;
 
-    // Initial state: Start cutout collapsed at bottom center (100% solid cream cover)
+    // Initial state: Cutout collapsed at bottom center (100% solid cream cover)
     gsap.set(ellipse, {
       attr: { cx: 500, cy: 1000, rx: 0, ry: 0 },
     });
     gsap.set(text, {
       opacity: 0,
-      y: 12,
+      y: 10,
+    });
+    gsap.set(container, {
+      opacity: 1,
     });
 
+    // SIGNATURE OVERLAPPING REVEAL CHOREOGRAPHY (Total elapsed: ~1.22s)
     const tl = gsap.timeline({
       onComplete: () => {
         finishIntro();
@@ -42,43 +57,52 @@ export function IntroPortalReveal() {
     });
     timelineRef.current = tl;
 
-    // Step 1: Preloader Typography (Crisp serif centered on solid cream)
-    tl.to(text, {
-      opacity: 1,
-      y: 0,
-      duration: 0.7,
-      ease: "power2.out",
-    })
-      .to(text, {
+    // Phase 1: Typography resolves rapidly and elegantly (0.04s -> 0.28s)
+    tl.to(
+      text,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.24,
+        ease: "power2.out",
+      },
+      0.04
+    );
+
+    // Phase 2: Portal reveal starts expanding ALREADY at 0.20s without waiting for typography
+    // Expands past viewport edges with museum architectural aperture easing
+    tl.to(
+      ellipse,
+      {
+        attr: { cy: 500, rx: 450, ry: 410 },
+        duration: 0.85,
+        ease: "cubic-bezier(0.16, 1, 0.3, 1)",
+      },
+      0.20
+    );
+
+    // Phase 3: Typography dissolves cleanly while portal is actively expanding (0.32s -> 0.62s)
+    tl.to(
+      text,
+      {
         opacity: 0,
-        y: -16,
-        duration: 0.5,
+        y: -10,
+        duration: 0.30,
         ease: "power2.in",
-        delay: 0.5, // Elegant unhurried hold
-      })
+      },
+      0.32
+    );
 
-      // Step 2 & 3: GPU-Accelerated Portal Expansion Transition
-      // SVG geometry interpolation directly in Blink/WebKit engine (ZERO string recalculations)
-      .to(
-        ellipse,
-        {
-          attr: { cy: 500, rx: 340, ry: 310 },
-          duration: 1.2,
-          ease: "expo.inOut",
-        },
-        "-=0.15"
-      )
-
-      // Step 4 Settle & Fade Out: Smoothly fades out the overlay, revealing the full site
-      .to(
-        svg,
-        {
-          opacity: 0,
-          duration: 0.6,
-          ease: "power2.out",
-        },
-        "+=0.1"
-      );
+    // Phase 4: Settle & overlay fadeout (0.94s -> 1.22s)
+    tl.to(
+      container,
+      {
+        opacity: 0,
+        duration: 0.28,
+        ease: "power2.out",
+      },
+      0.94
+    );
 
     return () => {
       tl.kill();
@@ -89,25 +113,27 @@ export function IntroPortalReveal() {
 
   return (
     <div
+      id="intro-portal-container"
+      ref={containerRef}
       onClick={() => {
         if (timelineRef.current) timelineRef.current.progress(1);
       }}
-      className="fixed inset-0 z-[90] pointer-events-auto select-none cursor-pointer"
-      aria-label="Intro Portal Reveal"
+      className="intro-portal-overlay fixed inset-0 z-[90] pointer-events-auto select-none cursor-pointer will-change-[opacity]"
+      aria-label="Intro Portal Reveal (click to enter)"
     >
-      {/* 100% Native SVG Mask Layer (Butter-Smooth 120 FPS Native Geometry) */}
+      {/* 100% Native SVG Mask Layer */}
       <svg
         ref={svgRef}
-        className="fixed inset-0 w-full h-full pointer-events-none will-change-[opacity]"
+        className="fixed inset-0 w-full h-full pointer-events-none"
         viewBox="0 0 1000 1000"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
           <mask id="portal-svg-mask">
-            {/* White covers entire viewport (renders solid cream) */}
+            {/* White covers entire viewport (solid cream) */}
             <rect width="1000" height="1000" fill="white" />
-            {/* Black cutout creates the transparent window revealing the hero underneath */}
+            {/* Black cutout creates the transparent window revealing the hero */}
             <ellipse
               ref={portalCircleRef}
               cx="500"
@@ -119,7 +145,7 @@ export function IntroPortalReveal() {
           </mask>
         </defs>
 
-        {/* The Cream Overlay layer cut out by the mask */}
+        {/* The Cream Overlay cut out by the mask */}
         <rect
           width="1000"
           height="1000"
@@ -128,7 +154,7 @@ export function IntroPortalReveal() {
         />
       </svg>
 
-      {/* Step 1 Typography: Minimalist Centered Serif Preloader */}
+      {/* Centered Serif Preloader Typography */}
       <div
         ref={textRef}
         className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none z-10"
