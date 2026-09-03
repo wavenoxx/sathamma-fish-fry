@@ -1,16 +1,23 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { useIntro } from "@/context/IntroContext";
 
 export function IntroPortalReveal() {
+  const pathname = usePathname();
   const { isIntroFinished, finishIntro } = useIntro();
   const overlayRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
+    if (pathname !== "/") {
+      finishIntro();
+      return;
+    }
+
     if (isIntroFinished) return;
 
     const overlay = overlayRef.current;
@@ -84,9 +91,9 @@ export function IntroPortalReveal() {
     return () => {
       tl.kill();
     };
-  }, [isIntroFinished, finishIntro]);
+  }, [isIntroFinished, finishIntro, pathname]);
 
-  if (isIntroFinished) return null;
+  if (isIntroFinished || pathname !== "/") return null;
 
   return (
     <div

@@ -1,23 +1,29 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { restaurant } from "@/data/restaurant";
 import { useTheme } from "@/context/ThemeContext";
 import { useIntro } from "@/context/IntroContext";
 
 const navItems = [
-  { label: "SPECIALITIES", href: "#specials", sub: "SIGNATURE RIVER CATCH" },
-  { label: "MENU", href: "#menu", sub: "DAILY WOODFIRE HEARTH" },
-  { label: "OUR STORY", href: "#about", sub: "DEVARAKONDA SINCE 1998" },
-  { label: "THE ARCHIVES", href: "#gallery", sub: "PHOTOGRAPHIC MONOGRAPH" },
-  { label: "THE DESTINATION", href: "#visit", sub: "VIZAG COLONY & DIRECTIONS" },
+  { label: "SPECIALITIES", href: "/#specials", sub: "SIGNATURE RIVER CATCH" },
+  { label: "MENU", href: "/#menu", sub: "DAILY WOODFIRE HEARTH" },
+  { label: "OUR STORY", href: "/#about", sub: "DEVARAKONDA SINCE 1998" },
+  { label: "THE ARCHIVES", href: "/#gallery", sub: "PHOTOGRAPHIC MONOGRAPH" },
+  { label: "THE DESTINATION", href: "/#visit", sub: "VIZAG COLONY & DIRECTIONS" },
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const { theme, toggleTheme, isMenuOpen, setIsMenuOpen } = useTheme();
   const { isIntroFinished } = useIntro();
   const [isScrolled, setIsScrolled] = useState(false);
   const [timeString, setTimeString] = useState<string>("");
+
+  const isHeaderVisible = isIntroFinished || pathname !== "/";
+  const isHomeTransparent = pathname === "/" && !isScrolled;
 
   useEffect(() => {
     const updateTime = () => {
@@ -57,17 +63,17 @@ export function Header() {
       {/* 1. TOP UTILITY BAR (Patrizia Garganti Top Bar with Live Hearth Clock) */}
       <div
         className={`fixed top-0 left-0 right-0 z-50 h-[32px] md:h-[36px] px-4 sm:px-8 flex items-center justify-between font-ui text-[9px] sm:text-[10px] uppercase tracking-[0.22em] select-none transition-all duration-700 ease-out ${
-          isIntroFinished
+          isHeaderVisible
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
         } ${
-          isScrolled
-            ? "bg-[var(--bg-page)] border-b border-[var(--border-hairline)] text-[var(--text-secondary)]"
-            : "bg-transparent border-b border-white/10 text-white/80"
+          isHomeTransparent
+            ? "bg-transparent border-b border-white/10 text-white/80"
+            : "bg-[var(--bg-page)] border-b border-[var(--border-hairline)] text-[var(--text-secondary)]"
         }`}
       >
         <div className="flex items-center gap-2 sm:gap-3 truncate">
-          <span className={`font-medium ${isScrolled ? "text-[var(--text-primary)]" : "text-white"}`}>
+          <span className={`font-medium ${isHomeTransparent ? "text-white" : "text-[var(--text-primary)]"}`}>
             RESERVATIONS & ORDERS
           </span>
           <span className="hidden sm:inline-block opacity-40">/</span>
@@ -83,7 +89,7 @@ export function Header() {
           href={`tel:${restaurant.phone}`}
           data-cursor="button"
           className={`hover:opacity-80 transition-opacity shrink-0 flex items-center gap-2 ${
-            isScrolled ? "text-[var(--text-primary)]" : "text-white"
+            isHomeTransparent ? "text-white" : "text-[var(--text-primary)]"
           }`}
         >
           <span>TEL: {restaurant.phoneDisplay}</span>
@@ -93,13 +99,13 @@ export function Header() {
       {/* 2. MAIN STICKY FLORENTINE HEADER */}
       <header
         className={`fixed top-[32px] md:top-[36px] left-0 right-0 z-40 h-[64px] md:h-[72px] px-4 sm:px-8 flex items-center justify-between transition-all duration-700 ease-out ${
-          isIntroFinished
+          isHeaderVisible
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-3 pointer-events-none"
         } ${
-          isScrolled
-            ? "bg-[var(--header-bg)] backdrop-blur-md border-b border-[var(--border-hairline)] shadow-sm text-[var(--text-primary)]"
-            : "bg-transparent border-b border-white/10 text-white"
+          isHomeTransparent
+            ? "bg-transparent border-b border-white/10 text-white"
+            : "bg-[var(--header-bg)] backdrop-blur-md border-b border-[var(--border-hairline)] shadow-sm text-[var(--text-primary)]"
         }`}
       >
         {/* Left: Double Hairline Hamburger + MENU */}
@@ -121,8 +127,8 @@ export function Header() {
         </button>
 
         {/* Center: Monogram Crest & Hairline Bridge */}
-        <a
-          href="#hero"
+        <Link
+          href="/"
           data-cursor="button"
           className="flex flex-col items-center justify-center text-center select-none group"
         >
@@ -132,16 +138,16 @@ export function Header() {
             </span>
           </div>
           <span className={`font-ui text-[8px] md:text-[9px] uppercase tracking-[0.28em] mt-1 ${
-            isScrolled ? "text-[var(--text-secondary)]" : "text-white/70"
+            isHomeTransparent ? "text-white/70" : "text-[var(--text-secondary)]"
           }`}>
             DEVARAKONDA 1998
           </span>
-        </a>
+        </Link>
 
         {/* Right: The Patrizia Garganti Light Switch Toggle */}
         <div className="flex items-center gap-2 select-none">
           <span className={`hidden sm:inline-block font-ui text-[9px] uppercase tracking-[0.2em] ${
-            isScrolled ? "text-[var(--text-secondary)]" : "text-white/70"
+            isHomeTransparent ? "text-white/70" : "text-[var(--text-secondary)]"
           }`}>
             HEARTH
           </span>
@@ -151,9 +157,9 @@ export function Header() {
             data-cursor="button"
             onClick={toggleTheme}
             className={`flex items-center gap-2 py-1.5 px-2.5 rounded-full border bg-transparent transition-all duration-300 cursor-pointer text-current focus-visible:outline-none ${
-              isScrolled
-                ? "border-[var(--border-hairline)] hover:border-[var(--text-primary)]"
-                : "border-white/20 hover:border-white"
+              isHomeTransparent
+                ? "border-white/20 hover:border-white"
+                : "border-[var(--border-hairline)] hover:border-[var(--text-primary)]"
             }`}
             aria-label="Toggle Light / Dark Ambient Hearth"
           >
@@ -239,8 +245,43 @@ export function Header() {
             ))}
           </nav>
 
+          {/* Drawer Institutional Charter Links */}
+          <div className="w-full py-4 border-t border-[var(--border-hairline)] flex items-center justify-center gap-4 sm:gap-6 font-ui text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)] select-none">
+            <Link
+              href="/faq"
+              onClick={() => setIsMenuOpen(false)}
+              className="hover:text-[var(--text-primary)] transition-colors"
+            >
+              FAQ
+            </Link>
+            <span className="opacity-30">/</span>
+            <Link
+              href="/terms"
+              onClick={() => setIsMenuOpen(false)}
+              className="hover:text-[var(--text-primary)] transition-colors"
+            >
+              TERMS
+            </Link>
+            <span className="opacity-30">/</span>
+            <Link
+              href="/privacy"
+              onClick={() => setIsMenuOpen(false)}
+              className="hover:text-[var(--text-primary)] transition-colors"
+            >
+              PRIVACY
+            </Link>
+            <span className="opacity-30">/</span>
+            <Link
+              href="/directory"
+              onClick={() => setIsMenuOpen(false)}
+              className="hover:text-[var(--text-primary)] transition-colors"
+            >
+              DIRECTORY
+            </Link>
+          </div>
+
           {/* Drawer Bottom Coordinates & Direct Call */}
-          <div className="w-full pt-8 border-t border-[var(--border-hairline)] flex flex-col sm:flex-row items-center justify-between gap-4 font-ui text-[10px] uppercase tracking-[0.22em] text-[var(--text-secondary)] select-none">
+          <div className="w-full pt-4 border-t border-[var(--border-hairline)] flex flex-col sm:flex-row items-center justify-between gap-4 font-ui text-[10px] uppercase tracking-[0.22em] text-[var(--text-secondary)] select-none">
             <span>DEVARAKONDA · VIZAG COLONY · 16°42′ N</span>
             <a
               href={`tel:${restaurant.phone}`}

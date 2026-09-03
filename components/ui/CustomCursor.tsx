@@ -1,12 +1,15 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useIntro } from "@/context/IntroContext";
 
 type CursorMode = "default" | "button" | "drag" | "view";
 
 export function CustomCursor() {
+  const pathname = usePathname();
   const { isIntroFinished } = useIntro();
+  const isCursorVisible = isIntroFinished || pathname !== "/";
   const [isVisible, setIsVisible] = useState(false);
   const [mode, setMode] = useState<CursorMode>("default");
 
@@ -99,7 +102,7 @@ export function CustomCursor() {
     <div
       ref={cursorRef}
       className={`fixed top-0 left-0 z-[100] pointer-events-none mix-blend-difference will-change-transform hidden md:block transition-opacity duration-800 ease-out ${
-        isIntroFinished ? "opacity-100" : "opacity-0"
+        isCursorVisible ? "opacity-100" : "opacity-0"
       }`}
       style={{ transform: "translate3d(-100px, -100px, 0)" }}
     >
