@@ -13,7 +13,7 @@ const galleryItems = [
     tag: "RIVER CATCH",
     title: "Fresh River Fish",
     desc: "Sourced each dawn from the Krishna river backwaters, cleaned with turmeric and rock salt.",
-    sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
+    sizes: "(min-width: 1024px) 60vw, 100vw",
   },
   {
     id: "gallery-2",
@@ -21,7 +21,7 @@ const galleryItems = [
     tag: "WOODFIRE HEARTH",
     title: "The Woodfire Hearth",
     desc: "Open firewood stove maintained continuously since 1998, giving food its authentic aroma.",
-    sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
+    sizes: "(min-width: 1024px) 40vw, 100vw",
   },
   {
     id: "gallery-3",
@@ -29,7 +29,7 @@ const galleryItems = [
     tag: "STONE MORTAR",
     title: "Stone Mortar Spices",
     desc: "Dry red chilies, coriander seeds, garlic, and ginger crushed fresh by hand for each order.",
-    sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
+    sizes: "(min-width: 1024px) 33vw, 100vw",
   },
   {
     id: "gallery-4",
@@ -37,7 +37,7 @@ const galleryItems = [
     tag: "CLAY VESSELS",
     title: "Simmering Clay Pots",
     desc: "Traditional earthenware pots used for Chepala Pulusu to infuse natural earthen sweetness.",
-    sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
+    sizes: "(min-width: 1024px) 33vw, 100vw",
   },
   {
     id: "gallery-5",
@@ -45,7 +45,7 @@ const galleryItems = [
     tag: "BRASS SERVICE",
     title: "Brass Service",
     desc: "Hot fish served straight from the fire onto traditional plates with fresh lime and onions.",
-    sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
+    sizes: "(min-width: 1024px) 33vw, 100vw",
   },
   {
     id: "gallery-6",
@@ -53,18 +53,20 @@ const galleryItems = [
     tag: "TWILIGHT WATERS",
     title: "Krishna Backwaters",
     desc: "The tranquil reservoir at Vizag Colony, where the boats dock every evening at sunset.",
-    sizes: "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw",
+    sizes: "(min-width: 1200px) 85vw, 100vw",
   },
 ];
 
 export function Gallery() {
   const [activePlate, setActivePlate] = useState<(typeof galleryItems)[0] | null>(null);
 
+  const [item1, item2, item3, item4, item5, item6] = galleryItems;
+
   return (
     <section
       id="gallery"
       aria-label="Gallery"
-      className="relative w-full pb-20 md:pb-32 flex flex-col items-center"
+      className="relative w-full pb-24 md:pb-36 flex flex-col items-center"
     >
       {/* Hairline Divider */}
       <HairlineDivider
@@ -83,43 +85,123 @@ export function Gallery() {
           </p>
         </div>
 
-        {/* 3-Column Architectural Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 items-start w-full">
-          {galleryItems.map((item) => (
+        {/* ARCHITECTURAL EXHIBITION LAYOUT */}
+        <div className="flex flex-col space-y-10 md:space-y-14 w-full">
+          
+          {/* TIER 1: ASYMMETRICAL DUO (Wide River Catch Panorama + Tall Hearth Window) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch w-full">
+            {/* Plate 01: Panorama (7 cols) */}
             <div
-              key={item.id}
               data-cursor="view"
-              onClick={() => setActivePlate(item)}
-              className="group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-5 rounded-[2px] backdrop-blur-sm transition-all duration-500 hover:border-[var(--text-primary)] cursor-pointer"
+              onClick={() => setActivePlate(item1)}
+              className="lg:col-span-7 group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-5 sm:p-7 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50 cursor-pointer"
             >
-              {/* Monograph Plate Header */}
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-[var(--border-hairline)] select-none">
-                <span className="font-ui font-medium text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
-                  {item.label}
+              <div className="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border-hairline)] select-none">
+                <span className="font-ui font-semibold text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
+                  {item1.label} / {item1.tag}
                 </span>
-                <span className="font-ui font-medium text-[9px] uppercase tracking-[0.22em] text-[var(--text-secondary)] opacity-80">
-                  {item.tag}
+                <span className="font-ui text-[8px] uppercase tracking-[0.2em] text-[var(--text-secondary)] opacity-60">
+                  DAWN CATCH
                 </span>
               </div>
-
-              {/* Image Frame */}
-              <div className="relative w-full aspect-[4/5] overflow-hidden bg-black/20">
-                <div className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105">
-                  <ImageSlot id={item.id} sizes={item.sizes} />
+              <div className="relative w-full aspect-[16/10] overflow-hidden bg-black/20">
+                <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
+                  <ImageSlot id={item1.id} sizes={item1.sizes} />
                 </div>
               </div>
-
-              {/* Plate Footer Note */}
               <div className="mt-4 pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between font-ui text-[10px] uppercase tracking-[0.2em] text-[var(--text-secondary)]">
-                <span>{item.title}</span>
-                <span className="text-ember opacity-0 group-hover:opacity-100 transition-opacity">INSPECT ↗</span>
+                <span>{item1.title}</span>
+                <span className="text-ember font-medium opacity-0 group-hover:opacity-100 transition-opacity">INSPECT ↗</span>
               </div>
             </div>
-          ))}
+
+            {/* Plate 02: Tall Hearth Monograph (5 cols) */}
+            <div
+              data-cursor="view"
+              onClick={() => setActivePlate(item2)}
+              className="lg:col-span-5 group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-5 sm:p-7 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50 cursor-pointer"
+            >
+              <div className="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border-hairline)] select-none">
+                <span className="font-ui font-semibold text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
+                  {item2.label} / {item2.tag}
+                </span>
+                <span className="font-ui text-[8px] uppercase tracking-[0.2em] text-[var(--text-secondary)] opacity-60">
+                  OPEN HEARTH
+                </span>
+              </div>
+              <div className="relative w-full aspect-[4/5] overflow-hidden bg-black/20">
+                <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
+                  <ImageSlot id={item2.id} sizes={item2.sizes} />
+                </div>
+              </div>
+              <div className="mt-4 pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between font-ui text-[10px] uppercase tracking-[0.2em] text-[var(--text-secondary)]">
+                <span>{item2.title}</span>
+                <span className="text-ember font-medium opacity-0 group-hover:opacity-100 transition-opacity">INSPECT ↗</span>
+              </div>
+            </div>
+          </div>
+
+
+          {/* TIER 2: MUSEUM TRIPTYCH (Stone Mortar, Clay Pots, Brass Service) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 items-stretch w-full">
+            {[item3, item4, item5].map((item) => (
+              <div
+                key={item.id}
+                data-cursor="view"
+                onClick={() => setActivePlate(item)}
+                className="group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-5 sm:p-6 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50 cursor-pointer"
+              >
+                <div className="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border-hairline)] select-none">
+                  <span className="font-ui font-semibold text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
+                    {item.label}
+                  </span>
+                  <span className="font-ui text-[8px] uppercase tracking-[0.2em] text-[var(--text-secondary)] opacity-70">
+                    {item.tag}
+                  </span>
+                </div>
+                <div className="relative w-full aspect-[4/5] overflow-hidden bg-black/20">
+                  <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
+                    <ImageSlot id={item.id} sizes={item.sizes} />
+                  </div>
+                </div>
+                <div className="mt-4 pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between font-ui text-[10px] uppercase tracking-[0.2em] text-[var(--text-secondary)]">
+                  <span>{item.title}</span>
+                  <span className="text-ember font-medium opacity-0 group-hover:opacity-100 transition-opacity">INSPECT ↗</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+
+          {/* TIER 3: GRAND PANORAMA MONOLITH (Krishna Twilight Backwaters) */}
+          <div
+            data-cursor="view"
+            onClick={() => setActivePlate(item6)}
+            className="group flex flex-col w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50 cursor-pointer"
+          >
+            <div className="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border-hairline)] select-none">
+              <span className="font-ui font-semibold text-[9px] uppercase tracking-[0.24em] text-ember">
+                {item6.label} / {item6.tag}
+              </span>
+              <span className="font-ui text-[8px] uppercase tracking-[0.2em] text-[var(--text-secondary)] opacity-60">
+                VIZAG COLONY RESERVOIR
+              </span>
+            </div>
+            <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-black/20">
+              <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
+                <ImageSlot id={item6.id} sizes={item6.sizes} />
+              </div>
+            </div>
+            <div className="mt-4 pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between font-ui text-[10px] uppercase tracking-[0.2em] text-[var(--text-secondary)]">
+              <span>{item6.title} · SUNSET DOCKING POINT</span>
+              <span className="text-ember font-medium opacity-0 group-hover:opacity-100 transition-opacity">INSPECT ↗</span>
+            </div>
+          </div>
+
         </div>
 
         {/* Sketched Button */}
-        <div className="mt-16 md:mt-24 flex justify-center">
+        <div className="mt-20 md:mt-28 flex justify-center">
           <SketchedButton
             line1="VISIT THE SANCTUARY"
             line2="DEVARAKONDA · VIZAG COLONY"

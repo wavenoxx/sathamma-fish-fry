@@ -34,12 +34,17 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center w-full mb-16 md:mb-24">
           {/* Left: Framed Portrait / Hearth Image */}
           <div className="lg:col-span-6 w-full">
-            <div className="relative w-full aspect-[4/5] border border-[var(--border-hairline)] bg-[var(--card-bg)] p-4 sm:p-6 backdrop-blur-sm">
+            <div
+              data-cursor="view"
+              className="group relative w-full aspect-[4/5] border border-[var(--border-hairline)] bg-[var(--card-bg)] p-4 sm:p-6 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50 cursor-pointer"
+            >
               <div className="relative w-full h-full overflow-hidden bg-black/20">
-                <ImageSlot
-                  id="about-portrait"
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                />
+                <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
+                  <ImageSlot
+                    id="about-portrait"
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -76,12 +81,17 @@ export function About() {
         </div>
 
         {/* Wide Architectural River Landscape Monograph */}
-        <div className="w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-4 sm:p-6 backdrop-blur-sm">
+        <div
+          data-cursor="view"
+          className="group w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-4 sm:p-6 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50 cursor-pointer"
+        >
           <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden bg-black/20">
-            <ImageSlot
-              id="about-wide"
-              sizes="(min-width: 1024px) 80vw, 100vw"
-            />
+            <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
+              <ImageSlot
+                id="about-wide"
+                sizes="(min-width: 1024px) 80vw, 100vw"
+              />
+            </div>
           </div>
           <div className="mt-3 flex items-center justify-between font-ui text-[9px] uppercase tracking-[0.22em] text-[var(--text-secondary)] select-none">
             <span>THE KRISHNA RIVER EDGE · 500M FROM HEARTH</span>
