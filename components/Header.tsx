@@ -56,14 +56,18 @@ export function Header() {
     <>
       {/* 1. TOP UTILITY BAR (Patrizia Garganti Top Bar with Live Hearth Clock) */}
       <div
-        className={`fixed top-0 left-0 right-0 z-50 h-[32px] md:h-[36px] bg-[var(--bg-page)] border-b border-[var(--border-hairline)] px-4 sm:px-8 flex items-center justify-between font-ui text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[var(--text-secondary)] select-none transition-all duration-1000 ease-out ${
+        className={`fixed top-0 left-0 right-0 z-50 h-[32px] md:h-[36px] px-4 sm:px-8 flex items-center justify-between font-ui text-[9px] sm:text-[10px] uppercase tracking-[0.22em] select-none transition-all duration-700 ease-out ${
           isIntroFinished
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
+        } ${
+          isScrolled
+            ? "bg-[var(--bg-page)] border-b border-[var(--border-hairline)] text-[var(--text-secondary)]"
+            : "bg-transparent border-b border-white/10 text-white/80"
         }`}
       >
         <div className="flex items-center gap-2 sm:gap-3 truncate">
-          <span className="font-medium text-[var(--text-primary)]">
+          <span className={`font-medium ${isScrolled ? "text-[var(--text-primary)]" : "text-white"}`}>
             RESERVATIONS & ORDERS
           </span>
           <span className="hidden sm:inline-block opacity-40">/</span>
@@ -78,7 +82,9 @@ export function Header() {
         <a
           href={`tel:${restaurant.phone}`}
           data-cursor="button"
-          className="hover:text-[var(--text-primary)] transition-colors shrink-0 flex items-center gap-2"
+          className={`hover:opacity-80 transition-opacity shrink-0 flex items-center gap-2 ${
+            isScrolled ? "text-[var(--text-primary)]" : "text-white"
+          }`}
         >
           <span>TEL: {restaurant.phoneDisplay}</span>
         </a>
@@ -86,14 +92,14 @@ export function Header() {
 
       {/* 2. MAIN STICKY FLORENTINE HEADER */}
       <header
-        className={`fixed top-[32px] md:top-[36px] left-0 right-0 z-40 h-[64px] md:h-[72px] px-4 sm:px-8 flex items-center justify-between transition-all duration-1000 ease-out ${
+        className={`fixed top-[32px] md:top-[36px] left-0 right-0 z-40 h-[64px] md:h-[72px] px-4 sm:px-8 flex items-center justify-between transition-all duration-700 ease-out ${
           isIntroFinished
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-3 pointer-events-none"
         } ${
           isScrolled
-            ? "bg-[var(--header-bg)] backdrop-blur-md border-b border-[var(--border-hairline)] shadow-sm"
-            : "bg-transparent border-b border-[var(--border-hairline)] backdrop-blur-none"
+            ? "bg-[var(--header-bg)] backdrop-blur-md border-b border-[var(--border-hairline)] shadow-sm text-[var(--text-primary)]"
+            : "bg-transparent border-b border-white/10 text-white"
         }`}
       >
         {/* Left: Double Hairline Hamburger + MENU */}
@@ -101,7 +107,7 @@ export function Header() {
           type="button"
           data-cursor="button"
           onClick={() => setIsMenuOpen(true)}
-          className="group flex items-center gap-3 py-2 bg-transparent border-0 cursor-pointer select-none text-[var(--text-primary)] focus-visible:outline-none"
+          className="group flex items-center gap-3 py-2 bg-transparent border-0 cursor-pointer select-none text-current focus-visible:outline-none"
           aria-label="Open Navigation Menu"
         >
           {/* Two parallel hairline strokes */}
@@ -121,18 +127,22 @@ export function Header() {
           className="flex flex-col items-center justify-center text-center select-none group"
         >
           <div className="flex items-center gap-2">
-            <span className="font-display font-light text-[22px] md:text-[26px] tracking-[0.02em] leading-none uppercase text-[var(--text-primary)]">
+            <span className="font-display font-light text-[22px] md:text-[26px] tracking-[0.02em] leading-none uppercase text-current">
               Sathamma
             </span>
           </div>
-          <span className="font-ui text-[8px] md:text-[9px] uppercase tracking-[0.28em] text-[var(--text-secondary)] mt-1">
+          <span className={`font-ui text-[8px] md:text-[9px] uppercase tracking-[0.28em] mt-1 ${
+            isScrolled ? "text-[var(--text-secondary)]" : "text-white/70"
+          }`}>
             DEVARAKONDA 1998
           </span>
         </a>
 
         {/* Right: The Patrizia Garganti Light Switch Toggle */}
         <div className="flex items-center gap-2 select-none">
-          <span className="hidden sm:inline-block font-ui text-[9px] uppercase tracking-[0.2em] text-[var(--text-secondary)]">
+          <span className={`hidden sm:inline-block font-ui text-[9px] uppercase tracking-[0.2em] ${
+            isScrolled ? "text-[var(--text-secondary)]" : "text-white/70"
+          }`}>
             HEARTH
           </span>
 
@@ -140,7 +150,11 @@ export function Header() {
             type="button"
             data-cursor="button"
             onClick={toggleTheme}
-            className="flex items-center gap-2 py-1.5 px-2.5 rounded-full border border-[var(--border-hairline)] bg-transparent hover:border-[var(--text-primary)] transition-all duration-300 cursor-pointer text-[var(--text-primary)] focus-visible:outline-none"
+            className={`flex items-center gap-2 py-1.5 px-2.5 rounded-full border bg-transparent transition-all duration-300 cursor-pointer text-current focus-visible:outline-none ${
+              isScrolled
+                ? "border-[var(--border-hairline)] hover:border-[var(--text-primary)]"
+                : "border-white/20 hover:border-white"
+            }`}
             aria-label="Toggle Light / Dark Ambient Hearth"
           >
             <span
