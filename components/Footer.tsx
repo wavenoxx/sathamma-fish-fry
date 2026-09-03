@@ -7,19 +7,19 @@ export const dynamic = "force-static";
 export function Footer() {
   return (
     <footer className="w-full border-t border-[var(--border-hairline)] bg-[var(--bg-page)] text-[var(--text-primary)] transition-colors duration-500">
-      {/* TIER 1: RESERVATIONS & DIRECT CONCIERGE BAR */}
+      {/* TIER 1: CALL-AHEAD & DIRECT CONCIERGE BAR */}
       <div className="w-full border-b border-[var(--border-hairline)] grid grid-cols-1 md:grid-cols-12 select-none">
-        {/* Col 1: RESERVATIONS LABEL */}
+        {/* Col 1: CALL-AHEAD LABEL */}
         <div className="md:col-span-3 py-6 px-6 sm:px-10 border-b md:border-b-0 md:border-r border-[var(--border-hairline)] flex items-center">
           <span className="font-ui font-medium text-[11px] sm:text-[12px] uppercase tracking-[0.24em] text-[var(--text-primary)]">
-            RESERVATIONS & ADVICE
+            CALL BEFORE YOU VISIT
           </span>
         </div>
 
         {/* Col 2: INVITATION BANNER */}
         <div className="md:col-span-6 py-6 px-6 sm:px-10 border-b md:border-b-0 md:border-r border-[var(--border-hairline)] flex items-center justify-center text-center">
           <span className="font-display font-light text-[15px] sm:text-[17px] text-[var(--text-secondary)] uppercase tracking-[0.05em]">
-            CALL BEFORE YOU TRAVEL · FRESH RIVER CATCH PRESERVED STRICTLY ON ORDER
+            CALL BEFORE YOU TRAVEL · FRESH RIVER CATCH COOKED FRESH TO ORDER
           </span>
         </div>
 
@@ -45,7 +45,7 @@ export function Footer() {
               01 / KITCHEN & CARTE
             </span>
             <span className="font-ui text-[8px] uppercase tracking-[0.2em] text-[var(--text-secondary)] opacity-60">
-              HEARTH
+              MENU
             </span>
           </div>
 
@@ -60,7 +60,7 @@ export function Footer() {
               Telangana Natu Kodi Pulusu
             </Link>
             <Link href="/#menu" data-cursor="button" className="hover:text-[var(--text-primary)] transition-colors">
-              Full Woodfire Carte
+              The Full Menu
             </Link>
             <Link href="/#menu" data-cursor="button" className="hover:text-[var(--text-primary)] transition-colors">
               Ragi Sankati & Steamed Rice
@@ -84,7 +84,7 @@ export function Footer() {
               Vizag Colony Boating Point
             </Link>
             <Link href="/#visit" data-cursor="button" className="hover:text-[var(--text-primary)] transition-colors">
-              Hyderabad Highway (140 km)
+              Vizag Colony Road
             </Link>
             <span className="text-[var(--text-primary)] font-normal">
               6:00 AM — 10:00 PM Daily
@@ -149,7 +149,7 @@ export function Footer() {
               data-cursor="button"
               className="hover:text-[var(--text-primary)] hover:translate-x-1 transition-all duration-200 text-[13px] opacity-80"
             >
-              Hearth Heritage & Story Since 1998
+              Our Story & Heritage Roots
             </Link>
           </div>
         </div>
@@ -166,14 +166,14 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col space-y-2.5 font-display font-light text-[15px] text-[var(--text-secondary)]">
-            <span>Woodfire Open Hearth</span>
-            <span>Hand-Ground Stone Mortar</span>
-            <span>Zero Reheating Guarantee</span>
+            <span>Cooked To Order</span>
+            <span>Fresh Local Spices</span>
+            <span>Fresh Catch Daily</span>
             <span className="text-[var(--text-primary)] font-normal">
               4.9★ Rated on Google
             </span>
             <span className="text-[12px] opacity-75 font-ui">
-              Devarakonda, Telangana 1998
+              Devarakonda, Telangana
             </span>
           </div>
         </div>
@@ -183,7 +183,7 @@ export function Footer() {
       <div className="w-full py-4 px-6 sm:px-10 border-b border-[var(--border-hairline)] flex flex-col sm:flex-row items-center justify-between gap-4 font-ui text-[10px] uppercase tracking-[0.22em] text-[var(--text-secondary)] select-none">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>KITCHEN HEARTH ACTIVE · ORDERS WELCOME</span>
+          <span>KITCHEN OPEN · COOKED FRESH TO ORDER</span>
         </div>
 
         <div className="flex items-center gap-6">

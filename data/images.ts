@@ -74,19 +74,19 @@ export const imageSlots: Record<string, ImageSlot> = {
     id: "gallery-2",
     file: "/images/gallery-2.jpg",
     aspect: "3 / 4",
-    intent: "Woodfire cooking hearth and bubbling curry",
+    intent: "The kitchen fire and a simmering curry",
   },
   "gallery-3": {
     id: "gallery-3",
     file: "/images/gallery-3.jpg",
     aspect: "4 / 5",
-    intent: "Traditional spice preparation on stone mortar",
+    intent: "Traditional spice preparation for marinades",
   },
   "gallery-4": {
     id: "gallery-4",
     file: "/images/gallery-4.jpg",
     aspect: "3 / 4",
-    intent: "Clay pots simmering beside the open kitchen",
+    intent: "Fresh fish curry simmering in the kitchen",
   },
   "gallery-5": {
     id: "gallery-5",

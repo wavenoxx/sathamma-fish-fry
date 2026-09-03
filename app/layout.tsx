@@ -29,23 +29,23 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Sathamma Fish Fry | Authentic Woodfire River Fish in Devarakonda",
+  title: "Sathamma Fish Fry | Fresh River Fish in Devarakonda",
   description:
-    "Authentic woodfire river fish fry and curry in Devarakonda, Telangana since 1998. Fresh catch from Krishna river backwaters at Vizag Colony.",
+    "Fresh river fish fry and curry in Devarakonda, Telangana. Sourced locally from the Krishna river backwaters near Vizag Colony and cooked fresh to order.",
   keywords: [
     "Sathamma Fish Fry",
     "Devarakonda fish fry",
     "Vizag Colony boating point food",
     "Telangana river fish fry",
-    "authentic woodfire fish fry",
+    "fresh river fish fry",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Sathamma Fish Fry | Authentic Woodfire River Fish in Devarakonda",
+    title: "Sathamma Fish Fry | Fresh River Fish in Devarakonda",
     description:
-      "Authentic woodfire river fish fry and curry in Devarakonda, Telangana since 1998. Fresh catch from Krishna river backwaters.",
+      "Fresh river fish fry and curry in Devarakonda, Telangana. Sourced locally from the Krishna river backwaters near Vizag Colony and cooked fresh to order.",
     url: SITE_URL,
     siteName: "Sathamma Fish Fry",
     images: [
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
         url: "/images/hero-desktop.png",
         width: 1200,
         height: 630,
-        alt: "Sathamma Fish Fry Woodfire Preparation",
+        alt: "Sathamma Fish Fry Fresh Preparation",
       },
     ],
     locale: "en_IN",
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sathamma Fish Fry | Authentic Woodfire River Fish in Devarakonda",
+    title: "Sathamma Fish Fry | Fresh River Fish in Devarakonda",
     description:
-      "Authentic woodfire river fish fry and curry in Devarakonda, Telangana since 1998.",
+      "Fresh river fish fry and curry in Devarakonda, Telangana. Sourced locally from the Krishna river backwaters.",
     images: ["/images/hero-desktop.png"],
   },
 };
@@ -114,7 +114,7 @@ export default function RootLayout({
               {/* Patrizia Garganti Inverting Dynamic Cursor */}
               <CustomCursor />
 
-              {/* Living Ambient Hearth Illumination */}
+              {/* Living Ambient Illumination */}
               <AmbientGlow />
 
               {/* Skip to Content accessible navigation */}
@@ -135,7 +135,7 @@ export default function RootLayout({
               <Header />
 
               {/* Main Content */}
-              <div className="flex-1 flex flex-col relative z-10" id="main-content">
+              <div className="flex-1 flex flex-col relative z-10">
                 {children}
               </div>
 

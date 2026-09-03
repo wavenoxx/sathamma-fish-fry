@@ -9,7 +9,7 @@ import { restaurant } from "@/data/restaurant";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions & Guest Advice | Sathamma Fish Fry",
   description:
-    "Everything to know before visiting Sathamma Fish Fry in Devarakonda: daily river catch sourcing, woodfire cooking times, directions from Hyderabad, and reservations.",
+    "Everything to know before visiting Sathamma Fish Fry in Devarakonda: daily river catch sourcing, ordering, timings, and payment options.",
 };
 
 const faqs = [
@@ -17,50 +17,38 @@ const faqs = [
     number: "01",
     question: "How fresh is the fish served each day?",
     answer:
-      "All fish is sourced each dawn from local fishermen casting nets in the Krishna river reservoir at Vizag Colony. The catch is brought directly to the kitchen, cleaned with rock salt and freshly ground turmeric, and fried strictly to order. We do not use commercial cold storage, deep-freezers, or pre-fried batches.",
+      "Our fish is freshwater river fish sourced locally from the backwaters nearby. Every selection is cooked fresh to order, with nothing prepared in advance or reheated.",
     defaultOpen: true,
   },
   {
     number: "02",
-    question: "What are your operating hours and peak times?",
+    question: "What are your operating hours?",
     answer:
-      "We operate daily from 6:00 AM to 10:00 PM across all seven days of the week. The fresh morning catch arrives and is prepped by 7:30 AM. Peak lunch rush runs from 12:30 PM to 3:30 PM on weekends. Calling 45 to 60 minutes before your arrival is recommended so we can reserve your preferred catch.",
+      "We are open from 6:00 AM to 10:00 PM every day of the week. Calling ahead is a good idea, since what is available depends on the day's catch.",
   },
   {
     number: "03",
-    question: "Why does cooking over open woodfire take 15 to 25 minutes?",
+    question: "Why does the food take time to prepare?",
     answer:
-      "Because nothing sits waiting under warmers. When you order, fresh fish slices are hand-tossed in stone-ground ginger, garlic, coriander, and dry chili, then placed directly onto cast-iron pans over open firewood. This patient, unhurried method caramelizes the crust while keeping the freshwater meat succulent.",
+      "Every dish is cooked fresh only after you place your order. Taking the time to cook each portion fresh ensures the best taste and texture.",
   },
   {
     number: "04",
-    question: "What fish varieties are available throughout the year?",
+    question: "What fish varieties do you serve?",
     answer:
-      "Our core catch includes freshwater Korrameenu (Murrel / Snakehead), Rohu (Rohtee), Catla, and seasonal small river varieties. Catch variety and sizes vary depending on the water level and morning harvest from the backwaters.",
+      "We serve freshwater fish varieties from the local backwaters, primarily Rohu, Bocha, and Korameenu. Availability varies with the day's catch.",
   },
   {
     number: "05",
-    question: "Do you serve non-fish preparations?",
+    question: "Do you serve anything other than fish?",
     answer:
-      "Yes. For guests desiring country poultry, we prepare authentic Telangana Natu Kodi Pulusu (Free-Range Country Chicken Curry) and dry fry, cooked in traditional earthenware pots over firewood, served with hot rice or Ragi Sankati.",
+      "Yes, we also serve country chicken dishes, including authentic Natu Kodi Pulusu and dry fry. All chicken preparations are cooked fresh to order.",
   },
   {
     number: "06",
-    question: "How do we reach Sathamma from Hyderabad?",
-    answer:
-      "The distance is approximately 140 km. Take the Nagarjuna Sagar Highway (NH 565) from Hyderabad through Ibrahimpatnam and Devarakonda town. Near Devarakonda, follow the scenic road toward the Vizag Colony backwaters boating point. Ample parking is available on site.",
-  },
-  {
-    number: "07",
     question: "What payment methods do you accept?",
     answer:
-      "We accept all major UPI applications (Google Pay, PhonePe, Paytm, BHIM) as well as cash. Due to rural backwater network conditions, having UPI ready or carrying some cash is recommended.",
-  },
-  {
-    number: "08",
-    question: "Can we get parcel packing for travel back to Hyderabad?",
-    answer:
-      "Yes. We provide specialized thermal and leaf parcel packing designed to retain crispness and aroma for the 2.5-hour drive back to Hyderabad. Inform the kitchen staff upon arrival if you wish to carry parcels home.",
+      "We accept all major UPI applications as well as cash. We recommend carrying some cash with you when travelling.",
   },
 ];
 
@@ -82,7 +70,7 @@ export default function FaqPage() {
             QUESTIONS & ADVICE
           </h1>
           <p className="mt-4 md:mt-6 font-display font-light text-[17px] sm:text-[20px] text-[var(--text-secondary)] leading-[1.5] max-w-[44ch]">
-            Everything you need to know before traveling to Vizag Colony — from the morning river catch to woodfire wait times.
+            Everything you need to know before visiting Vizag Colony — from our fresh catch to opening hours.
           </p>
         </div>
 
@@ -102,7 +90,7 @@ export default function FaqPage() {
         {/* Action Buttons */}
         <div className="mt-16 md:mt-24 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
           <SketchedButton
-            line1="RETURN TO HEARTH"
+            line1="RETURN TO HOME"
             line2="SATHAMMA HOME STAGE"
             href="/"
           />

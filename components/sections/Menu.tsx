@@ -56,7 +56,7 @@ export function Menu() {
       {/* Hairline Divider */}
       <HairlineDivider
         category="DAILY CARTE"
-        subtitle="WOODFIRE & CLAY POTS"
+        subtitle="FRESHWATER & COUNTRY"
       />
 
       <Container>
@@ -66,7 +66,7 @@ export function Menu() {
             THE MENU
           </h2>
           <p className="mt-4 md:mt-6 font-display font-light text-[17px] sm:text-[19px] md:text-[21px] text-[var(--text-secondary)] leading-[1.5] max-w-[42ch]">
-            Everything is prepared fresh to order over woodfire. Nothing sits waiting.
+            Everything is prepared fresh to order. Nothing sits waiting.
           </p>
         </div>
 
@@ -174,7 +174,7 @@ export function Menu() {
               </p>
               <SketchedButton
                 line1="CONFIRM DAILY RATES"
-                line2="CALL THE HEARTH"
+                line2="CALL THE KITCHEN"
                 href={`tel:${restaurant.phone}`}
               />
             </div>

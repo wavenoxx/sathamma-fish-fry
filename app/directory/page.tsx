@@ -14,14 +14,14 @@ export const metadata: Metadata = {
 const directoryGroups = [
   {
     num: "01",
-    category: "THE HEARTH & CARTE",
+    category: "THE KITCHEN & MENU",
     subtitle: "CULINARY REPERTOIRE",
     links: [
       { label: "Home Stage & Overview", href: "/" },
       { label: "Artisan Collections (Specials)", href: "/#specials" },
-      { label: "Daily Woodfire Carte (Full Menu)", href: "/#menu" },
+      { label: "The Full Menu", href: "/#menu" },
       { label: "Sathamma Special Fish Fry (Signature)", href: "/#specials" },
-      { label: "Natu Style Chepala Pulusu (Clay Pot)", href: "/#specials" },
+      { label: "Natu Style Chepala Pulusu", href: "/#specials" },
       { label: "Telangana Natu Kodi Pulusu (Country Fowl)", href: "/#specials" },
       { label: "Ragi Sankati & Steamed Rice", href: "/#menu" },
     ],
@@ -33,12 +33,12 @@ const directoryGroups = [
     links: [
       { label: "The Visual Archives (Gallery)", href: "/#gallery" },
       { label: "Monograph 01 — Fresh River Catch", href: "/#gallery" },
-      { label: "Monograph 02 — Woodfire Open Hearth", href: "/#gallery" },
-      { label: "Monograph 03 — Stone Mortar Spices", href: "/#gallery" },
-      { label: "Monograph 04 — Simmering Clay Pots", href: "/#gallery" },
+      { label: "Monograph 02 — The Kitchen Fire", href: "/#gallery" },
+      { label: "Monograph 03 — Traditional Spices", href: "/#gallery" },
+      { label: "Monograph 04 — Simmering Curry", href: "/#gallery" },
       { label: "Monograph 05 — Traditional Brass Service", href: "/#gallery" },
       { label: "Monograph 06 — Krishna Twilight Waters", href: "/#gallery" },
-      { label: "Our Story & Hearth Roots Since 1998", href: "/#about" },
+      { label: "Our Story & Heritage Roots", href: "/#about" },
     ],
   },
   {
@@ -48,7 +48,7 @@ const directoryGroups = [
     links: [
       { label: "Destination & Arrival Details", href: "/#visit" },
       { label: "Vizag Colony Boating Point Pier", href: "/#visit" },
-      { label: "Hyderabad Highway Route (140 km)", href: "/#visit" },
+      { label: "Vizag Colony Approach", href: "/#visit" },
       { label: "Operating Timings (6 AM — 10 PM)", href: "/#visit" },
       { label: "Direct Voice Kitchen Line", href: `tel:${restaurant.phone}` },
       { label: "WhatsApp Kitchen Concierge", href: `https://wa.me/${restaurant.whatsapp}` },
@@ -132,7 +132,7 @@ export default function DirectoryPage() {
         {/* Action Buttons */}
         <div className="mt-16 md:mt-24 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
           <SketchedButton
-            line1="RETURN TO HEARTH"
+            line1="RETURN TO HOME"
             line2="SATHAMMA HOME STAGE"
             href="/"
           />

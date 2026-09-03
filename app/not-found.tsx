@@ -7,7 +7,6 @@ import { Footer } from "@/components/Footer";
 export default function NotFound() {
   return (
     <main
-      id="main-content"
       tabIndex={-1}
       className="flex-1 flex flex-col justify-between w-full min-h-[calc(100vh-76px)] pt-28 md:pt-36 outline-none"
     >

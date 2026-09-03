@@ -12,39 +12,39 @@ const galleryItems = [
     label: "PLATE 01",
     tag: "RIVER CATCH",
     title: "Fresh River Fish",
-    desc: "Sourced each dawn from the Krishna river backwaters, cleaned with turmeric and rock salt.",
+    desc: "Fresh catch from the Krishna river backwaters, photographed before preparation.",
     sizes: "(min-width: 1024px) 60vw, 100vw",
   },
   {
     id: "gallery-2",
     label: "PLATE 02",
-    tag: "WOODFIRE HEARTH",
-    title: "The Woodfire Hearth",
-    desc: "Open firewood stove maintained continuously since 1998, giving food its authentic aroma.",
+    tag: "KITCHEN FIRE",
+    title: "The Kitchen Fire",
+    desc: "The open kitchen stove where orders are cooked fresh for arriving guests.",
     sizes: "(min-width: 1024px) 40vw, 100vw",
   },
   {
     id: "gallery-3",
     label: "PLATE 03",
-    tag: "STONE MORTAR",
-    title: "Stone Mortar Spices",
-    desc: "Dry red chilies, coriander seeds, garlic, and ginger crushed fresh by hand for each order.",
+    tag: "SPICE BLEND",
+    title: "Traditional Spices",
+    desc: "Dry red chilies, coriander seeds, garlic, and turmeric blended for our daily marinades.",
     sizes: "(min-width: 1024px) 33vw, 100vw",
   },
   {
     id: "gallery-4",
     label: "PLATE 04",
-    tag: "CLAY VESSELS",
-    title: "Simmering Clay Pots",
-    desc: "Traditional earthenware pots used for Chepala Pulusu to infuse natural earthen sweetness.",
+    tag: "CURRY PREPARATION",
+    title: "Simmering Curry",
+    desc: "Chepala Pulusu simmering slowly as spices and tamarind come together.",
     sizes: "(min-width: 1024px) 33vw, 100vw",
   },
   {
     id: "gallery-5",
     label: "PLATE 05",
-    tag: "BRASS SERVICE",
-    title: "Brass Service",
-    desc: "Hot fish served straight from the fire onto traditional plates with fresh lime and onions.",
+    tag: "TABLE SERVICE",
+    title: "Table Service",
+    desc: "Hot fish served fresh from the pan with sliced onions and cut lime.",
     sizes: "(min-width: 1024px) 33vw, 100vw",
   },
   {
@@ -88,7 +88,7 @@ export function Gallery() {
         {/* ARCHITECTURAL EXHIBITION LAYOUT */}
         <div className="flex flex-col space-y-10 md:space-y-14 w-full">
           
-          {/* TIER 1: ASYMMETRICAL DUO (Wide River Catch Panorama + Tall Hearth Window) */}
+          {/* TIER 1: ASYMMETRICAL DUO (Wide River Catch Panorama + Tall Kitchen Window) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch w-full">
             {/* Plate 01: Panorama (7 cols) */}
             <div
@@ -115,7 +115,7 @@ export function Gallery() {
               </div>
             </div>
 
-            {/* Plate 02: Tall Hearth Monograph (5 cols) */}
+            {/* Plate 02: Tall Kitchen Fire Monograph (5 cols) */}
             <div
               data-cursor="view"
               onClick={() => setActivePlate(item2)}
@@ -126,7 +126,7 @@ export function Gallery() {
                   {item2.label} / {item2.tag}
                 </span>
                 <span className="font-ui text-[8px] uppercase tracking-[0.2em] text-[var(--text-secondary)] opacity-60">
-                  OPEN HEARTH
+                  KITCHEN FIRE
                 </span>
               </div>
               <div className="relative w-full aspect-[4/5] overflow-hidden bg-black/20">

@@ -1,12 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { HearthEmbersCanvas } from "@/components/canvas/HearthEmbersCanvas";
 
 export function Hero() {
-  const [activeDot, setActiveDot] = useState(0);
-
   return (
     <section
       id="hero"
@@ -18,7 +16,7 @@ export function Hero() {
         {/* Desktop View */}
         <Image
           src="/images/hero-desktop.png"
-          alt="Sathamma Authentic Woodfire Fish Fry"
+          alt="Fresh river fish fry at Sathamma Fish Fry, Devarakonda"
           fill
           priority
           unoptimized // Zero compression, zero blur - 100% original photographic clarity
@@ -28,7 +26,7 @@ export function Hero() {
         {/* Mobile View */}
         <Image
           src="/images/hero-mobile.png"
-          alt="Sathamma Authentic Woodfire Fish Fry"
+          alt="Fresh river fish fry at Sathamma Fish Fry, Devarakonda"
           fill
           priority
           unoptimized // Zero compression on mobile
@@ -49,46 +47,14 @@ export function Hero() {
       {/* 3. Center: Clean, Noise-Free Canvas (Zero Big H1, Photography is 100% the Hero) */}
       <div className="flex-1 w-full pointer-events-none z-10" />
 
-      {/* 4. Bottom Subtle Indicator (Patrizia Garganti Breathing Pagination & Scroll Cue) */}
-      <div className="w-full pb-8 sm:pb-12 px-6 sm:px-12 flex flex-col items-center justify-center gap-3 z-10 select-none">
-        {/* Breathing Pagination Dots */}
-        <div
-          className="flex items-center gap-3"
-          aria-label="Carousel pagination"
-        >
-          {[0, 1, 2, 3].map((dot) => {
-            const isActive = dot === activeDot;
-            return (
-              <button
-                key={dot}
-                type="button"
-                data-cursor="button"
-                onClick={() => setActiveDot(dot)}
-                className="relative p-2 flex items-center justify-center bg-transparent border-0 cursor-pointer focus:outline-none"
-                aria-label={`Slide ${dot + 1}`}
-              >
-                {isActive ? (
-                  <div className="relative flex items-center justify-center w-[16px] h-[16px]">
-                    <span className="absolute inset-0 rounded-full border border-white animate-ping opacity-40" />
-                    <span className="w-[12px] h-[12px] rounded-full border border-white flex items-center justify-center">
-                      <span className="w-[3px] h-[3px] rounded-full bg-white" />
-                    </span>
-                  </div>
-                ) : (
-                  <span className="w-[3px] h-[3px] rounded-full bg-white/50 hover:bg-white transition-colors" />
-                )}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Delicate Scroll Cue */}
+      {/* 4. Bottom Subtle Indicator (Delicate Scroll Cue) */}
+      <div className="w-full pb-10 sm:pb-14 px-6 sm:px-12 flex flex-col items-center justify-center z-10 select-none">
         <a
           href="#specials"
           data-cursor="button"
-          className="font-ui text-[8px] sm:text-[9px] uppercase tracking-[0.32em] text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-1.5 pt-1"
+          className="font-ui text-[8px] sm:text-[9px] uppercase tracking-[0.32em] text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-1.5 py-2"
         >
-          <span>EXPLORE THE HEARTH ↓</span>
+          <span>THE DISHES ↓</span>
         </a>
       </div>
     </section>

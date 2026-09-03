@@ -134,7 +134,7 @@ export function IntroPortalReveal() {
         className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none z-10"
       >
         <span className="font-ui font-medium text-[9px] sm:text-[10px] uppercase tracking-[0.34em] text-[#6e6d69] mb-3">
-          ESTABLISHED IN DEVARAKONDA · 1998
+          DEVARAKONDA · TELANGANA
         </span>
         <h2 className="font-display font-light text-[52px] sm:text-[76px] md:text-[96px] uppercase tracking-[0.04em] leading-none text-[#0d0d0d]">
           Sathamma

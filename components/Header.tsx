@@ -9,8 +9,8 @@ import { useIntro } from "@/context/IntroContext";
 
 const navItems = [
   { label: "SPECIALITIES", href: "/#specials", sub: "SIGNATURE RIVER CATCH" },
-  { label: "MENU", href: "/#menu", sub: "DAILY WOODFIRE HEARTH" },
-  { label: "OUR STORY", href: "/#about", sub: "DEVARAKONDA SINCE 1998" },
+  { label: "MENU", href: "/#menu", sub: "DAILY FRESH CATCH" },
+  { label: "OUR STORY", href: "/#about", sub: "DEVARAKONDA · TELANGANA" },
   { label: "THE ARCHIVES", href: "/#gallery", sub: "PHOTOGRAPHIC MONOGRAPH" },
   { label: "THE DESTINATION", href: "/#visit", sub: "VIZAG COLONY & DIRECTIONS" },
 ];
@@ -60,7 +60,7 @@ export function Header() {
 
   return (
     <>
-      {/* 1. TOP UTILITY BAR (Patrizia Garganti Top Bar with Live Hearth Clock) */}
+      {/* 1. TOP UTILITY BAR (Patrizia Garganti Top Bar with Live Local Clock) */}
       <div
         className={`fixed top-0 left-0 right-0 z-50 h-[32px] md:h-[36px] px-4 sm:px-8 flex items-center justify-between font-ui text-[9px] sm:text-[10px] uppercase tracking-[0.22em] select-none transition-all duration-700 ease-out ${
           isHeaderVisible
@@ -74,11 +74,11 @@ export function Header() {
       >
         <div className="flex items-center gap-2 sm:gap-3 truncate">
           <span className={`font-medium ${isHomeTransparent ? "text-white" : "text-[var(--text-primary)]"}`}>
-            RESERVATIONS & ORDERS
+            CALL AHEAD & ORDERS
           </span>
           <span className="hidden sm:inline-block opacity-40">/</span>
           <span className="hidden md:inline-block opacity-80 font-mono tracking-widest text-[9px]">
-            {timeString ? `HEARTH IST: ${timeString}` : "DEVARAKONDA · 16°42′ N"}
+            {timeString ? `LOCAL TIME IST: ${timeString}` : "DEVARAKONDA · 16°42′ N"}
           </span>
           <span className="hidden sm:inline-block md:hidden opacity-75">
             16°42′ N · TELANGANA
@@ -128,52 +128,43 @@ export function Header() {
           </button>
         </div>
 
-        {/* Center: Monogram Crest & Hairline Bridge - EXACT 50% VIEWPORT HORIZONTAL MIDPOINT */}
+        {/* Center: Monogram Wordmark - EXACT 50% VIEWPORT HORIZONTAL MIDPOINT */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto z-10">
           <Link
             href="/"
             data-cursor="button"
-            className="flex flex-col items-center justify-center text-center select-none group"
+            className="flex items-center justify-center text-center select-none group py-1"
           >
-            <div className="flex items-center gap-2">
-              <span className="font-display font-light text-[22px] md:text-[26px] tracking-[0.02em] leading-none uppercase text-current">
-                Sathamma
-              </span>
-            </div>
-            <span
-              className={`font-ui text-[8px] md:text-[9px] uppercase tracking-[0.28em] mt-1 ${
-                isHomeTransparent ? "text-white/70" : "text-[var(--text-secondary)]"
-              }`}
-            >
-              DEVARAKONDA 1998
+            <span className="font-display font-light text-[18px] sm:text-[22px] md:text-[26px] tracking-[0.02em] leading-none uppercase text-current">
+              Sathamma
             </span>
           </Link>
         </div>
 
         {/* Right: The Patrizia Garganti Light Switch Toggle */}
         <div className="flex-1 flex items-center justify-end">
-          <div className="flex items-center gap-2 select-none">
+          <div className="flex items-center gap-1.5 sm:gap-2 select-none">
             <span
               className={`hidden sm:inline-block font-ui text-[9px] uppercase tracking-[0.2em] ${
                 isHomeTransparent ? "text-white/70" : "text-[var(--text-secondary)]"
               }`}
             >
-              HEARTH
+              AMBIENCE
             </span>
 
             <button
               type="button"
               data-cursor="button"
               onClick={toggleTheme}
-              className={`flex items-center gap-2 py-1.5 px-2.5 rounded-full border bg-transparent transition-all duration-300 cursor-pointer text-current focus-visible:outline-none ${
+              className={`flex items-center gap-1.5 sm:gap-2 py-1 sm:py-1.5 px-2 sm:px-2.5 rounded-full border bg-transparent transition-all duration-300 cursor-pointer text-current focus-visible:outline-none ${
                 isHomeTransparent
                   ? "border-white/20 hover:border-white"
                   : "border-[var(--border-hairline)] hover:border-[var(--text-primary)]"
               }`}
-              aria-label="Toggle Light / Dark Ambient Hearth"
+              aria-label="Toggle Light / Dark Theme"
             >
               <span
-                className={`font-ui text-[9px] uppercase tracking-widest transition-opacity ${
+                className={`font-ui text-[8px] sm:text-[9px] uppercase tracking-widest transition-opacity ${
                   theme === "light" ? "font-bold opacity-100" : "opacity-40"
                 }`}
               >
@@ -181,16 +172,16 @@ export function Header() {
               </span>
 
               {/* Pill Track */}
-              <div className="relative w-[34px] h-[18px] rounded-full bg-[var(--switch-track)] p-[2px] transition-colors duration-400">
+              <div className="relative w-[28px] sm:w-[34px] h-[16px] sm:h-[18px] rounded-full bg-[var(--switch-track)] p-[2px] transition-colors duration-400">
                 <div
-                  className={`w-[14px] h-[14px] rounded-full bg-[var(--switch-thumb)] shadow-sm transform transition-transform duration-300 ${
-                    theme === "dark" ? "translate-x-[16px]" : "translate-x-0"
+                  className={`w-[12px] sm:w-[14px] h-[12px] sm:h-[14px] rounded-full bg-[var(--switch-thumb)] shadow-sm transform transition-transform duration-300 ${
+                    theme === "dark" ? "translate-x-[12px] sm:translate-x-[16px]" : "translate-x-0"
                   }`}
                 />
               </div>
 
               <span
-                className={`font-ui text-[9px] uppercase tracking-widest transition-opacity ${
+                className={`font-ui text-[8px] sm:text-[9px] uppercase tracking-widest transition-opacity ${
                   theme === "dark" ? "font-bold opacity-100" : "opacity-40"
                 }`}
               >
@@ -214,7 +205,7 @@ export function Header() {
                 SATHAMMA
               </span>
               <span className="font-ui text-[9px] uppercase tracking-widest text-[var(--text-secondary)]">
-                EST. 1998
+                DEVARAKONDA
               </span>
             </div>
 

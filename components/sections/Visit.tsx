@@ -63,7 +63,7 @@ export function Visit() {
             </span>
 
             <p className="mt-4 font-ui text-[12px] text-[var(--text-secondary)] leading-relaxed opacity-85">
-              140 km from Hyderabad via Nagarjuna Sagar Highway. Turn towards Vizag Colony boating point near the backwaters.
+              Located near the Vizag Colony boating point along the Krishna river backwaters in Devarakonda.
             </p>
           </div>
 
@@ -91,15 +91,15 @@ export function Visit() {
             </div>
 
             <p className="mt-5 font-ui text-[12px] text-[var(--text-secondary)] leading-relaxed opacity-85">
-              Fish availability depends on the morning catch. Calling ahead ensures your selection is reserved and fried fresh upon arrival.
+              Fish availability depends on the daily catch. Calling ahead lets you confirm what is available and have it cooked fresh when you arrive.
             </p>
           </div>
 
-          {/* Column 3: Direct Hearth Line */}
+          {/* Column 3: Direct Contact Line */}
           <div className="flex flex-col items-start w-full">
             <div className="w-full pb-3 mb-4 border-b border-[var(--border-hairline)] flex items-center justify-between select-none">
               <span className="font-ui font-medium text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
-                03 / DIRECT HEARTH LINE
+                03 / DIRECT CONTACT LINE
               </span>
               <span className="font-ui text-[9px] tracking-widest text-[var(--text-secondary)] opacity-60">
                 VOICE
@@ -114,14 +114,14 @@ export function Visit() {
             </a>
 
             <p className="mt-3 font-ui text-[12px] text-[var(--text-secondary)] leading-relaxed opacity-85">
-              Direct connection to the kitchen. Enquire about the day’s freshwater murrel, rohtee, or country chicken curry.
+              Direct connection to the kitchen. Inquire about the day’s freshwater catch or country chicken.
             </p>
 
             <a
               href={`tel:${restaurant.phone}`}
               className="mt-6 inline-flex items-center gap-2 font-ui text-[11px] uppercase tracking-[0.22em] text-ember hover:underline underline-offset-4"
             >
-              <span>CALL NOW FOR RESERVATIONS →</span>
+              <span>CALL BEFORE YOU VISIT →</span>
             </a>
           </div>
         </div>

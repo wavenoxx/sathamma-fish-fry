@@ -20,9 +20,9 @@ const privacySections = [
   },
   {
     num: "SECTION 02",
-    title: "Telephone Concierge & Reservation Privacy",
+    title: "Telephone & Contact Details Privacy",
     content:
-      "When you call or WhatsApp our kitchen concierge to reserve fish or request route directions, your phone number and name are used solely for fulfilling your culinary order and confirming your arrival. We never share, sell, or disclose customer contact details to third-party telemarketers.",
+      "When you call or WhatsApp our kitchen to inquire about the daily catch or request directions, your phone number and name are used solely for answering your inquiry and confirming your order. We never share, sell, or disclose customer contact details to third-party telemarketers.",
   },
   {
     num: "SECTION 03",
@@ -38,9 +38,9 @@ const privacySections = [
   },
   {
     num: "SECTION 05",
-    title: "Your Rights & Contacting the Hearth",
+    title: "Your Rights & Contacting Us",
     content:
-      "If you have any questions regarding how your reservation contact details are handled, or wish to request immediate removal of your phone number from our kitchen call logs, please call us directly at 093473 36310. We will gladly honor your request immediately.",
+      "If you have any questions regarding how your contact details are handled, or wish to request immediate removal of your phone number from our kitchen call logs, please call us directly at 093473 36310. We will gladly honor your request immediately.",
   },
 ];
 
@@ -62,7 +62,7 @@ export default function PrivacyPage() {
             PRIVACY & COOKIES
           </h1>
           <p className="mt-4 md:mt-6 font-display font-light text-[17px] sm:text-[20px] text-[var(--text-secondary)] leading-[1.5] max-w-[44ch]">
-            A simple, honest commitment: we cook authentic woodfire river fish, not harvest personal data.
+            A simple, honest commitment: we cook fresh river fish, not harvest personal data.
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export default function PrivacyPage() {
         {/* Action Buttons */}
         <div className="mt-16 md:mt-24 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10">
           <SketchedButton
-            line1="RETURN TO HEARTH"
+            line1="RETURN TO HOME"
             line2="SATHAMMA HOME STAGE"
             href="/"
           />

@@ -11,9 +11,9 @@ interface ImageSlotProps {
 
 const slotEditorialMetadata: Record<string, { number: string; title: string }> = {
   "gallery-1": { number: "01", title: "Fresh River Catch" },
-  "gallery-2": { number: "02", title: "The Woodfire Hearth" },
-  "gallery-3": { number: "03", title: "Stone Mortar Spices" },
-  "gallery-4": { number: "04", title: "Simmering Clay Pots" },
+  "gallery-2": { number: "02", title: "The Kitchen Fire" },
+  "gallery-3": { number: "03", title: "Traditional Spices" },
+  "gallery-4": { number: "04", title: "Simmering Curry" },
   "gallery-5": { number: "05", title: "Brass Plate Service" },
   "gallery-6": { number: "06", title: "Twilight at the Water" },
   "about-portrait": { number: "01", title: "The Family Kitchen" },

@@ -152,7 +152,7 @@ export function CustomCursor() {
         </div>
       </div>
 
-      {/* TIER 1: Precision Hearth Spark Dot (Zero-Lag Center Anchor) */}
+      {/* TIER 1: Precision Amber Spark Dot (Zero-Lag Center Anchor) */}
       <div
         ref={dotRef}
         className="fixed top-0 left-0 pointer-events-none will-change-transform"

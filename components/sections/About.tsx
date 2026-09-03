@@ -15,24 +15,24 @@ export function About() {
     >
       {/* Hairline Divider */}
       <HairlineDivider
-        category="HERITAGE HEARTH"
-        subtitle="SINCE 1998"
+        category="OUR STORY"
+        subtitle="DEVARAKONDA"
       />
 
       <Container>
         {/* Section Heading: Centered Regal Serif (Patrizia Garganti Style) */}
         <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-16 md:mb-20">
           <h2 className="font-display font-light text-[38px] sm:text-[54px] md:text-[68px] uppercase tracking-[0.03em] leading-none text-[var(--text-primary)]">
-            ART OVER WOODFIRE
+            COOKED TO ORDER
           </h2>
           <p className="mt-4 md:mt-6 font-display font-light text-[17px] sm:text-[20px] text-[var(--text-secondary)] leading-[1.6] max-w-[44ch]">
-            A family kitchen near the boating point at Vizag Colony, where the morning catch dictates the day’s fire.
+            A family kitchen near the boating point at Vizag Colony, where the morning catch dictates the day’s menu.
           </p>
         </div>
 
         {/* 2-Column Editorial & Portrait Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center w-full mb-16 md:mb-24">
-          {/* Left: Framed Portrait / Hearth Image */}
+          {/* Left: Framed Portrait / Kitchen Image */}
           <div className="lg:col-span-6 w-full">
             <div
               data-cursor="view"
@@ -62,18 +62,18 @@ export function About() {
             </p>
 
             <p className="font-ui text-[13px] text-[var(--text-secondary)] leading-relaxed opacity-90">
-              The fish comes directly from the freshwater nearby. What arrives in the morning determines what is prepared over the hearth that afternoon. Spices are ground by hand on stone mortars, and nothing is ever cooked in advance or reheated.
+              The fish comes directly from the freshwater nearby. What arrives in the morning determines what is prepared in the kitchen that afternoon. Everything is seasoned fresh for your order, and nothing is ever cooked in advance or reheated.
             </p>
 
             <p className="font-ui text-[13px] text-[var(--text-secondary)] leading-relaxed opacity-90">
-              When you arrive, your fish is seasoned and fried strictly upon order. It takes patience, but as our guests from across Telangana have known for nearly three decades, true woodfire flavor cannot be rushed.
+              When you arrive, your fish is seasoned and fried strictly upon order. It takes patience, but as our guests from across Telangana have always appreciated, fresh food prepared to order cannot be rushed.
             </p>
 
             {/* Sketched Button */}
             <div className="pt-6">
               <SketchedButton
                 line1="DISCOVER OUR STORY"
-                line2="RESERVE YOUR TABLE"
+                line2="CALL BEFORE YOU COME"
                 href="#visit"
               />
             </div>
@@ -94,8 +94,8 @@ export function About() {
             </div>
           </div>
           <div className="mt-3 flex items-center justify-between font-ui text-[9px] uppercase tracking-[0.22em] text-[var(--text-secondary)] select-none">
-            <span>THE KRISHNA RIVER EDGE · 500M FROM HEARTH</span>
-            <span>SOURCE OF FRESH ROHTEE & MURREL</span>
+            <span>THE KRISHNA RIVER EDGE · NEAR VIZAG COLONY</span>
+            <span>SOURCE OF FRESH RIVER CATCH</span>
           </div>
         </div>
       </Container>

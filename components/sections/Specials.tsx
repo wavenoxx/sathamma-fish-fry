@@ -29,7 +29,7 @@ export function Specials() {
             COLLECTIONS
           </h2>
           <p className="mt-4 md:mt-6 font-display font-light text-[17px] sm:text-[19px] md:text-[21px] text-[var(--text-secondary)] leading-[1.5] max-w-[44ch]">
-            Four signature dishes prepared strictly upon order over open hearth and woodfire.
+            Four signature dishes prepared strictly upon order.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export function Specials() {
                 </span>
                 <span className="opacity-30">/</span>
                 <span className="font-ui font-medium text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
-                  SIGNATURE WOODFIRE HEARTH
+                  SIGNATURE FRESH FRY
                 </span>
               </div>
               <span className="font-ui text-[9px] uppercase tracking-[0.22em] text-[var(--text-secondary)] opacity-70">
@@ -78,7 +78,7 @@ export function Specials() {
                   {plate1.name}
                 </h3>
                 <p className="mt-3 font-ui font-normal text-[13px] sm:text-[14px] text-[var(--text-secondary)] leading-relaxed">
-                  {plate1.description} Cut thick from fresh morning freshwater catch, marinated in stone-ground village spices, and seared over flame on a heavy cast-iron tawa.
+                  {plate1.description} Cut thick from fresh freshwater catch, seasoned with traditional spices, and fried strictly to order.
                 </p>
               </div>
 
@@ -99,14 +99,14 @@ export function Specials() {
               ================================================================= */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-start w-full">
             
-            {/* PLATE 02: Tall Florentine Arch Ratio (Clay Pot Chepala Pulusu) */}
+            {/* PLATE 02: Tall Florentine Arch Ratio (Fresh Fish Curry) */}
             <article className="lg:col-span-6 group relative w-full border border-[var(--border-hairline)] bg-[var(--card-bg)] p-6 sm:p-8 backdrop-blur-sm transition-colors duration-700 hover:border-[var(--text-primary)]/50">
               <div className="flex items-center justify-between pb-3 mb-5 border-b border-[var(--border-hairline)] select-none">
                 <span className="font-ui font-semibold text-[9px] uppercase tracking-[0.24em] text-[var(--text-secondary)]">
-                  NO. 02 / CLAY POT CURRY
+                  NO. 02 / FRESH FISH CURRY
                 </span>
                 <span className="font-ui text-[8px] uppercase tracking-[0.2em] text-[var(--text-secondary)] opacity-60">
-                  ESTD 1998
+                  LOCAL SPECIALITY
                 </span>
               </div>
 
@@ -133,7 +133,7 @@ export function Specials() {
               </div>
 
               <p className="mt-3 font-ui font-normal text-[13px] text-[var(--text-secondary)] leading-relaxed">
-                {plate2.description} Slow-cooked in earthenware clay vessels over embers, letting tamarind pulp and cold-pressed oil tenderize every cut.
+                {plate2.description} Slow-cooked with tamarind and traditional spices, prepared fresh when you order.
               </p>
             </article>
 
@@ -144,7 +144,7 @@ export function Specials() {
                   NO. 03 / HERITAGE SIMMER
                 </span>
                 <span className="font-ui text-[8px] uppercase tracking-[0.2em] text-[var(--text-secondary)] opacity-60">
-                  SLOW WOODFIRE
+                  TRADITIONAL RECIPE
                 </span>
               </div>
 
@@ -171,7 +171,7 @@ export function Specials() {
               </div>
 
               <p className="mt-3 font-ui font-normal text-[13px] text-[var(--text-secondary)] leading-relaxed">
-                {plate3.description} Infused with aged tamarind and stone-crushed coriander seeds, yielding a tangy, peppery broth that deepens as it simmers.
+                {plate3.description} Prepared with tamarind and coriander, yielding a rich, tangy broth cooked fresh for each guest.
               </p>
             </article>
           </div>
@@ -217,7 +217,7 @@ export function Specials() {
                   {plate4.name}
                 </h3>
                 <p className="mt-3 font-ui font-normal text-[13px] sm:text-[14px] text-[var(--text-secondary)] leading-relaxed">
-                  {plate4.description} Free-range country chicken gently stewed in a dark woodfire gravy with dry roasted whole cloves, cinnamon bark, and stone-crushed garlic.
+                  {plate4.description}
                 </p>
               </div>
 
