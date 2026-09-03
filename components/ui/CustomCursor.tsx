@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { useIntro } from "@/context/IntroContext";
 
 type CursorMode = "default" | "button" | "drag" | "view";
 
 export function CustomCursor() {
+  const { isIntroFinished } = useIntro();
   const [isVisible, setIsVisible] = useState(false);
   const [mode, setMode] = useState<CursorMode>("default");
 
@@ -96,7 +98,9 @@ export function CustomCursor() {
   return (
     <div
       ref={cursorRef}
-      className="fixed top-0 left-0 z-[100] pointer-events-none mix-blend-difference will-change-transform hidden md:block"
+      className={`fixed top-0 left-0 z-[100] pointer-events-none mix-blend-difference will-change-transform hidden md:block transition-opacity duration-800 ease-out ${
+        isIntroFinished ? "opacity-100" : "opacity-0"
+      }`}
       style={{ transform: "translate3d(-100px, -100px, 0)" }}
     >
       <div

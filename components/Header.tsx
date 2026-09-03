@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { restaurant } from "@/data/restaurant";
 import { useTheme } from "@/context/ThemeContext";
+import { useIntro } from "@/context/IntroContext";
 
 const navItems = [
   { label: "SPECIALITIES", href: "#specials", sub: "SIGNATURE RIVER CATCH" },
@@ -14,6 +15,7 @@ const navItems = [
 
 export function Header() {
   const { theme, toggleTheme, isMenuOpen, setIsMenuOpen } = useTheme();
+  const { isIntroFinished } = useIntro();
   const [isScrolled, setIsScrolled] = useState(false);
   const [timeString, setTimeString] = useState<string>("");
 
@@ -53,7 +55,13 @@ export function Header() {
   return (
     <>
       {/* 1. TOP UTILITY BAR (Patrizia Garganti Top Bar with Live Hearth Clock) */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-[32px] md:h-[36px] bg-[var(--bg-page)] border-b border-[var(--border-hairline)] px-4 sm:px-8 flex items-center justify-between font-ui text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[var(--text-secondary)] select-none transition-colors duration-500">
+      <div
+        className={`fixed top-0 left-0 right-0 z-50 h-[32px] md:h-[36px] bg-[var(--bg-page)] border-b border-[var(--border-hairline)] px-4 sm:px-8 flex items-center justify-between font-ui text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-[var(--text-secondary)] select-none transition-all duration-1000 ease-out ${
+          isIntroFinished
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-2 pointer-events-none"
+        }`}
+      >
         <div className="flex items-center gap-2 sm:gap-3 truncate">
           <span className="font-medium text-[var(--text-primary)]">
             RESERVATIONS & ORDERS
@@ -78,7 +86,11 @@ export function Header() {
 
       {/* 2. MAIN STICKY FLORENTINE HEADER */}
       <header
-        className={`fixed top-[32px] md:top-[36px] left-0 right-0 z-40 h-[64px] md:h-[72px] px-4 sm:px-8 flex items-center justify-between transition-all duration-500 ${
+        className={`fixed top-[32px] md:top-[36px] left-0 right-0 z-40 h-[64px] md:h-[72px] px-4 sm:px-8 flex items-center justify-between transition-all duration-1000 ease-out ${
+          isIntroFinished
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-3 pointer-events-none"
+        } ${
           isScrolled
             ? "bg-[var(--header-bg)] backdrop-blur-md border-b border-[var(--border-hairline)] shadow-sm"
             : "bg-transparent border-b border-[var(--border-hairline)] backdrop-blur-none"
