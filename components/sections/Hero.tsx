@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { HearthEmbersCanvas } from "@/components/canvas/HearthEmbersCanvas";
 
 export function Hero() {
   const [activeDot, setActiveDot] = useState(0);
@@ -39,7 +40,10 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-black/45 pointer-events-none" />
       </div>
 
-      {/* 2. Top Spacing spacer for floating header */}
+      {/* 2. THREE.JS WEBGL 3D ATMOSPHERIC FLOATING EMBERS & PARALLAX CANVAS */}
+      <HearthEmbersCanvas />
+
+      {/* 3. Top Spacing spacer for floating header */}
       <div className="w-full h-[120px] pointer-events-none z-10" />
 
       {/* 3. Center: Clean, Noise-Free Canvas (Zero Big H1, Photography is 100% the Hero) */}
