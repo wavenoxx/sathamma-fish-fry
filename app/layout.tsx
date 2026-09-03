@@ -105,27 +105,7 @@ export default function RootLayout({
           fetchPriority="high"
         />
 
-        {/* Early session-check script: Prevents one-frame cream flash on same-session revisits */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                if (sessionStorage.getItem('sathamma-intro-seen-v1')) {
-                  document.documentElement.classList.add('intro-seen');
-                }
-              } catch (e) {}
-            `,
-          }}
-        />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-              html.intro-seen #intro-portal-container {
-                display: none !important;
-              }
-            `,
-          }}
-        />
+
 
         <script
           dangerouslySetInnerHTML={{

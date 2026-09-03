@@ -58,7 +58,7 @@ export function ImageSlot({
           src={slot.file}
           alt={slot.intent}
           fill
-          unoptimized
+          quality={90}
           className="object-cover object-center transition-opacity duration-500"
           priority={slot.priority}
           sizes={sizes}

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { HearthEmbersCanvas } from "@/components/canvas/HearthEmbersCanvas";
 import { useIntro } from "@/context/IntroContext";
 
@@ -24,28 +25,32 @@ export function Hero() {
       aria-label="Sathamma Fish Fry Hero Stage"
       className="relative w-full h-screen min-h-[100svh] overflow-hidden flex flex-col justify-between items-center select-none"
     >
-      {/* 1. ABSOLUTE FULL-SCREEN BACKGROUND COVER (100vw, 100vh) - MEDIA-AWARE ZERO COMPRESSION */}
+      {/* 1. ABSOLUTE FULL-SCREEN BACKGROUND COVER (100vw, 100vh) - ZERO LATENCY NEXT.JS OPTIMIZED IMAGE */}
       <div className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
-        <picture className="absolute inset-0 w-full h-full pointer-events-none">
-          {/* Mobile Viewport ( < 640px ): Only mobile hero asset downloaded */}
-          <source
-            media="(max-width: 639px)"
-            srcSet="/images/hero-mobile.png"
-          />
-          {/* Desktop Viewport ( >= 640px ): Only desktop hero asset downloaded */}
-          <source
-            media="(min-width: 640px)"
-            srcSet="/images/hero-desktop.png"
-          />
-          <img
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+        {/* Desktop View */}
+        <div className="hidden sm:block absolute inset-0 w-full h-full">
+          <Image
+            src="/images/hero-desktop.png"
             alt="Fresh river fish fry at Sathamma Fish Fry, Devarakonda"
-            className="w-full h-full object-cover object-center"
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
+            fill
+            priority
+            sizes="100vw"
+            quality={90}
+            className="object-cover object-center"
           />
-        </picture>
+        </div>
+        {/* Mobile View */}
+        <div className="block sm:hidden absolute inset-0 w-full h-full">
+          <Image
+            src="/images/hero-mobile.png"
+            alt="Fresh river fish fry at Sathamma Fish Fry, Devarakonda"
+            fill
+            priority
+            sizes="100vw"
+            quality={90}
+            className="object-cover object-center"
+          />
+        </div>
 
         {/* Minimalist ambient vignette for floating header readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-black/45 pointer-events-none" />

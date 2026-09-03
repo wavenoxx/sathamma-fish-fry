@@ -1,12 +1,18 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { gsap } from "gsap";
 import { useIntro } from "@/context/IntroContext";
 
 export function IntroPortalReveal() {
   const pathname = usePathname();
   const { isIntroFinished, finishIntro } = useIntro();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const portalCircleRef = useRef<SVGEllipseElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     if (pathname !== "/") {
@@ -14,34 +20,111 @@ export function IntroPortalReveal() {
       return;
     }
 
-    // Safety timeout: Guarantees overlay unmount even if onAnimationEnd is somehow dropped
-    const safetyTimer = setTimeout(() => {
+    if (isIntroFinished) return;
+
+    // Accessibility: Instant finish for users requesting reduced motion
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
       finishIntro();
-    }, 1300);
+      return;
+    }
 
-    return () => clearTimeout(safetyTimer);
-  }, [finishIntro, pathname]);
+    const container = containerRef.current;
+    const ellipse = portalCircleRef.current;
+    const text = textRef.current;
+    const svg = svgRef.current;
+    if (!container || !ellipse || !text || !svg) return;
 
-  // Non-homepage or already finished during current session: completely unmounted
-  if (isIntroFinished || pathname !== "/") {
-    return null;
-  }
+    // Initial state: Cutout starts collapsed at bottom center (100% solid cream cover)
+    gsap.set(ellipse, {
+      attr: { cx: 500, cy: 1000, rx: 0, ry: 0 },
+    });
+    gsap.set(text, {
+      opacity: 0,
+      y: 12,
+    });
+    gsap.set(container, {
+      opacity: 1,
+    });
+
+    // SIGNATURE OVERLAPPING REVEAL CHOREOGRAPHY (~1.20s total)
+    const tl = gsap.timeline({
+      onComplete: () => {
+        finishIntro();
+      },
+    });
+    timelineRef.current = tl;
+
+    // Phase 1: Typography resolves rapidly and elegantly (0.04s -> 0.28s)
+    tl.to(
+      text,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.24,
+        ease: "power2.out",
+      },
+      0.04
+    );
+
+    // Phase 2: Portal reveal starts expanding ALREADY at 0.20s without waiting for typography
+    // Native SVG coordinate expansion guarantees 100% centered, architectural aperture on all viewports
+    tl.to(
+      ellipse,
+      {
+        attr: { cy: 500, rx: 450, ry: 410 },
+        duration: 0.85,
+        ease: "expo.inOut",
+      },
+      0.20
+    );
+
+    // Phase 3: Typography dissolves cleanly while portal is actively expanding (0.34s -> 0.62s)
+    tl.to(
+      text,
+      {
+        opacity: 0,
+        y: -12,
+        duration: 0.28,
+        ease: "power2.in",
+      },
+      0.34
+    );
+
+    // Phase 4: Settle & overlay fadeout (0.95s -> 1.20s)
+    tl.to(
+      container,
+      {
+        opacity: 0,
+        duration: 0.25,
+        ease: "power2.out",
+      },
+      0.95
+    );
+
+    return () => {
+      tl.kill();
+    };
+  }, [isIntroFinished, finishIntro, pathname]);
+
+  if (isIntroFinished || pathname !== "/") return null;
 
   return (
     <div
       id="intro-portal-container"
-      onClick={finishIntro}
-      onAnimationEnd={(e) => {
-        // Complete intro and unmount when outermost sequence finishes
-        if (e.target === e.currentTarget || e.animationName === "introOverlaySequence") {
-          finishIntro();
-        }
+      ref={containerRef}
+      onClick={() => {
+        if (timelineRef.current) timelineRef.current.progress(1);
+        else finishIntro();
       }}
-      className="intro-portal-overlay"
+      className="fixed inset-0 z-[90] pointer-events-auto select-none cursor-pointer bg-[#edece7]"
       aria-label="Intro Portal Reveal (click or tap to enter)"
     >
-      {/* 100% Native SVG Mask Layer with Hardware-Accelerated CSS Transform Aperture */}
+      {/* 100% Native SVG Mask Layer (Mathematical Vector Aperture) */}
       <svg
+        ref={svgRef}
         className="fixed inset-0 w-full h-full pointer-events-none"
         viewBox="0 0 1000 1000"
         preserveAspectRatio="none"
@@ -51,10 +134,15 @@ export function IntroPortalReveal() {
           <mask id="portal-svg-mask">
             {/* White covers entire viewport (solid cream) */}
             <rect width="1000" height="1000" fill="white" />
-            {/* Black cutout creates the expanding aperture window revealing the hero */}
-            <g className="intro-portal-aperture">
-              <ellipse cx="0" cy="0" rx="450" ry="410" fill="black" />
-            </g>
+            {/* Black cutout creates the transparent aperture window revealing the hero */}
+            <ellipse
+              ref={portalCircleRef}
+              cx="500"
+              cy="1000"
+              rx="0"
+              ry="0"
+              fill="black"
+            />
           </mask>
         </defs>
 
@@ -67,8 +155,11 @@ export function IntroPortalReveal() {
         />
       </svg>
 
-      {/* Centered Serif Preloader Typography (CSS-Animated) */}
-      <div className="intro-typography-container absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none z-10">
+      {/* Centered Serif Preloader Typography */}
+      <div
+        ref={textRef}
+        className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none z-10"
+      >
         <span className="font-ui font-medium text-[9px] sm:text-[10px] uppercase tracking-[0.34em] text-[#6e6d69] mb-3">
           DEVARAKONDA · TELANGANA
         </span>
