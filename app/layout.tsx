@@ -12,6 +12,7 @@ import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvide
 import { IntroPortalReveal } from "@/components/ui/IntroPortalReveal";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { AmbientGlow } from "@/components/ui/AmbientGlow";
+import { AssetWarmer } from "@/components/AssetWarmer";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
@@ -110,6 +111,9 @@ export default function RootLayout({
             <SmoothScrollProvider>
               {/* Step 1 to 4 GSAP Portal Reveal */}
               <IntroPortalReveal />
+
+              {/* Background Asset Warmer for Zero-Latency Smooth Scrolling */}
+              <AssetWarmer />
 
               {/* Patrizia Garganti Inverting Dynamic Cursor */}
               <CustomCursor />
