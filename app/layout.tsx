@@ -87,6 +87,23 @@ export default function RootLayout({
       data-theme="dark"
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== "undefined") {
+                if ("serviceWorker" in navigator) {
+                  navigator.serviceWorker.getRegistrations().then(function(regs) {
+                    for (var i = 0; i < regs.length; i++) {
+                      regs[i].unregister();
+                    }
+                  });
+                }
+              }
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-screen antialiased flex flex-col font-serif">
         <ThemeProvider>
           <IntroProvider>
