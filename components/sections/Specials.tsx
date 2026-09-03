@@ -154,10 +154,20 @@ export function Specials() {
                 className="relative w-full aspect-[4/5] sm:aspect-[16/11] overflow-hidden bg-black/20"
               >
                 <div className="w-full h-full transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:brightness-[1.03]">
-                  <ImageSlot
-                    id={plate3.imageSlotId}
-                    sizes="(min-width: 1024px) 45vw, 100vw"
-                  />
+                  {/* Art-Directed Mobile Portrait (4:5) */}
+                  <div className="sm:hidden w-full h-full">
+                    <ImageSlot
+                      id="special-3-portrait"
+                      sizes="100vw"
+                    />
+                  </div>
+                  {/* Art-Directed Desktop Wide (16:11) */}
+                  <div className="hidden sm:block w-full h-full">
+                    <ImageSlot
+                      id="special-3-wide"
+                      sizes="(min-width: 1024px) 45vw, 100vw"
+                    />
+                  </div>
                 </div>
               </div>
 

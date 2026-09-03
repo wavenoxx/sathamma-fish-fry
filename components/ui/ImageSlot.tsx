@@ -7,6 +7,7 @@ interface ImageSlotProps {
   id: string;
   className?: string;
   sizes?: string;
+  selfAspect?: boolean;
 }
 
 const slotEditorialMetadata: Record<string, { number: string; title: string }> = {
@@ -22,6 +23,8 @@ const slotEditorialMetadata: Record<string, { number: string; title: string }> =
   "special-1": { number: "01", title: "Sathamma Fish Fry" },
   "special-2": { number: "02", title: "Natu Style Fish Curry" },
   "special-3": { number: "03", title: "Chepala Pulusu" },
+  "special-3-portrait": { number: "03", title: "Chepala Pulusu" },
+  "special-3-wide": { number: "03", title: "Chepala Pulusu" },
   "special-4": { number: "04", title: "Natu Kodi Pulusu" },
 };
 
@@ -29,6 +32,7 @@ export function ImageSlot({
   id,
   className = "",
   sizes = "(max-width: 768px) 100vw, 50vw",
+  selfAspect = false,
 }: ImageSlotProps) {
   const slot = imageSlots[id];
 
@@ -45,8 +49,8 @@ export function ImageSlot({
 
   return (
     <div
-      className={`relative w-full overflow-hidden bg-ink-soft ${className}`}
-      style={{ aspectRatio: slot.aspect }}
+      className={`relative w-full h-full overflow-hidden bg-ink-soft ${className}`}
+      style={selfAspect ? { aspectRatio: slot.aspect } : undefined}
       data-slot-id={slot.id}
     >
       {fileExists ? (
