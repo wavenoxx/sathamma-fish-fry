@@ -25,9 +25,16 @@ export function CustomCursor() {
 
     setIsVisible(true);
 
+    let isMoving = false;
+
     const onMouseMove = (e: MouseEvent) => {
       pos.current.targetX = e.clientX;
       pos.current.targetY = e.clientY;
+
+      if (!isMoving) {
+        isMoving = true;
+        animFrame.current = requestAnimationFrame(render);
+      }
 
       // Detect hover target
       const target = e.target as HTMLElement | null;
@@ -58,21 +65,26 @@ export function CustomCursor() {
 
     // Smooth Lerp animation loop (60-120fps GPU compositor)
     const render = () => {
-      pos.current.currentX += (pos.current.targetX - pos.current.currentX) * 0.2;
-      pos.current.currentY += (pos.current.targetY - pos.current.currentY) * 0.2;
+      const dx = pos.current.targetX - pos.current.currentX;
+      const dy = pos.current.targetY - pos.current.currentY;
+
+      pos.current.currentX += dx * 0.25;
+      pos.current.currentY += dy * 0.25;
 
       if (cursorRef.current) {
         cursorRef.current.style.transform = `translate3d(${pos.current.currentX}px, ${pos.current.currentY}px, 0)`;
       }
 
-      animFrame.current = requestAnimationFrame(render);
+      if (Math.abs(dx) > 0.2 || Math.abs(dy) > 0.2) {
+        animFrame.current = requestAnimationFrame(render);
+      } else {
+        isMoving = false;
+      }
     };
 
     window.addEventListener("mousemove", onMouseMove, { passive: true });
     document.addEventListener("mouseleave", onMouseLeave);
     document.addEventListener("mouseenter", onMouseEnter);
-
-    animFrame.current = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);

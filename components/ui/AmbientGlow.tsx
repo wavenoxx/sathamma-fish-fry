@@ -16,48 +16,56 @@ export function AmbientGlow() {
       return;
     }
 
+    let animId: number;
+    let isMoving = false;
+
     const onMouseMove = (e: MouseEvent) => {
       pos.current.targetX = e.clientX;
       pos.current.targetY = e.clientY;
+      if (!isMoving) {
+        isMoving = true;
+        animId = requestAnimationFrame(render);
+      }
     };
 
-    let animId: number;
     const render = () => {
-      pos.current.currentX += (pos.current.targetX - pos.current.currentX) * 0.08;
-      pos.current.currentY += (pos.current.targetY - pos.current.currentY) * 0.08;
+      const dx = pos.current.targetX - pos.current.currentX;
+      const dy = pos.current.targetY - pos.current.currentY;
+
+      pos.current.currentX += dx * 0.08;
+      pos.current.currentY += dy * 0.08;
 
       if (glowRef.current) {
-        const glowColor =
-          theme === "dark"
-            ? "rgba(180, 70, 26, 0.08)"
-            : "rgba(217, 154, 43, 0.05)";
-
-        glowRef.current.style.background = `radial-gradient(650px circle at ${pos.current.currentX}px ${pos.current.currentY}px, ${glowColor}, transparent 75%)`;
+        // GPU Composited translate3d (ZERO CPU repaints!)
+        glowRef.current.style.transform = `translate3d(${pos.current.currentX - 300}px, ${pos.current.currentY - 300}px, 0)`;
       }
 
-      animId = requestAnimationFrame(render);
+      // Stop loop when close enough to save 100% idle CPU
+      if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+        animId = requestAnimationFrame(render);
+      } else {
+        isMoving = false;
+      }
     };
 
     window.addEventListener("mousemove", onMouseMove, { passive: true });
-    animId = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       cancelAnimationFrame(animId);
     };
-  }, [theme]);
+  }, []);
 
   if (!mounted) return null;
 
   return (
     <div
       ref={glowRef}
-      className="pointer-events-none fixed inset-0 z-0 transition-opacity duration-700 hidden md:block"
+      className={`pointer-events-none fixed top-0 left-0 w-[600px] h-[600px] rounded-full blur-[140px] will-change-transform z-0 transition-opacity duration-1000 hidden md:block ${
+        theme === "dark" ? "bg-ember/10" : "bg-turmeric/10"
+      }`}
       style={{
-        background:
-          theme === "dark"
-            ? "radial-gradient(650px circle at 50% 30%, rgba(180, 70, 26, 0.08), transparent 75%)"
-            : "radial-gradient(650px circle at 50% 30%, rgba(217, 154, 43, 0.05), transparent 75%)",
+        transform: "translate3d(200px, 100px, 0)",
       }}
     />
   );

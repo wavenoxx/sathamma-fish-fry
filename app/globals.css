@@ -66,10 +66,27 @@
   --switch-thumb: var(--dark);
 }
 
-/* Mandatory overflow guard */
+/* Mandatory overflow guard & Lenis sync */
 html {
   scrollbar-gutter: stable;
-  scroll-behavior: smooth;
+  scroll-behavior: auto !important;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 html,
@@ -82,9 +99,6 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color var(--duration) cubic-bezier(0.16, 1, 0.3, 1),
-              color var(--duration) cubic-bezier(0.16, 1, 0.3, 1),
-              border-color var(--duration) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Typography Voice: Regal, Crisp, Zero Jitter */
