@@ -109,85 +109,95 @@ export function Header() {
         }`}
       >
         {/* Left: Double Hairline Hamburger + MENU */}
-        <button
-          type="button"
-          data-cursor="button"
-          onClick={() => setIsMenuOpen(true)}
-          className="group flex items-center gap-3 py-2 bg-transparent border-0 cursor-pointer select-none text-current focus-visible:outline-none"
-          aria-label="Open Navigation Menu"
-        >
-          {/* Two parallel hairline strokes */}
-          <div className="flex flex-col justify-center gap-1.5 w-[24px]">
-            <span className="block w-full h-[1px] bg-current transition-transform duration-300 group-hover:scale-x-110" />
-            <span className="block w-[75%] h-[1px] bg-current transition-transform duration-300 group-hover:w-full" />
-          </div>
-          <span className="font-ui text-[11px] md:text-[12px] uppercase font-medium tracking-[0.24em] group-hover:opacity-80">
-            MENU
-          </span>
-        </button>
-
-        {/* Center: Monogram Crest & Hairline Bridge */}
-        <Link
-          href="/"
-          data-cursor="button"
-          className="flex flex-col items-center justify-center text-center select-none group"
-        >
-          <div className="flex items-center gap-2">
-            <span className="font-display font-light text-[22px] md:text-[26px] tracking-[0.02em] leading-none uppercase text-current">
-              Sathamma
-            </span>
-          </div>
-          <span className={`font-ui text-[8px] md:text-[9px] uppercase tracking-[0.28em] mt-1 ${
-            isHomeTransparent ? "text-white/70" : "text-[var(--text-secondary)]"
-          }`}>
-            DEVARAKONDA 1998
-          </span>
-        </Link>
-
-        {/* Right: The Patrizia Garganti Light Switch Toggle */}
-        <div className="flex items-center gap-2 select-none">
-          <span className={`hidden sm:inline-block font-ui text-[9px] uppercase tracking-[0.2em] ${
-            isHomeTransparent ? "text-white/70" : "text-[var(--text-secondary)]"
-          }`}>
-            HEARTH
-          </span>
-
+        <div className="flex-1 flex items-center justify-start">
           <button
             type="button"
             data-cursor="button"
-            onClick={toggleTheme}
-            className={`flex items-center gap-2 py-1.5 px-2.5 rounded-full border bg-transparent transition-all duration-300 cursor-pointer text-current focus-visible:outline-none ${
-              isHomeTransparent
-                ? "border-white/20 hover:border-white"
-                : "border-[var(--border-hairline)] hover:border-[var(--text-primary)]"
-            }`}
-            aria-label="Toggle Light / Dark Ambient Hearth"
+            onClick={() => setIsMenuOpen(true)}
+            className="group flex items-center gap-3 py-2 bg-transparent border-0 cursor-pointer select-none text-current focus-visible:outline-none"
+            aria-label="Open Navigation Menu"
           >
-            <span
-              className={`font-ui text-[9px] uppercase tracking-widest transition-opacity ${
-                theme === "light" ? "font-bold opacity-100" : "opacity-40"
-              }`}
-            >
-              DAY
-            </span>
-
-            {/* Pill Track */}
-            <div className="relative w-[34px] h-[18px] rounded-full bg-[var(--switch-track)] p-[2px] transition-colors duration-400">
-              <div
-                className={`w-[14px] h-[14px] rounded-full bg-[var(--switch-thumb)] shadow-sm transform transition-transform duration-300 ${
-                  theme === "dark" ? "translate-x-[16px]" : "translate-x-0"
-                }`}
-              />
+            {/* Two parallel hairline strokes */}
+            <div className="flex flex-col justify-center gap-1.5 w-[24px]">
+              <span className="block w-full h-[1px] bg-current transition-transform duration-300 group-hover:scale-x-110" />
+              <span className="block w-[75%] h-[1px] bg-current transition-transform duration-300 group-hover:w-full" />
             </div>
-
-            <span
-              className={`font-ui text-[9px] uppercase tracking-widest transition-opacity ${
-                theme === "dark" ? "font-bold opacity-100" : "opacity-40"
-              }`}
-            >
-              NIGHT
+            <span className="font-ui text-[11px] md:text-[12px] uppercase font-medium tracking-[0.24em] group-hover:opacity-80">
+              MENU
             </span>
           </button>
+        </div>
+
+        {/* Center: Monogram Crest & Hairline Bridge - EXACT 50% VIEWPORT HORIZONTAL MIDPOINT */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto z-10">
+          <Link
+            href="/"
+            data-cursor="button"
+            className="flex flex-col items-center justify-center text-center select-none group"
+          >
+            <div className="flex items-center gap-2">
+              <span className="font-display font-light text-[22px] md:text-[26px] tracking-[0.02em] leading-none uppercase text-current">
+                Sathamma
+              </span>
+            </div>
+            <span
+              className={`font-ui text-[8px] md:text-[9px] uppercase tracking-[0.28em] mt-1 ${
+                isHomeTransparent ? "text-white/70" : "text-[var(--text-secondary)]"
+              }`}
+            >
+              DEVARAKONDA 1998
+            </span>
+          </Link>
+        </div>
+
+        {/* Right: The Patrizia Garganti Light Switch Toggle */}
+        <div className="flex-1 flex items-center justify-end">
+          <div className="flex items-center gap-2 select-none">
+            <span
+              className={`hidden sm:inline-block font-ui text-[9px] uppercase tracking-[0.2em] ${
+                isHomeTransparent ? "text-white/70" : "text-[var(--text-secondary)]"
+              }`}
+            >
+              HEARTH
+            </span>
+
+            <button
+              type="button"
+              data-cursor="button"
+              onClick={toggleTheme}
+              className={`flex items-center gap-2 py-1.5 px-2.5 rounded-full border bg-transparent transition-all duration-300 cursor-pointer text-current focus-visible:outline-none ${
+                isHomeTransparent
+                  ? "border-white/20 hover:border-white"
+                  : "border-[var(--border-hairline)] hover:border-[var(--text-primary)]"
+              }`}
+              aria-label="Toggle Light / Dark Ambient Hearth"
+            >
+              <span
+                className={`font-ui text-[9px] uppercase tracking-widest transition-opacity ${
+                  theme === "light" ? "font-bold opacity-100" : "opacity-40"
+                }`}
+              >
+                DAY
+              </span>
+
+              {/* Pill Track */}
+              <div className="relative w-[34px] h-[18px] rounded-full bg-[var(--switch-track)] p-[2px] transition-colors duration-400">
+                <div
+                  className={`w-[14px] h-[14px] rounded-full bg-[var(--switch-thumb)] shadow-sm transform transition-transform duration-300 ${
+                    theme === "dark" ? "translate-x-[16px]" : "translate-x-0"
+                  }`}
+                />
+              </div>
+
+              <span
+                className={`font-ui text-[9px] uppercase tracking-widest transition-opacity ${
+                  theme === "dark" ? "font-bold opacity-100" : "opacity-40"
+                }`}
+              >
+                NIGHT
+              </span>
+            </button>
+          </div>
         </div>
       </header>
 
